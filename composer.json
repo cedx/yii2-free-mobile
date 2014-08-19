@@ -1,0 +1,27 @@
+{
+  "description": "Free Mobile logging for Yii Framework.",
+  "homepage": "https://github.com/cedx/free-mobile.yii",
+  "license": "MIT",
+  "name": "cedx/yii-free-mobile",
+  "type": "library",
+  "authors": [{
+    "email": "cedric@belin.io",
+    "name": "Cédric Belin"
+  }],
+  "autoload": {
+    "psr-0": { "": "lib/" }
+  },
+  "keywords": [
+    "free",
+    "logging",
+    "mobile",
+    "sms",
+    "yii"
+  ],
+  "require": {
+    "php": ">=5.5.9"
+  },
+  "support": {
+    "issues": "https://github.com/cedx/free-mobile.yii/issues"
+  }
+}
