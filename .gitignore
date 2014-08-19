@@ -1,0 +1,5 @@
+/*.komodoproject
+/composer.lock
+/doc/api/
+/node_modules/
+/npm-debug.log
