@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "dependencies": {
+    "jshint": "^2.5.2",
+    "shelljs": "^0.3.0",
+    "yuidocjs": "^0.3.50"
+  },
+  "engines": {
+    "node": ">=0.10.30"
+  },
+  "jshintConfig": {
+    "camelcase": true,
+    "freeze": true,
+    "indent": 2,
+    "latedef": true,
+    "loopfunc": true,
+    "newcap": true,
+    "node": true,
+    "nonew": true,
+    "quotmark": "single",
+    "strict": true,
+    "trailing": true,
+    "undef": true,
+    "unused": true
+  },
+  "scripts": {
+    "make": "node bin/make.js"
+  }
+}
