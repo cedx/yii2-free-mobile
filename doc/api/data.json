@@ -1,0 +1,153 @@
+{
+    "project": {
+        "logo": "http://dev.belin.io/free-mobile.yii/api/favicon.ico",
+        "name": "Free-Mobile.yii",
+        "url": "https://packagist.org/packages/cedx/yii-free-mobile"
+    },
+    "files": {
+        "lib\\CFreeMobileLogRoute.php": {
+            "name": "lib\\CFreeMobileLogRoute.php",
+            "modules": {
+                "CFreeMobileLogRoute": 1
+            },
+            "classes": {
+                "CFreeMobileLogRoute": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "CFreeMobileLogRoute": {
+            "name": "CFreeMobileLogRoute",
+            "submodules": {},
+            "classes": {
+                "CFreeMobileLogRoute": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib\\CFreeMobileLogRoute.php",
+            "line": 7,
+            "description": "Implementation of the `CFreeMobileLogRoute` class."
+        }
+    },
+    "classes": {
+        "CFreeMobileLogRoute": {
+            "name": "CFreeMobileLogRoute",
+            "shortname": "CFreeMobileLogRoute",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "CFreeMobileLogRoute",
+            "namespace": "",
+            "file": "lib\\CFreeMobileLogRoute.php",
+            "line": 7,
+            "description": "Sends the log messages by SMS to a [Free Mobile](http://mobile.free.fr) account.",
+            "extends": "system.logging.CLogRoute",
+            "is_constructor": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib\\CFreeMobileLogRoute.php",
+            "line": 15,
+            "description": "The URL of the API end point.",
+            "itemtype": "property",
+            "name": "END_POINT_URL",
+            "type": "string",
+            "static": 1,
+            "final": 1,
+            "class": "CFreeMobileLogRoute",
+            "module": "CFreeMobileLogRoute"
+        },
+        {
+            "file": "lib\\CFreeMobileLogRoute.php",
+            "line": 24,
+            "description": "The format string to be used to format a log message.\nThe following placeholders can be specified:\n- `{message}`: replaced by the message content.\n- `{level}`: replaced by the message level.\n- `{category}`: replaced by the message category.\n- `{time}`: replaced by the message timestamp (using the `\"Y/m/d H:i:s\"` date format).",
+            "itemtype": "property",
+            "name": "logFormat",
+            "type": "string",
+            "default": "\"[{level}@{category}] {message}\"",
+            "class": "CFreeMobileLogRoute",
+            "module": "CFreeMobileLogRoute"
+        },
+        {
+            "file": "lib\\CFreeMobileLogRoute.php",
+            "line": 37,
+            "description": "The identification key associated to the account.",
+            "itemtype": "property",
+            "name": "password",
+            "type": "string",
+            "class": "CFreeMobileLogRoute",
+            "module": "CFreeMobileLogRoute"
+        },
+        {
+            "file": "lib\\CFreeMobileLogRoute.php",
+            "line": 44,
+            "description": "The user name associated to the account.",
+            "itemtype": "property",
+            "name": "userName",
+            "type": "string",
+            "class": "CFreeMobileLogRoute",
+            "module": "CFreeMobileLogRoute"
+        },
+        {
+            "file": "lib\\CFreeMobileLogRoute.php",
+            "line": 51,
+            "description": "Formats a log message given different fields.",
+            "itemtype": "method",
+            "name": "formatLogMessage",
+            "params": [
+                {
+                    "name": "$message",
+                    "description": "The message content.",
+                    "type": "String"
+                },
+                {
+                    "name": "$level",
+                    "description": "The message level.",
+                    "type": "Int"
+                },
+                {
+                    "name": "$category",
+                    "description": "The message category.",
+                    "type": "String"
+                },
+                {
+                    "name": "$time",
+                    "description": "The message timestamp.",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "string The formatted message."
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "CFreeMobileLogRoute",
+            "module": "CFreeMobileLogRoute"
+        },
+        {
+            "file": "lib\\CFreeMobileLogRoute.php",
+            "line": 72,
+            "description": "Processes log messages and sends them by SMS to a Free Mobile account.",
+            "itemtype": "method",
+            "name": "processLogs",
+            "params": [
+                {
+                    "name": "$logs",
+                    "description": "The list of messages.",
+                    "type": "Array"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "CFreeMobileLogRoute",
+            "module": "CFreeMobileLogRoute"
+        }
+    ],
+    "warnings": []
+}
