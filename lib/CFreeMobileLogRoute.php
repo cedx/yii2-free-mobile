@@ -41,6 +41,10 @@ class CFreeMobileLogRoute extends CLogRoute {
    * @param {array} $logs The list of messages.
    */
   protected function processLogs($logs) {
+    $text=implode("\n", array_map(function($log) {
+      return sprintf('[%s] [%s] %s', $log[1], $log[2], $log[0]);
+    }, $logs));
+
     $fields=[
       'msg'=>mb_convert_encoding($text, 'ISO-8859-1', Yii::app()->charset),
       'pass'=>$this->password,
