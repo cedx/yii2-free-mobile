@@ -22,6 +22,19 @@ class CFreeMobileLogRoute extends CLogRoute {
   const END_POINT_URL='https://smsapi.free-mobile.fr/sendmsg';
 
   /**
+   * The format string to be used to format a log message.
+   * The following placeholders can be specified:
+   * - `{message}`: replaced by the message content.
+   * - `{level}`: replaced by the message level.
+   * - `{category}`: replaced by the message category.
+   * - `{time}`: replaced by the message timestamp (using the `"Y/m/d H:i:s"` date format).
+   * @property logFormat
+   * @type string
+   * @default "[{level}@{category}] {message}"
+   */
+  public $logFormat='[{level}@{category}] {message}';
+
+  /**
    * The identification key associated to the account.
    * @property password
    * @type string
@@ -36,13 +49,34 @@ class CFreeMobileLogRoute extends CLogRoute {
   public $userName='';
 
   /**
+   * Formats a log message given different fields.
+   * @method formatLogMessage
+   * @param {string} $message The message content.
+   * @param {int} $level The message level.
+   * @param {string} $category The message category.
+   * @param {int} $time The message timestamp.
+   * @return string The formatted message.
+   */
+  protected function formatLogMessage($message, $level, $category, $time) {
+    $values=[
+      '{category}'=>$category,
+      '{level}'=>$level,
+      '{message}'=>$message,
+      '{time}'=>@date('Y/m/d H:i:s', $time)
+    ];
+
+    return strtr($this->logFormat, $values);
+  }
+
+  /**
    * Processes log messages and sends them by SMS to a Free Mobile account.
    * @method processLogs
    * @param {array} $logs The list of messages.
+   * @protected
    */
   protected function processLogs($logs) {
     $text=implode("\n", array_map(function($log) {
-      return sprintf('[%s] [%s] %s', $log[1], $log[2], $log[0]);
+      return $this->formatLogMessage($log[0], $log[1], $log[2], $log[3]);
     }, $logs));
 
     $fields=[
