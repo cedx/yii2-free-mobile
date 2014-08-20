@@ -52,10 +52,10 @@ class CFreeMobileLogRoute extends CLogRoute {
    * Formats a log message given different fields.
    * @method formatLogMessage
    * @param {string} $message The message content.
-   * @param {int} $level The message level.
+   * @param {integer} $level The message level.
    * @param {string} $category The message category.
-   * @param {int} $time The message timestamp.
-   * @return string The formatted message.
+   * @param {integer} $time The message timestamp.
+   * @return {string} The formatted message.
    * @protected
    */
   protected function formatLogMessage($message, $level, $category, $time) {

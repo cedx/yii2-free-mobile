@@ -109,7 +109,7 @@
                 {
                     "name": "$level",
                     "description": "The message level.",
-                    "type": "Int"
+                    "type": "Integer"
                 },
                 {
                     "name": "$category",
@@ -119,11 +119,12 @@
                 {
                     "name": "$time",
                     "description": "The message timestamp.",
-                    "type": "Int"
+                    "type": "Integer"
                 }
             ],
             "return": {
-                "description": "string The formatted message."
+                "description": "The formatted message.",
+                "type": "String"
             },
             "access": "protected",
             "tagname": "",
