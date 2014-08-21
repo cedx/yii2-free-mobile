@@ -2,7 +2,7 @@
     "project": {
         "logo": "http://cedx.github.io/free-mobile.yii/api/favicon.ico",
         "name": "Free-Mobile.yii",
-        "url": "https://packagist.org/packages/cedx/free-mobile.yii",
+        "url": "https://packagist.org/packages/cedx/free-mobile-yii",
         "version": "0.1.0"
     },
     "files": {
