@@ -7,10 +7,10 @@ which is a log route allowing to send log messages by SMS to a mobile phone.
 To use it, you must have a Free Mobile account and have enabled SMS Notifications
 in the Options of your [Subscriber Area](https://mobile.free.fr/moncompte).
 
-![Screenshot](http://cedx.github.io/free-mobile.yii/img/screenshot.jpg)
+![Screenshot](http://dev.belin.io/free-mobile.yii/img/screenshot.jpg)
 
 ## Documentation
-- [API Reference](http://cedx.github.io/free-mobile.yii/api)
+- [API Reference](http://dev.belin.io/free-mobile.yii/api)
 
 ## Installing via [Composer](https://getcomposer.org)
 
