@@ -55,7 +55,7 @@ return [
 ];
 ```
 
-Adjust the values as needed. Here, it's supposed that `CApplication->extensionPath' has been
+Adjust the values as needed. Here, it's supposed that `CApplication->extensionPath` has been
 set to Composer's `vendor` directory.
 
 ## License
