@@ -55,5 +55,8 @@ return [
 ];
 ```
 
+Adjust the values as needed. Here, it's supposed that `CApplication->extensionPath' has been
+set to Composer's `vendor` directory.
+
 ## License
 [Free-Mobile.yii](https://packagist.org/packages/cedx/free-mobile-yii) is distributed under the MIT License.
