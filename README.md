@@ -1,6 +1,6 @@
 # Free-Mobile.yii
 [Free Mobile](http://mobile.free.fr) logging for [Yii Framework](http://www.yiiframework.com).
-  
+
 This package provides a single class, `CFreeMobileLogRoute`
 which is a log route allowing to send log messages by SMS to a mobile phone.
 
@@ -20,7 +20,7 @@ Add this to your project's `composer.json` file:
 ```json
 {
   "require": {
-    "cedx/yii-free-mobile": "*"
+    "cedx/free-mobile-yii": "*"
   }
 }
 ```
@@ -42,7 +42,7 @@ return [
       'class'=>'system.logging.CLogRouter',
       'routes'=>[
         [
-          'class'=>'ext.cedx.yii-free-mobile.lib.CFreeMobileLogRoute',
+          'class'=>'ext.cedx.free-mobile-yii.lib.CFreeMobileLogRoute',
           'categories'=>'application.*',
           'levels'=>'error',
           'logFormat'=>'[{level}@{category}] {message}',
@@ -55,5 +55,8 @@ return [
 ];
 ```
 
+Adjust the values as needed. Here, it's supposed that `CApplication->extensionPath`,
+that is the `ext` path alias, has been set to Composer's `vendor` directory.
+
 ## License
-[Free-Mobile.yii](https://packagist.org/packages/cedx/yii-free-mobile) is distributed under the MIT License.
+[Free-Mobile.yii](https://packagist.org/packages/cedx/free-mobile-yii) is distributed under the MIT License.

@@ -1,7 +1,7 @@
 {
   "logo": "http://dev.belin.io/free-mobile.yii/api/favicon.ico",
   "name": "Free-Mobile.yii",
-  "url": "https://packagist.org/packages/cedx/yii-free-mobile",
+  "url": "https://packagist.org/packages/cedx/free-mobile-yii",
   "options": {
     "linkNatives": false,
     "outdir": "doc/api",

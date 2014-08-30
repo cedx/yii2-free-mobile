@@ -2,7 +2,7 @@
   "description": "Free Mobile logging for Yii Framework.",
   "homepage": "https://github.com/cedx/free-mobile.yii",
   "license": "MIT",
-  "name": "cedx/yii-free-mobile",
+  "name": "cedx/free-mobile-yii",
   "type": "library",
   "authors": [{
     "email": "cedric@belin.io",
