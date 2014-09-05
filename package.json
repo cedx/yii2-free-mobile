@@ -1,11 +1,16 @@
 {
+  "author": "Cédric Belin <cedric@belin.io>",
+  "bugs": "https://github.com/cedx/free-mobile.yii/issues",
+  "description": "Free Mobile logging for Yii Framework.",
+  "homepage": "https://packagist.org/packages/cedx/free-mobile-yii",
+  "license": "MIT",
   "name": "free-mobile-yii",
   "private": true,
   "version": "0.1.0",
-  "dependencies": {
+  "devDependencies": {
     "jshint": "^2.5.2",
     "shelljs": "^0.3.0",
-    "yuidocjs": "^0.3.50"
+    "yuidoc-bs": "^0.1.0"
   },
   "engines": {
     "node": ">=0.10.30"
