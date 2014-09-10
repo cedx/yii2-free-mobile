@@ -32,5 +32,16 @@
   },
   "scripts": {
     "make": "node bin/make.js"
+  },
+  "yuidoc": {
+    "logo": "http://dev.belin.io/free-mobile.yii/favicon.ico",
+    "name": "Free-Mobile.yii",
+    "url": "https://packagist.org/packages/cedx/free-mobile-yii",
+    "options": {
+      "linkNatives": false,
+      "outdir": "doc/api",
+      "paths": "lib",
+      "tabtospace": 2
+    }
   }
 }
