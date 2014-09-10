@@ -3,7 +3,7 @@
 
 /**
  * Build system.
- * @module bin/make
+ * @module bin.make
  */
 'use strict';
 
@@ -42,7 +42,7 @@ target.all=function() {
 target.doc=function() {
   echo('Build the documentation...');
   exec('yuidoc-bs --extension ".php" --theme spacelab');
-  cp('-f', [ 'doc/apple-touch-icon.png', 'doc/favicon.ico' ], 'doc/api/assets');
+  cp('-f', [ 'www/apple-touch-icon.png', 'www/favicon.ico' ], 'doc/api/assets');
 };
 
 /**
