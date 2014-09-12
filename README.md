@@ -43,9 +43,6 @@ return [
       'routes'=>[
         [
           'class'=>'ext.cedx.free-mobile-yii.lib.CFreeMobileLogRoute',
-          'categories'=>'application.*',
-          'levels'=>'error',
-          'logFormat'=>'[{level}@{category}] {message}',
           'password'=>'<your Free Mobile identification key>',
           'userName'=>'<your Free Mobile user name>'
         ]
