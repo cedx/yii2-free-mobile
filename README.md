@@ -14,7 +14,7 @@ in the Options of your [Subscriber Area](https://mobile.free.fr/moncompte).
 
 ## Installing via [Composer](https://getcomposer.org)
 
-### 1. Depend on it
+#### 1. Depend on it
 Add this to your project's `composer.json` file:
 
 ```json
@@ -25,14 +25,14 @@ Add this to your project's `composer.json` file:
 }
 ```
 
-### 2. Install it
+#### 2. Install it
 From the command line, run:
 
 ```shell
 $ php composer.phar install
 ```
 
-### 3. Import it
+#### 3. Import it
 Now in your application configuration file, you can use the following log route:
 
 ```php

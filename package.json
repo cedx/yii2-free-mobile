@@ -8,9 +8,9 @@
   "private": true,
   "version": "0.1.0",
   "devDependencies": {
+    "docgen-js": "^0.1.0",
     "jshint": "^2.5.2",
-    "shelljs": "^0.3.0",
-    "yuidoc-bs": "^0.1.0"
+    "shelljs": "^0.3.0"
   },
   "engines": {
     "node": ">=0.10.30"
