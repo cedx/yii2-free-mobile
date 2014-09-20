@@ -41,7 +41,7 @@ target.all=function() {
  */
 target.doc=function() {
   echo('Build the documentation...');
-  exec('docgen --extension ".php" --theme spacelab');
+  exec('docgen');
   cp('-f', [ 'www/apple-touch-icon.png', 'www/favicon.ico' ], 'doc/api/assets');
 };
 
@@ -56,7 +56,7 @@ target.lint=function() {
   exec('jshint --verbose bin');
 
   echo('Static analysis of documentation comments...');
-  exec('docgen --extension ".php" --lint');
+  exec('docgen --lint');
 
   config.fatal=true;
 };

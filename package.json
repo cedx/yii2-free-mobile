@@ -38,10 +38,11 @@
     "name": "Free-Mobile.yii",
     "url": "https://packagist.org/packages/cedx/free-mobile-yii",
     "options": {
-      "linkNatives": false,
+      "extension": ".php",
       "outdir": "doc/api",
       "paths": "lib",
-      "tabtospace": 2
+      "tabtospace": 2,
+      "theme": "spacelab"
     }
   }
 }
