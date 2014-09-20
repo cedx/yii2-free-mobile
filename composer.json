@@ -19,7 +19,7 @@
     "yii"
   ],
   "require": {
-    "php": ">=5.5.9"
+    "php": ">=5.4.0"
   },
   "support": {
     "issues": "https://github.com/cedx/free-mobile.yii/issues"
