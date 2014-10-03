@@ -1,4 +1,6 @@
 # Free-Mobile.yii
+![Version](http://img.shields.io/packagist/v/cedx/free-mobile-yii.svg?style=flat-square) ![Downloads](http://img.shields.io/packagist/dt/cedx/free-mobile-yii.svg?style=flat-square) ![License](http://img.shields.io/packagist/l/cedx/free-mobile-yii.svg?style=flat-square)
+
 [Free Mobile](http://mobile.free.fr) logging for [Yii Framework](http://www.yiiframework.com).
 
 This package provides a single class, `CFreeMobileLogRoute`
