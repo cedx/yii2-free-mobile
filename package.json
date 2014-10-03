@@ -10,7 +10,7 @@
   "devDependencies": {
     "archiver": "^0.11.0",
     "docgen-js": "^0.1.0",
-    "jshint": "^2.5.2",
+    "jshint": "^2.5.6",
     "shelljs": "^0.3.0"
   },
   "engines": {
