@@ -41,6 +41,15 @@ target.all=function() {
 };
 
 /**
+ * Checks the package dependencies.
+ * @method check
+ */
+target.check=function() {
+  echo('Check the package dependencies...');
+  exec('david');
+};
+
+/**
  * Deletes all generated files and reset any saved state.
  * @method clean
  */
