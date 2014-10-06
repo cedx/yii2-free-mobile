@@ -1,7 +1,7 @@
 # Free-Mobile.yii
 [![Version](http://img.shields.io/packagist/v/cedx/free-mobile-yii.svg?style=flat)](https://packagist.org/packages/cedx/free-mobile-yii) [![Downloads](http://img.shields.io/packagist/dt/cedx/free-mobile-yii.svg?style=flat)](https://packagist.org/packages/cedx/free-mobile-yii) [![License](http://img.shields.io/packagist/l/cedx/free-mobile-yii.svg?style=flat)](https://github.com/cedx/free-mobile.yii/blob/master/LICENSE.txt)
 
-[Free Mobile](http://mobile.free.fr) logging for [Yii Framework](http://www.yiiframework.com).
+[Free Mobile](http://mobile.free.fr) logging for [Yii](http://www.yiiframework.com), a high-performance [PHP](https://php.net) framework.
 
 This package provides a single class, `CFreeMobileLogRoute`
 which is a log route allowing to send log messages by SMS to a mobile phone.
