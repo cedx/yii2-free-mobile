@@ -1,7 +1,7 @@
 # Free-Mobile.yii
 [![Version](http://img.shields.io/packagist/v/cedx/free-mobile-yii.svg?style=flat)](https://packagist.org/packages/cedx/free-mobile-yii) [![Downloads](http://img.shields.io/packagist/dt/cedx/free-mobile-yii.svg?style=flat)](https://packagist.org/packages/cedx/free-mobile-yii) [![License](http://img.shields.io/packagist/l/cedx/free-mobile-yii.svg?style=flat)](https://github.com/cedx/free-mobile.yii/blob/master/LICENSE.txt)
 
-[Free Mobile](http://mobile.free.fr) logging for [Yii](http://www.yiiframework.com), a high-performance [PHP](https://php.net) framework.
+[Free Mobile](http://mobile.free.fr) logging for [Yii](http://www.yiiframework.com), high-performance [PHP](https://php.net) framework.
 
 This package provides a single class, `CFreeMobileLogRoute`
 which is a log route allowing to send log messages by SMS to a mobile phone.
@@ -54,8 +54,7 @@ return [
 ];
 ```
 
-Adjust the values as needed. Here, it's supposed that `CApplication->extensionPath`,
-that is the `ext` path alias, has been set to Composer's `vendor` directory.
+Adjust the values as needed. Here, it's supposed that [`CApplication->extensionPath`](http://www.yiiframework.com/doc/api/1.1/CApplication#extensionPath-detail), that is the [`ext`](http://www.yiiframework.com/doc/guide/1.1/en/basics.namespace) root alias, has been set to Composer's `vendor` directory.
 
 ## License
 [Free-Mobile.yii](https://packagist.org/packages/cedx/free-mobile-yii) is distributed under the MIT License.
