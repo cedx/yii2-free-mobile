@@ -39,14 +39,14 @@ Now in your application configuration file, you can use the following log route:
 
 ```php
 return [
-  'components'=>[
-    'log'=>[
-      'class'=>'system.logging.CLogRouter',
-      'routes'=>[
+  'components' => [
+    'log' => [
+      'class' => 'system.logging.CLogRouter',
+      'routes' => [
         [
-          'class'=>'ext.cedx.free-mobile-yii.lib.CFreeMobileLogRoute',
-          'password'=>'<your Free Mobile identification key>',
-          'userName'=>'<your Free Mobile user name>'
+          'class' => 'ext.cedx.free-mobile-yii.lib.CFreeMobileLogRoute',
+          'password' => '<your Free Mobile identification key>',
+          'userName' => '<your Free Mobile user name>'
         ]
       ]
     ]
