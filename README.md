@@ -15,26 +15,12 @@ in the Options of your [Subscriber Area](https://mobile.free.fr/moncompte).
 - [API Reference](http://dev.belin.io/free-mobile.yii/api)
 
 ## Installing via [Composer](https://getcomposer.org)
-
-#### 1. Depend on it
-Add this to your project's `composer.json` file:
-
-```json
-{
-  "require": {
-    "cedx/free-mobile-yii": "*"
-  }
-}
-```
-
-#### 2. Install it
-From the command line, run:
+From a command prompt, run:
 
 ```shell
-$ php composer.phar install
+$ composer require cedx/free-mobile-yii
 ```
 
-#### 3. Import it
 Now in your application configuration file, you can use the following log route:
 
 ```php
