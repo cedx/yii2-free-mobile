@@ -1,16 +1,17 @@
 <?php
 /**
- * Implementation of the `CFreeMobileLogRoute` class.
- * @module CFreeMobileLogRoute
+ * Implementation of the `belin\log\FreeMobileLogRoute` class.
+ * @module log.FreeMobileLogRoute
  */
+namespace belin\log;
 
 /**
  * Sends the log messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
- * @class CFreeMobileLogRoute
+ * @class belin.log.FreeMobileLogRoute
  * @extends system.logging.CLogRoute
  * @constructor
  */
-class CFreeMobileLogRoute extends CLogRoute {
+class FreeMobileLogRoute extends \CLogRoute {
 
   /**
    * The URL of the API end point.
@@ -81,7 +82,7 @@ class CFreeMobileLogRoute extends CLogRoute {
     }, $logs));
 
     $fields=[
-      'msg'=>mb_convert_encoding($text, 'ISO-8859-1', Yii::app()->charset),
+      'msg'=>mb_convert_encoding($text, 'ISO-8859-1', \Yii::app()->charset),
       'pass'=>$this->password,
       'user'=>$this->userName
     ];
@@ -99,14 +100,14 @@ class CFreeMobileLogRoute extends CLogRoute {
         CURLOPT_RETURNTRANSFER=>true,
         CURLOPT_TIMEOUT=>5000,
         CURLOPT_SSL_VERIFYPEER=>false
-      ])) throw new CException(curl_error($resource));
+      ])) throw new \CException(curl_error($resource));
 
       $response=curl_exec($resource);
-      if($response===false) throw new CException(curl_error($resource));
+      if($response===false) throw new \CException(curl_error($resource));
       curl_close($resource);
     }
 
-    catch(CException $e) {
+    catch(\CException $e) {
       if($resource) curl_close($resource);
     }
   }
