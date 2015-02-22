@@ -92,7 +92,7 @@ class FreeMobileLogRoute extends \CLogRoute {
 
     try {
       $resource=curl_init($url);
-      if(!$resource) throw new CException('Resource not found.');
+      if(!$resource) throw new \CException('Resource not found.');
 
       if(!curl_setopt_array($resource, [
         CURLOPT_ENCODING=>'',
