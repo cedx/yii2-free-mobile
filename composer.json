@@ -11,7 +11,10 @@
     "name": "Cédric Belin"
   }],
   "autoload": {
-    "psr-4": { "belin\\": "lib/" }
+    "psr-4": { "yii\\log\\": "lib/" }
+  },
+  "config": {
+    "bin-dir": "bin"
   },
   "keywords": [
     "free",
@@ -22,9 +25,6 @@
   ],
   "require": {
     "php": ">=5.4.0",
-    "yiisoft/yii2-composer": "^2.0.2"
-  },
-  "require-dev": {
     "yiisoft/yii2": "^2.0.2"
   },
   "support": {
