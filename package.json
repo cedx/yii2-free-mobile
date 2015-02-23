@@ -2,11 +2,11 @@
   "author": "Cédric Belin <cedric@belin.io>",
   "bugs": "https://github.com/cedx/free-mobile.yii/issues",
   "description": "Free Mobile logging for Yii Framework.",
-  "homepage": "https://packagist.org/packages/cedx/yii-free-mobile",
+  "homepage": "https://packagist.org/packages/cedx/yii2-free-mobile",
   "license": "MIT",
-  "name": "yii-free-mobile",
+  "name": "yii2-free-mobile",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "devDependencies": {
     "del": "^1.1.1",
     "docgen-js": "^0.0.1",
@@ -37,7 +37,7 @@
   "yuidoc": {
     "logo": "http://dev.belin.io/free-mobile.yii/favicon.ico",
     "name": "Free-Mobile.yii",
-    "url": "https://packagist.org/packages/cedx/yii-free-mobile",
+    "url": "https://packagist.org/packages/cedx/yii2-free-mobile",
     "options": {
       "extension": ".php",
       "outdir": "doc/api",

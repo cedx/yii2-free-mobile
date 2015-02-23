@@ -1,5 +1,5 @@
 # Free-Mobile.yii
-[![Release](http://img.shields.io/packagist/v/cedx/yii-free-mobile.svg?style=flat)](https://packagist.org/packages/cedx/yii-free-mobile) [![License](http://img.shields.io/packagist/l/cedx/yii-free-mobile.svg?style=flat)](https://github.com/cedx/free-mobile.yii/blob/master/LICENSE.txt) [![Downloads](http://img.shields.io/packagist/dt/cedx/yii-free-mobile.svg?style=flat)](https://packagist.org/packages/cedx/yii-free-mobile)
+[![Release](http://img.shields.io/packagist/v/cedx/yii2-free-mobile.svg?style=flat)](https://packagist.org/packages/cedx/yii2-free-mobile) [![License](http://img.shields.io/packagist/l/cedx/yii2-free-mobile.svg?style=flat)](https://github.com/cedx/free-mobile.yii/blob/master/LICENSE.txt) [![Downloads](http://img.shields.io/packagist/dt/cedx/yii2-free-mobile.svg?style=flat)](https://packagist.org/packages/cedx/yii2-free-mobile)
 
 [Free Mobile](http://mobile.free.fr) logging for [Yii](http://www.yiiframework.com), high-performance [PHP](http://php.net) framework.
 
@@ -18,7 +18,7 @@ in the Options of your [Subscriber Area](https://mobile.free.fr/moncompte).
 From a command prompt, run:
 
 ```shell
-$ composer require cedx/yii-free-mobile
+$ composer require cedx/yii2-free-mobile
 ```
 
 Now in your application configuration file, you can use the following log route:
@@ -26,7 +26,7 @@ Now in your application configuration file, you can use the following log route:
 ```php
 return [
   'aliases' => [
-    'belin' => 'ext.cedx.yii-free-mobile.lib',
+    '@belin/log' => '@vendor/cedx/yii2-free-mobile/lib/log',
   ],
   'components' => [
     'log' => [
@@ -45,7 +45,7 @@ return [
 
 Adjust the values as needed. Here, it's supposed that [`CApplication->extensionPath`](http://www.yiiframework.com/doc/api/1.1/CApplication#extensionPath-detail), that is the [`ext`](http://www.yiiframework.com/doc/guide/1.1/en/basics.namespace) root alias, has been set to Composer's `vendor` directory.
 
-The `belin` alias must be defined prior to use the view renderer. The library classes rely on this alias to function properly.
+The `@belin` alias must be defined prior to use the view renderer. The library classes rely on this alias to function properly.
 
 ## License
-[Free-Mobile.yii](https://packagist.org/packages/cedx/yii-free-mobile) is distributed under the MIT License.
+[Free-Mobile.yii](https://packagist.org/packages/cedx/yii2-free-mobile) is distributed under the MIT License.

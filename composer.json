@@ -3,7 +3,7 @@
   "homepage": "https://github.com/cedx/free-mobile.yii",
   "license": "MIT",
   "minimum-stability": "dev",
-  "name": "cedx/yii-free-mobile",
+  "name": "cedx/yii2-free-mobile",
   "prefer-stable": true,
   "type": "library",
   "authors": [{
@@ -18,13 +18,14 @@
     "logging",
     "mobile",
     "sms",
-    "yii"
+    "yii2"
   ],
   "require": {
-    "php": ">=5.4.0"
+    "php": ">=5.4.0",
+    "yiisoft/yii2-composer": "^2.0.2"
   },
   "require-dev": {
-    "yiisoft/yii": "^1.1.16"
+    "yiisoft/yii2": "^2.0.2"
   },
   "support": {
     "issues": "https://github.com/cedx/free-mobile.yii/issues"

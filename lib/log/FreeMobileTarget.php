@@ -1,17 +1,22 @@
 <?php
 /**
- * Implementation of the `belin\log\FreeMobileLogRoute` class.
- * @module log.FreeMobileLogRoute
+ * Implementation of the `belin\log\FreeMobileTarget` class.
+ * @module log.FreeMobileTarget
  */
 namespace belin\log;
 
+use yii\Yii;
+use yii\log\Target;
+use yii\web\NotFoundHttpException;
+use yii\web\ServerErrorHttpException;
+
 /**
  * Sends the log messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
- * @class belin.log.FreeMobileLogRoute
- * @extends system.logging.CLogRoute
+ * @class belin.log.FreeMobileTarget
+ * @extends yii.log.Target
  * @constructor
  */
-class FreeMobileLogRoute extends \CLogRoute {
+class FreeMobileTarget extends Target {
 
   /**
    * The URL of the API end point.
@@ -75,6 +80,8 @@ class FreeMobileLogRoute extends \CLogRoute {
    * @method processLogs
    * @param {array} $logs The list of messages.
    * @protected
+   * @throws {yii.web.NotFoundHttpException} The resource was not found.
+   * @throws {yii.web.ServerErrorHttpException} An error occurred while fetching the response.
    */
   protected function processLogs($logs) {
     $text=implode("\n", array_map(function($log) {
@@ -82,7 +89,7 @@ class FreeMobileLogRoute extends \CLogRoute {
     }, $logs));
 
     $fields=[
-      'msg'=>mb_convert_encoding($text, 'ISO-8859-1', \Yii::app()->charset),
+      'msg'=>mb_convert_encoding($text, 'ISO-8859-1', Yii::$app->charset),
       'pass'=>$this->password,
       'user'=>$this->userName
     ];
@@ -92,7 +99,7 @@ class FreeMobileLogRoute extends \CLogRoute {
 
     try {
       $resource=curl_init($url);
-      if(!$resource) throw new \CException('Resource not found.');
+      if(!$resource) throw new NotFoundHttpException('Resource not found.');
 
       if(!curl_setopt_array($resource, [
         CURLOPT_ENCODING=>'',
@@ -100,14 +107,14 @@ class FreeMobileLogRoute extends \CLogRoute {
         CURLOPT_RETURNTRANSFER=>true,
         CURLOPT_TIMEOUT=>5000,
         CURLOPT_SSL_VERIFYPEER=>false
-      ])) throw new \CException(curl_error($resource));
+      ])) throw new CException(curl_error($resource));
 
       $response=curl_exec($resource);
-      if($response===false) throw new \CException(curl_error($resource));
+      if($response===false) throw new ServerErrorHttpException(curl_error($resource));
       curl_close($resource);
     }
 
-    catch(\CException $e) {
+    catch(CException $e) {
       if($resource) curl_close($resource);
     }
   }
