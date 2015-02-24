@@ -6,7 +6,7 @@
 namespace yii\log;
 
 // Module dependencies.
-use \yii\web\HttpException;
+use yii\web\HttpException;
 
 /**
  * Sends the log messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
