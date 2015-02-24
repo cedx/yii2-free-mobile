@@ -18,12 +18,11 @@ class FreeMobileTarget extends Target {
 
   /**
    * The URL of the API end point.
-   * @property END_POINT_URL
+   * @property endPoint
    * @type string
-   * @static
-   * @final
+   * @default "https://smsapi.free-mobile.fr/sendmsg"
    */
-  const END_POINT_URL='https://smsapi.free-mobile.fr/sendmsg';
+  public $endPoint='https://smsapi.free-mobile.fr/sendmsg';
 
   /**
    * The identification key associated to the account.
@@ -47,13 +46,13 @@ class FreeMobileTarget extends Target {
     $text=implode("\n", array_map([ $this, 'formatMessage' ], $this->messages));
 
     $fields=[
-      'msg'=>mb_convert_encoding($text, 'ISO-8859-1', Yii::$app->charset),
+      'msg'=>mb_convert_encoding($text, 'ISO-8859-1', \Yii::$app->charset),
       'pass'=>$this->password,
       'user'=>$this->userName
     ];
 
     $resource=null;
-    $url=static::END_POINT_URL.'?'.http_build_query($fields, '', '&', PHP_QUERY_RFC3986);
+    $url=$this->endPoint.'?'.http_build_query($fields, '', '&', PHP_QUERY_RFC3986);
 
     try {
       $resource=curl_init($url);
@@ -74,6 +73,7 @@ class FreeMobileTarget extends Target {
 
     catch(HttpException $e) {
       if($resource) curl_close($resource);
+      \Yii::error($e->getMessage(), 'yii\\i18n');
     }
   }
 }
