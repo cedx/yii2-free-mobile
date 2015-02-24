@@ -4,7 +4,9 @@
  * @module FreeMobileTarget
  */
 namespace yii\log;
-use yii\web\HttpException;
+
+// Module dependencies.
+use \yii\web\HttpException;
 
 /**
  * Sends the log messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
