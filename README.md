@@ -25,7 +25,7 @@ Now in your application configuration file, you can use the following log route:
 
 ```php
 return [
-  'bootstrap' => ['log'],
+  'bootstrap' => [ 'log' ],
   'components' => [
     'log' => [
       'targets' => [

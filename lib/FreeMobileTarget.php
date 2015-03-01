@@ -73,7 +73,7 @@ class FreeMobileTarget extends Target {
 
     catch(HttpException $e) {
       if($resource) curl_close($resource);
-      \Yii::error($e->getMessage(), 'yii\\i18n');
+      \Yii::error($e->getMessage(), __METHOD__);
     }
   }
 }
