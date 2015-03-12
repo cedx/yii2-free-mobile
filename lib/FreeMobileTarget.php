@@ -7,6 +7,8 @@ namespace yii\log;
 
 // Module dependencies.
 use yii\web\HttpException;
+use yii\web\NotFoundHttpException;
+use yii\web\ServerErrorHttpException;
 
 /**
  * Sends the log messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
@@ -56,7 +58,7 @@ class FreeMobileTarget extends Target {
 
     try {
       $resource=curl_init($url);
-      if(!$resource) throw new HttpException('Resource not found.');
+      if(!$resource) throw new NotFoundHttpException('Resource not found.');
 
       if(!curl_setopt_array($resource, [
         CURLOPT_ENCODING=>'',
@@ -64,16 +66,19 @@ class FreeMobileTarget extends Target {
         CURLOPT_RETURNTRANSFER=>true,
         CURLOPT_TIMEOUT=>5000,
         CURLOPT_SSL_VERIFYPEER=>false
-      ])) throw new HttpException(curl_error($resource));
+      ])) throw new ServerErrorHttpException(curl_error($resource));
 
       $response=curl_exec($resource);
-      if($response===false) throw new HttpException(curl_error($resource));
+      if($response===false) throw new ServerErrorHttpException(curl_error($resource));
       curl_close($resource);
     }
 
     catch(HttpException $e) {
-      if($resource) curl_close($resource);
       \Yii::error($e->getMessage(), __METHOD__);
+    }
+
+    finally {
+      if($resource) curl_close($resource);
     }
   }
 }
