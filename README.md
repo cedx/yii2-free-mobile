@@ -1,5 +1,5 @@
 # Free-Mobile.yii
-[![Release](http://img.shields.io/packagist/v/cedx/yii2-free-mobile.svg?style=flat)](https://packagist.org/packages/cedx/yii2-free-mobile) [![License](http://img.shields.io/packagist/l/cedx/yii2-free-mobile.svg?style=flat)](https://github.com/cedx/free-mobile.yii/blob/master/LICENSE.txt) [![Downloads](http://img.shields.io/packagist/dt/cedx/yii2-free-mobile.svg?style=flat)](https://packagist.org/packages/cedx/yii2-free-mobile)
+[![Release](http://img.shields.io/packagist/v/cedx/yii2-free-mobile.svg?style=flat)](https://packagist.org/packages/cedx/yii2-free-mobile) [![License](http://img.shields.io/packagist/l/cedx/yii2-free-mobile.svg?style=flat)](https://bitbucket.org/cedx/free-mobile.yii/src/master/LICENSE.txt) [![Downloads](http://img.shields.io/packagist/dt/cedx/yii2-free-mobile.svg?style=flat)](https://packagist.org/packages/cedx/yii2-free-mobile)
 
 [Free Mobile](http://mobile.free.fr) logging for [Yii](http://www.yiiframework.com), high-performance [PHP](http://php.net) framework.
 

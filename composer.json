@@ -1,6 +1,6 @@
 {
   "description": "Free Mobile logging for Yii Framework.",
-  "homepage": "https://github.com/cedx/free-mobile.yii",
+  "homepage": "https://bitbucket.org/cedx/free-mobile.yii",
   "license": "MIT",
   "minimum-stability": "dev",
   "name": "cedx/yii2-free-mobile",
@@ -28,6 +28,6 @@
     "yiisoft/yii2": "^2.0.2"
   },
   "support": {
-    "issues": "https://github.com/cedx/free-mobile.yii/issues"
+    "issues": "https://bitbucket.org/cedx/free-mobile.yii/issues"
   }
 }
