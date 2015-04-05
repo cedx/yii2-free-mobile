@@ -6,6 +6,8 @@
 namespace yii\log;
 
 // Module dependencies.
+use yii\helpers\VarDumper;
+use yii\log\Logger;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\ServerErrorHttpException;
@@ -27,6 +29,13 @@ class FreeMobileTarget extends Target {
   public $endPoint='https://smsapi.free-mobile.fr/sendmsg';
 
   /**
+   * The list of the PHP predefined variables that should be logged in a message.
+   * @property logVars
+   * @type array
+   */
+  public $logVars=[];
+
+  /**
    * The identification key associated to the account.
    * @property password
    * @type string
@@ -45,19 +54,17 @@ class FreeMobileTarget extends Target {
    * @method export
    */
   public function export() {
+    $resource=null;
     $text=implode("\n", array_map([ $this, 'formatMessage' ], $this->messages));
 
     $fields=[
-      'msg'=>mb_convert_encoding($text, 'ISO-8859-1', \Yii::$app->charset),
+      'msg'=>mb_convert_encoding(mb_substr($text, 0, 160), 'ISO-8859-1', \Yii::$app->charset),
       'pass'=>$this->password,
       'user'=>$this->userName
     ];
 
-    $resource=null;
-    $url=$this->endPoint.'?'.http_build_query($fields, '', '&', PHP_QUERY_RFC3986);
-
     try {
-      $resource=curl_init($url);
+      $resource=curl_init($this->endPoint.'?'.http_build_query($fields, '', '&', PHP_QUERY_RFC3986));
       if(!$resource) throw new NotFoundHttpException('Resource not found.');
 
       if(!curl_setopt_array($resource, [
@@ -75,5 +82,20 @@ class FreeMobileTarget extends Target {
 
     catch(HttpException $e) {}
     finally { if($resource) curl_close($resource); }
+  }
+
+  /**
+   * Formats a log message for display as a string.
+   * @method formatMessage
+   * @param {array} $message The log message to be formatted.
+   * @return {string} The formatted message.
+   */
+  public function formatMessage($message) {
+    list($text, $level, $category, $timestamp)=$message;
+    return strtr('[{level}@{category}] {text}', [
+      '{category}'=>$category,
+      '{level}'=>Logger::getLevelName($level),
+      '{text}'=>is_string($text) ? $text : VarDumper::export($text)
+    ]);
   }
 }
