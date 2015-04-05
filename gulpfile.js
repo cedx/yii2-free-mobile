@@ -109,8 +109,9 @@ gulp.task('lint:js', function() {
  */
 function _exec(command, callback) {
   child.exec(command, function(err, stdout) {
+    var output=stdout.trim();
+    if(output.length) console.log(output);
     if(err) console.error(err);
-    else console.log(stdout.trim());
     callback();
   });
 }
