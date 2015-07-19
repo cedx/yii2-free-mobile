@@ -8,7 +8,7 @@
 chdir(dirname(__DIR__));
 
 $archive=new ZipArchive();
-$archive->open('var'.DIRECTORY_SEPARATOR.'free-mobile.yii-0.4.0.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
+$archive->open('var/free-mobile.yii-0.4.0.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
 $archive->addGlob('*.{json,md,txt}', GLOB_BRACE);
 $archive->addGlob('lib/*.php');
 $archive->close();
