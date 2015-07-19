@@ -6,4 +6,4 @@
  */
 
 chdir(dirname(__DIR__));
-unlink('var/free-mobile.yii-0.4.0.zip');
+@unlink('var/free-mobile.yii-0.4.0.zip');
