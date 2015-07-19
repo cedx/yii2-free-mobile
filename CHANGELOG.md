@@ -1,6 +1,11 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free-Mobile.yii](https://packagist.org/packages/cedx/yii2-free-mobile) library.
 
+#### Version 0.4.0
+- Dropped the development dependencies based on [Node.js](https://nodejs.org).
+- Replaced the build system by custom scripts.
+- Replaced the documentation system by [Doxygen](http://www.doxygen.org).
+
 #### Version 0.3.1
 - Upgraded the development dependencies.
 
