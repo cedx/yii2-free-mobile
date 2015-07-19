@@ -1,11 +1,11 @@
 <?php
 /**
+ * @file
  * Implementation of the `yii\log\FreeMobileTarget` class.
- * @module FreeMobileTarget
  */
 namespace yii\log;
 
-// Module dependencies.
+// Dependencies.
 use yii\helpers\VarDumper;
 use yii\log\Logger;
 use yii\web\HttpException;
@@ -14,44 +14,35 @@ use yii\web\ServerErrorHttpException;
 
 /**
  * Sends the log messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
- * @class yii.log.FreeMobileTarget
- * @extends yii.log.Target
- * @constructor
  */
 class FreeMobileTarget extends Target {
 
   /**
+   * @var string $endPoint
    * The URL of the API end point.
-   * @property endPoint
-   * @type string
-   * @default "https://smsapi.free-mobile.fr/sendmsg"
    */
   public $endPoint='https://smsapi.free-mobile.fr/sendmsg';
 
   /**
+   * @var array $logVars
    * The list of the PHP predefined variables that should be logged in a message.
-   * @property logVars
-   * @type array
    */
   public $logVars=[];
 
   /**
+   * @var string $password
    * The identification key associated to the account.
-   * @property password
-   * @type string
    */
   public $password='';
 
   /**
+   * @var string $userName
    * The user name associated to the account.
-   * @property userName
-   * @type string
    */
   public $userName='';
 
   /**
    * Exports log messages to a specific destination.
-   * @method export
    */
   public function export() {
     $resource=null;
@@ -86,9 +77,8 @@ class FreeMobileTarget extends Target {
 
   /**
    * Formats a log message for display as a string.
-   * @method formatMessage
-   * @param {array} $message The log message to be formatted.
-   * @return {string} The formatted message.
+   * @param array $message The log message to be formatted.
+   * @return string The formatted message.
    */
   public function formatMessage($message) {
     list($text, $level, $category, $timestamp)=$message;
