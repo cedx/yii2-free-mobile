@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free-Mobile.yii](https://packagist.org/packages/cedx/yii2-free-mobile) library.
 
+#### Version 0.4.1
+- Replaced the custom build scripts by [Phing](https://www.phing.info).
+
 #### Version 0.4.0
 - Dropped the development dependencies based on [Node.js](https://nodejs.org).
 - Replaced the build system by custom scripts.

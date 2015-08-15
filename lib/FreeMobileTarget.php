@@ -7,7 +7,6 @@ namespace yii\log;
 
 // Dependencies.
 use yii\helpers\VarDumper;
-use yii\log\Logger;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\ServerErrorHttpException;
@@ -81,7 +80,7 @@ class FreeMobileTarget extends Target {
    * @return string The formatted message.
    */
   public function formatMessage($message) {
-    list($text, $level, $category, $timestamp)=$message;
+    list($text, $level, $category)=$message;
     return strtr('[{level}@{category}] {text}', [
       '{category}'=>$category,
       '{level}'=>Logger::getLevelName($level),
