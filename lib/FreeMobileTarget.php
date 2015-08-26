@@ -44,7 +44,6 @@ class FreeMobileTarget extends Target {
    * Exports log messages to a specific destination.
    */
   public function export() {
-    $resource=null;
     $text=implode("\n", array_map([ $this, 'formatMessage' ], $this->messages));
 
     $fields=[
@@ -53,9 +52,12 @@ class FreeMobileTarget extends Target {
       'user'=>$this->userName
     ];
 
+    $resource=null;
+    $url=$this->endPoint.'?'.http_build_query($fields, '', '&', PHP_QUERY_RFC3986);
+
     try {
-      $resource=curl_init($this->endPoint.'?'.http_build_query($fields, '', '&', PHP_QUERY_RFC3986));
-      if(!$resource) throw new NotFoundHttpException('Resource not found.');
+      $resource=curl_init($url);
+      if(!$resource) throw new NotFoundHttpException($url);
 
       if(!curl_setopt_array($resource, [
         CURLOPT_ENCODING=>'',
