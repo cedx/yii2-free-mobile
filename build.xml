@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project default="dist" name="free-mobile.yii">
-  <property name="version" value="0.4.1"/>
+  <property name="version" value="0.4.2"/>
 
   <target name="clean" description="Deletes all generated files and reset any saved state.">
     <delete>
@@ -23,5 +23,12 @@
     </exec>
 
     <copy file="web/favicon.ico" todir="doc/api"/>
+  </target>
+
+  <target name="lint" description="Performs static analysis of source code.">
+    <phpmd pharlocation="/usr/share/php/phpmd.phar" rulesets="cleancode,codesize,controversial,design,naming,unusedcode">
+      <fileset dir="." includes="lib/**/*.php"/>
+      <formatter type="text" usefile="false"/>
+    </phpmd>
   </target>
 </project>
