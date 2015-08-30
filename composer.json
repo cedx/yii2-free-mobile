@@ -27,10 +27,6 @@
     "php": ">=5.5.0",
     "yiisoft/yii2": "^2.0.6"
   },
-  "require-dev": {
-    "phing/phing": "^2.12.0",
-    "phpmd/phpmd": "^2.2.3"
-  },
   "support": {
     "issues": "https://github.com/cedx/free-mobile.yii/issues"
   }
