@@ -9,8 +9,17 @@ in the Options of your [Subscriber Area](https://mobile.free.fr/moncompte).
 
 ![Screenshot](http://dev.belin.io/free-mobile.yii/img/screenshot.jpg)
 
+## Requirements
+The latest [PHP](http://php.net) and [Composer](https://getcomposer.org) versions.
+If you plan to play with the sources, you will also need the latest versions of the following products:
+
+- [Doxygen](http://www.doxygen.org)
+- [Phing](https://www.phing.info)
+- [PHP Mess Detector](http://phpmd.org)
+
 ## Documentation
 - [API Reference](http://api.belin.io/free-mobile.yii)
+- [Code Analysis](http://src.belin.io/dashboard/index/free-mobile.yii)
 
 ## Installing via [Composer](https://getcomposer.org)
 From a command prompt, run:

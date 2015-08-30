@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free-Mobile.yii](https://packagist.org/packages/cedx/yii2-free-mobile) library.
 
+#### Version 0.4.2
+- Added a lint task based on [PHP Mess Detector](http://phpmd.org) code analyzer.
+- Added support for [SonarQube](http://www.sonarqube.org) code analyzer.
+
 #### Version 0.4.1
 - Replaced the custom build scripts by [Phing](https://www.phing.info).
 
