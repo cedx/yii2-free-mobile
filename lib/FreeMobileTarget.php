@@ -72,7 +72,7 @@ class FreeMobileTarget extends Target {
     }
 
     catch(HttpException $e) {
-      \Yii::trace(__METHOD__, $e->getMessage());
+      \Yii::error($e->getMessage(), __METHOD__);
     }
 
     finally {
