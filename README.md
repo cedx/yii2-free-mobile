@@ -49,4 +49,4 @@ return [
 ```
 
 ## License
-[Free-Mobile.yii](https://packagist.org/packages/cedx/yii2-free-mobile) is distributed under the MIT License.
+[Free-Mobile.yii](https://packagist.org/packages/cedx/yii2-free-mobile) is distributed under the Apache License, version 2.0.
