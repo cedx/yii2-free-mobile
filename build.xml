@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project default="dist" name="free-mobile.yii">
-  <property name="version" value="0.4.3"/>
+  <property name="version" value="0.4.4"/>
 
   <target name="clean" description="Deletes all generated files and reset any saved state.">
     <delete>
@@ -30,5 +30,9 @@
       <fileset dir="." includes="lib/**/*.php"/>
       <formatter type="text" usefile="false"/>
     </phpmd>
+  </target>
+
+  <target name="test" description="Runs the unit tests.">
+    <exec executable="phpunit" passthru="true"/>
   </target>
 </project>

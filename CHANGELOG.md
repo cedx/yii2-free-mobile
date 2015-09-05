@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free-Mobile.yii](https://packagist.org/packages/cedx/yii2-free-mobile) library.
 
+#### Version 0.4.4
+- Added unit tests.
+- Added code coverage.
+
 #### Version 0.4.3
 - Changed licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
