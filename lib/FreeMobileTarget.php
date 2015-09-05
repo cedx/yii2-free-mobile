@@ -42,8 +42,9 @@ class FreeMobileTarget extends Target {
 
   /**
    * Exports log messages to a specific destination.
+   * @param bool $throwExceptions Value indicating whether to throw exceptions instead of logging its own errors.
    */
-  public function export() {
+  public function export($throwExceptions=false) {
     $text=implode("\n", array_map([ $this, 'formatMessage' ], $this->messages));
 
     $fields=[
@@ -72,6 +73,7 @@ class FreeMobileTarget extends Target {
     }
 
     catch(HttpException $e) {
+      if($throwExceptions) throw $e;
       \Yii::error($e->getMessage(), __METHOD__);
     }
 

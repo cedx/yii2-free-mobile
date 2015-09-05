@@ -21,6 +21,15 @@ class FreeMobileTargetTest extends \PHPUnit_Framework_TestCase {
   private $model;
 
   /**
+   * Tests the `export` method.
+   */
+  public function testExport() {
+    $this->setExpectedException('yii\web\HttpException');
+    $this->model->endPoint='http://smsapi.belin.io/sendmsg';
+    $this->model->export(true);
+  }
+
+  /**
    * Tests the `formatMessage` method.
    */
   public function testFormatMessage() {
@@ -33,5 +42,7 @@ class FreeMobileTargetTest extends \PHPUnit_Framework_TestCase {
    */
   protected function setUp() {
     $this->model=new FreeMobileTarget();
+    $this->model->userName=getenv('FREEMOBILE_USERNAME');
+    $this->model->password=getenv('FREEMOBILE_PASSWORD');
   }
 }
