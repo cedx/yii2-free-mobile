@@ -1,4 +1,6 @@
 # Free-Mobile.yii
+![Release](http://img.shields.io/packagist/v/cedx/yii2-free-mobile.svg) ![License](http://img.shields.io/packagist/l/cedx/yii2-free-mobile.svg) ![Downloads](http://img.shields.io/packagist/dt/cedx/yii2-free-mobile.svg) ![Build](http://img.shields.io/travis/cedx/free-mobile.yii.svg)
+
 [Free Mobile](http://mobile.free.fr) logging for [Yii](http://www.yiiframework.com), high-performance [PHP](http://php.net) framework.
 
 This package provides a single class, `yii\log\FreeMobileTarget`
@@ -19,7 +21,7 @@ If you plan to play with the sources, you will also need the latest versions of 
 
 ## Documentation
 - [API Reference](http://api.belin.io/free-mobile.yii)
-- [Code Analysis](http://sonarqube.belin.io/dashboard/index/free-mobile.yii)
+- [Code Analysis](http://src.belin.io/dashboard/index/free-mobile.yii)
 
 ## Installing via [Composer](https://getcomposer.org)
 From a command prompt, run:
