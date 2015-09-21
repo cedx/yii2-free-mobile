@@ -14,7 +14,8 @@
     "psr-4": { "yii\\log\\": "lib/" }
   },
   "config": {
-    "bin-dir": "bin"
+    "bin-dir": "bin",
+    "optimize-autoloader": "true"
   },
   "keywords": [
     "free",
