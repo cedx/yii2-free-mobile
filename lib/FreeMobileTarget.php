@@ -45,7 +45,7 @@ class FreeMobileTarget extends Target {
    * @param bool $throwExceptions Value indicating whether to throw exceptions instead of logging its own errors.
    */
   public function export($throwExceptions=false) {
-    $text=implode("\n", array_map([ $this, 'formatMessage' ], $this->messages));
+    $text=implode("\n", array_map([$this, 'formatMessage'], $this->messages));
 
     $fields=[
       'msg'=>mb_convert_encoding(mb_substr($text, 0, 160), 'ISO-8859-1', \Yii::$app->charset),

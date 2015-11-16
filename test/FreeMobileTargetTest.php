@@ -33,7 +33,7 @@ class FreeMobileTargetTest extends \PHPUnit_Framework_TestCase {
    * Tests the `formatMessage` method.
    */
   public function testFormatMessage() {
-    $message=[ 'Hello World!', Logger::LEVEL_ERROR, 'tests', time() ];
+    $message=['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
     $this->assertEquals('[error@tests] Hello World!', $this->model->formatMessage($message));
   }
 
