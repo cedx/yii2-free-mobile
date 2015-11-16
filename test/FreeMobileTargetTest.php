@@ -25,7 +25,7 @@ class FreeMobileTargetTest extends \PHPUnit_Framework_TestCase {
    */
   public function testExport() {
     $this->setExpectedException('yii\web\HttpException');
-    $this->model->endPoint='http://smsapi.belin.io/sendmsg';
+    $this->model->endPoint='http://sms.belin.io/sendmsg';
     $this->model->export(true);
   }
 

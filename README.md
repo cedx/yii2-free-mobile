@@ -9,7 +9,7 @@ which is a log target allowing to send log messages by SMS to a mobile phone.
 To use it, you must have a Free Mobile account and have enabled SMS Notifications
 in the Options of your [Subscriber Area](https://mobile.free.fr/moncompte).
 
-![Screenshot](http://dev.belin.io/free-mobile.yii/img/screenshot.jpg)
+![Screenshot](http://www.belin.io/free-mobile.yii/img/screenshot.jpg)
 
 ## Requirements
 The latest [PHP](http://php.net) and [Composer](https://getcomposer.org) versions.
@@ -20,7 +20,7 @@ If you plan to play with the sources, you will also need the latest versions of 
 - [PHP Mess Detector](http://phpmd.org)
 
 ## Documentation
-- [API Reference](http://api.belin.io/free-mobile.yii)
+- [API Reference](http://www.belin.io/free-mobile.yii/api)
 - [Code Analysis](http://src.belin.io/dashboard/index/free-mobile.yii)
 
 ## Installing via [Composer](https://getcomposer.org)
@@ -51,4 +51,4 @@ return [
 ```
 
 ## License
-[Free-Mobile.yii](https://packagist.org/packages/cedx/yii2-free-mobile) is distributed under the Apache License, version 2.0.
+[Free-Mobile.yii](https://github.com/cedx/free-mobile.yii) is distributed under the Apache License, version 2.0.
