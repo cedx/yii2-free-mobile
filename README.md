@@ -20,10 +20,6 @@ If you plan to play with the sources, you will also need the latest versions of 
 - [PHP Mess Detector](http://phpmd.org)
 - [PHPUnit](https://phpunit.de)
 
-## Documentation
-- [API Reference](http://www.belin.io/free-mobile.yii/api)
-- [Code Analysis](http://src.belin.io/dashboard/index/free-mobile.yii)
-
 ## Installing via [Composer](https://getcomposer.org)
 From a command prompt, run:
 
@@ -50,6 +46,11 @@ return [
   ]
 ];
 ```
+
+## See Also
+- [API Reference](http://www.belin.io/free-mobile.yii/api)
+- [Code Analysis](http://src.belin.io/dashboard/index/free-mobile.yii)
+- [Continuous Integration](https://travis-ci.org/cedx/free-mobile.yii)
 
 ## License
 [Free-Mobile.yii](https://github.com/cedx/free-mobile.yii) is distributed under the Apache License, version 2.0.
