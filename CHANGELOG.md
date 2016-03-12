@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free-Mobile.yii](https://github.com/cedx/free-mobile.yii) library.
 
+#### Version 0.5.0
+- Breaking change: using [PHP 7](http://php.net/manual/en/migration70.new-features.php) features, like scalar and return type declarations.
+
 #### Version 0.4.4
 - Added unit tests.
 - Added code coverage.

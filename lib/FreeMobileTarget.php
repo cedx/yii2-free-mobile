@@ -7,9 +7,7 @@ namespace yii\log;
 
 // Dependencies.
 use yii\helpers\VarDumper;
-use yii\web\HttpException;
-use yii\web\NotFoundHttpException;
-use yii\web\ServerErrorHttpException;
+use yii\web\{HttpException, NotFoundHttpException, ServerErrorHttpException};
 
 /**
  * Sends the log messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
@@ -42,9 +40,9 @@ class FreeMobileTarget extends Target {
 
   /**
    * Exports log messages to a specific destination.
-   * @param bool $throwExceptions Value indicating whether to throw exceptions instead of logging its own errors.
+   * @param $throwExceptions Value indicating whether to throw exceptions instead of logging its own errors.
    */
-  public function export($throwExceptions = false) {
+  public function export(bool $throwExceptions = false) {
     $text = implode("\n", array_map([$this, 'formatMessage'], $this->messages));
 
     $fields = [
@@ -84,10 +82,10 @@ class FreeMobileTarget extends Target {
 
   /**
    * Formats a log message for display as a string.
-   * @param array $message The log message to be formatted.
-   * @return string The formatted message.
+   * @param $message The log message to be formatted.
+   * @return The formatted message.
    */
-  public function formatMessage($message) {
+  public function formatMessage($message): string {
     list($text, $level, $category) = $message;
     return strtr('[{level}@{category}] {text}', [
       '{category}' => $category,

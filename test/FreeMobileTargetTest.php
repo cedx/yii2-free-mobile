@@ -6,8 +6,8 @@
 namespace yii\tests\log;
 
 // Dependencies.
-use yii\log\FreeMobileTarget;
-use yii\log\Logger;
+use yii\log\{FreeMobileTarget, Logger};
+use yii\web\HttpException;
 
 /**
  * Tests the features of the `yii\log\FreeMobileTarget` class.
@@ -24,7 +24,7 @@ class FreeMobileTargetTest extends \PHPUnit_Framework_TestCase {
    * Tests the `export` method.
    */
   public function testExport() {
-    $this->setExpectedException('yii\web\HttpException');
+    $this->expectException(HttpException::class);
     $this->model->endPoint = 'http://sms.belin.io/sendmsg';
     $this->model->export(true);
   }
