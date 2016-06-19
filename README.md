@@ -1,5 +1,5 @@
-# Free-Mobile.yii
-![Release](http://img.shields.io/packagist/v/cedx/yii2-free-mobile.svg) ![License](http://img.shields.io/packagist/l/cedx/yii2-free-mobile.svg) ![Downloads](http://img.shields.io/packagist/dt/cedx/yii2-free-mobile.svg) ![Build](http://img.shields.io/travis/cedx/free-mobile.yii.svg)
+# Free Mobile for Yii
+![Release](http://img.shields.io/packagist/v/cedx/yii2-free-mobile.svg) ![License](http://img.shields.io/packagist/l/cedx/yii2-free-mobile.svg) ![Downloads](http://img.shields.io/packagist/dt/cedx/yii2-free-mobile.svg) ![Code quality](https://img.shields.io/codacy/grade/dcadb4f053ca41e0bfae8670fb898018.svg) ![Build](http://img.shields.io/travis/cedx/yii2-free-mobile.svg)
 
 [Free Mobile](http://mobile.free.fr) logging for [Yii](http://www.yiiframework.com), high-performance [PHP](http://php.net) framework.
 
@@ -9,7 +9,7 @@ which is a log target allowing to send log messages by SMS to a mobile phone.
 To use it, you must have a Free Mobile account and have enabled SMS Notifications
 in the Options of your [Subscriber Area](https://mobile.free.fr/moncompte).
 
-![Screenshot](http://www.belin.io/free-mobile.yii/img/screenshot.jpg)
+![Screenshot](http://www.belin.io/yii2-free-mobile/img/screenshot.jpg)
 
 ## Requirements
 The latest [PHP](http://php.net) and [Composer](https://getcomposer.org) versions.
@@ -17,8 +17,6 @@ If you plan to play with the sources, you will also need the latest versions of 
 
 - [Doxygen](http://www.doxygen.org)
 - [Phing](https://www.phing.info)
-- [PHP Mess Detector](http://phpmd.org)
-- [PHPUnit](https://phpunit.de)
 
 ## Installing via [Composer](https://getcomposer.org)
 From a command prompt, run:
@@ -48,9 +46,9 @@ return [
 ```
 
 ## See Also
-- [API Reference](http://www.belin.io/free-mobile.yii/api)
-- [Code Analysis](http://src.belin.io/dashboard/index/free-mobile.yii)
-- [Continuous Integration](https://travis-ci.org/cedx/free-mobile.yii)
+- [API Reference](http://dev.belin.io/gulp-david)
+- [Code Quality](https://www.codacy.com/app/cedx/yii2-free-mobile)
+- [Continuous Integration](https://travis-ci.org/cedx/yii2-free-mobile)
 
 ## License
-[Free-Mobile.yii](https://github.com/cedx/free-mobile.yii) is distributed under the Apache License, version 2.0.
+[Free Mobile for Yii](https://github.com/cedx/yii2-free-mobile) is distributed under the Apache License, version 2.0.

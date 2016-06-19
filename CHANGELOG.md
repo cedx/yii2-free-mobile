@@ -1,5 +1,10 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Free-Mobile.yii](https://github.com/cedx/free-mobile.yii) library.
+This file contains highlights of what changes on each version of the [Free Mobile for Yii](https://github.com/cedx/yii2-free-mobile) library.
+
+#### Version 0.5.1
+- Replaced [SonarQube](http://www.sonarqube.org) code analyzer by [Codacy](https://www.codacy.com) service.
+- Renamed the project according to its [Composer](https://getcomposer.org) package name.
+- Upgraded the package dependencies.
 
 #### Version 0.5.1
 - Removed dependency on external [PHP Mess Detector](https://phpmd.org) and [PHPUnit](https://phpunit.de) interfaces.
