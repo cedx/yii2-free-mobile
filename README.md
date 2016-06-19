@@ -46,7 +46,7 @@ return [
 ```
 
 ## See Also
-- [API Reference](http://dev.belin.io/gulp-david)
+- [API Reference](http://dev.belin.io/yii2-free-mobile)
 - [Code Quality](https://www.codacy.com/app/cedx/yii2-free-mobile)
 - [Continuous Integration](https://travis-ci.org/cedx/yii2-free-mobile)
 
