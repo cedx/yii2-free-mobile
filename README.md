@@ -1,5 +1,5 @@
 # Free Mobile for Yii
-![Release](http://img.shields.io/packagist/v/cedx/yii2-free-mobile.svg) ![License](http://img.shields.io/packagist/l/cedx/yii2-free-mobile.svg) ![Downloads](http://img.shields.io/packagist/dt/cedx/yii2-free-mobile.svg) ![Code quality](https://img.shields.io/codacy/grade/dcadb4f053ca41e0bfae8670fb898018.svg) ![Build](http://img.shields.io/travis/cedx/yii2-free-mobile.svg)
+![Release](http://img.shields.io/packagist/v/cedx/yii2-free-mobile.svg) ![License](http://img.shields.io/packagist/l/cedx/yii2-free-mobile.svg) ![Downloads](http://img.shields.io/packagist/dt/cedx/yii2-free-mobile.svg) ![Code quality](https://img.shields.io/codacy/grade/b7169de7f3c845eb86161f66df6875e2.svg) ![Build](http://img.shields.io/travis/cedx/yii2-free-mobile.svg)
 
 [Free Mobile](http://mobile.free.fr) logging for [Yii](http://www.yiiframework.com), high-performance [PHP](http://php.net) framework.
 
