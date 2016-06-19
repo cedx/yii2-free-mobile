@@ -9,7 +9,7 @@ which is a log target allowing to send log messages by SMS to a mobile phone.
 To use it, you must have a Free Mobile account and have enabled SMS Notifications
 in the Options of your [Subscriber Area](https://mobile.free.fr/moncompte).
 
-![Screenshot](http://dev.belin.io/gulp-david/img/screenshot.jpg)
+![Screenshot](http://dev.belin.io/yii2-free-mobile/img/screenshot.jpg)
 
 ## Requirements
 The latest [PHP](http://php.net) and [Composer](https://getcomposer.org) versions.
