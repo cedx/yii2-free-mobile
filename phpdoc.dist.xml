@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <phpdoc>
-  <title>My project</title>
+  <title>Free Mobile for Yii</title>
 
   <parser>
     <target>doc/api</target>
