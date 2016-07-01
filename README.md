@@ -9,14 +9,9 @@ which is a log target allowing to send log messages by SMS to a mobile phone.
 To use it, you must have a Free Mobile account and have enabled SMS Notifications
 in the Options of your [Subscriber Area](https://mobile.free.fr/moncompte).
 
-![Screenshot](http://dev.belin.io/yii2-free-mobile/img/screenshot.jpg)
-
 ## Requirements
 The latest [PHP](http://php.net) and [Composer](https://getcomposer.org) versions.
-If you plan to play with the sources, you will also need the latest versions of the following products:
-
-- [Doxygen](http://www.doxygen.org)
-- [Phing](https://www.phing.info)
+If you plan to play with the sources, you will also need the [Phing](https://www.phing.info) latest version.
 
 ## Installing via [Composer](https://getcomposer.org)
 From a command prompt, run:
@@ -46,7 +41,6 @@ return [
 ```
 
 ## See Also
-- [API Reference](http://dev.belin.io/yii2-free-mobile)
 - [Code Quality](https://www.codacy.com/app/cedx/yii2-free-mobile)
 - [Continuous Integration](https://travis-ci.org/cedx/yii2-free-mobile)
 

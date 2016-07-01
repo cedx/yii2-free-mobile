@@ -1,11 +1,10 @@
 <?php
 /**
- * @file
  * Implementation of the `yii\log\FreeMobileTarget` class.
  */
 namespace yii\log;
 
-// Dependencies.
+// Module dependencies.
 use yii\helpers\VarDumper;
 use yii\web\{HttpException, NotFoundHttpException, ServerErrorHttpException};
 
@@ -15,32 +14,29 @@ use yii\web\{HttpException, NotFoundHttpException, ServerErrorHttpException};
 class FreeMobileTarget extends Target {
 
   /**
-   * @var string $endPoint
-   * The URL of the API end point.
+   * @var string The URL of the API end point.
    */
   public $endPoint = 'https://smsapi.free-mobile.fr/sendmsg';
 
   /**
-   * @var array $logVars
-   * The list of the PHP predefined variables that should be logged in a message.
+   * @var array The list of the PHP predefined variables that should be logged in a message.
    */
   public $logVars = [];
 
   /**
-   * @var string $password
-   * The identification key associated to the account.
+   * @var string The identification key associated to the account.
    */
   public $password = '';
 
   /**
-   * @var string $userName
-   * The user name associated to the account.
+   * @var string The user name associated to the account.
    */
   public $userName = '';
 
   /**
    * Exports log messages to a specific destination.
-   * @param $throwExceptions Value indicating whether to throw exceptions instead of logging its own errors.
+   * @param bool $throwExceptions Value indicating whether to throw exceptions instead of logging its own errors.
+   * @throws HttpException An error occurred.
    */
   public function export(bool $throwExceptions = false) {
     $text = implode("\n", array_map([$this, 'formatMessage'], $this->messages));
@@ -82,8 +78,8 @@ class FreeMobileTarget extends Target {
 
   /**
    * Formats a log message for display as a string.
-   * @param $message The log message to be formatted.
-   * @return The formatted message.
+   * @param string $message The log message to be formatted.
+   * @return string The formatted message.
    */
   public function formatMessage($message): string {
     list($text, $level, $category) = $message;

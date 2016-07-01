@@ -1,11 +1,10 @@
 <?php
 /**
- * @file
  * Implementation of the `yii\test\log\FreeMobileTargetTest` class.
  */
 namespace yii\tests\log;
 
-// Dependencies.
+// Module dependencies.
 use yii\log\{FreeMobileTarget, Logger};
 use yii\web\HttpException;
 
@@ -15,8 +14,7 @@ use yii\web\HttpException;
 class FreeMobileTargetTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var yii::log::FreeMobileTarget $model
-   * The data context of the tests.
+   * @var FreeMobileTarget The data context of the tests.
    */
   private $model;
 
@@ -25,7 +23,7 @@ class FreeMobileTargetTest extends \PHPUnit_Framework_TestCase {
    */
   public function testExport() {
     $this->expectException(HttpException::class);
-    $this->model->endPoint = 'http://sms.belin.io/sendmsg';
+    $this->model->endPoint = 'https://sms.belin.io/sendmsg';
     $this->model->export(true);
   }
 
