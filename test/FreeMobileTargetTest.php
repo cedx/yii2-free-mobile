@@ -4,7 +4,6 @@
  */
 namespace yii\tests\log;
 
-// Module dependencies.
 use yii\log\{FreeMobileTarget, Logger};
 use yii\web\HttpException;
 

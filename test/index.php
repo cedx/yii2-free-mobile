@@ -2,8 +2,6 @@
 /**
  * Entry point of the unit tests.
  */
-
-// Module dependencies.
 use yii\console\Application;
 
 // Set the environment.

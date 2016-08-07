@@ -4,7 +4,6 @@
  */
 namespace yii\log;
 
-// Module dependencies.
 use yii\helpers\VarDumper;
 use yii\web\{HttpException, NotFoundHttpException, ServerErrorHttpException};
 
