@@ -47,7 +47,7 @@ class FreeMobileTarget extends Target {
     ];
 
     $resource = null;
-    $url = $this->endPoint.'?'.http_build_query($fields, '', '&', PHP_QUERY_RFC3986);
+    $url = $this->endPoint . '?' . http_build_query($fields, '', '&', PHP_QUERY_RFC3986);
 
     try {
       $resource = curl_init($url);

@@ -1,9 +1,13 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free Mobile for Yii](https://packagist.org/packages/cedx/yii2-free-mobile) library.
 
+#### Version 1.0.1
+- Code optimization.
+- Updated the package dependencies.
+
 #### Version 1.0.0
 - First stable release.
-- Upgraded the package dependencies.
+- Updated the package dependencies.
 
 #### Version 0.5.2
 - Replaced [Doxygen](http://www.doxygen.org) documentation generator by [phpDocumentor](https://www.phpdoc.org).
@@ -11,11 +15,11 @@ This file contains highlights of what changes on each version of the [Free Mobil
 #### Version 0.5.1
 - Replaced [SonarQube](http://www.sonarqube.org) code analyzer by [Codacy](https://www.codacy.com) service.
 - Renamed the project according to its [Composer](https://getcomposer.org) package name.
-- Upgraded the package dependencies.
+- Updated the package dependencies.
 
 #### Version 0.5.1
 - Removed dependency on external [PHP Mess Detector](https://phpmd.org) and [PHPUnit](https://phpunit.de) interfaces.
-- Upgraded the package dependencies.
+- Updated the package dependencies.
 
 #### Version 0.5.0
 - Breaking change: using [PHP 7](http://php.net/manual/en/migration70.new-features.php) features, like scalar and return type declarations.
