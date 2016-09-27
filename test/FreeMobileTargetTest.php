@@ -5,7 +5,7 @@
 namespace yii\tests\log;
 
 use yii\log\{FreeMobileTarget, Logger};
-use yii\web\HttpException;
+use yii\web\{HttpException};
 
 /**
  * Tests the features of the `yii\log\FreeMobileTarget` class.
