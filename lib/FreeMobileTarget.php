@@ -4,8 +4,8 @@
  */
 namespace yii\log;
 
+use GuzzleHttp\{Client};
 use yii\helpers\{VarDumper};
-use yii\web\{HttpException, NotFoundHttpException, ServerErrorHttpException};
 
 /**
  * Sends the log messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
@@ -34,45 +34,19 @@ class FreeMobileTarget extends Target {
 
   /**
    * Exports log messages to a specific destination.
-   * @param bool $throwExceptions Value indicating whether to throw exceptions instead of logging its own errors.
-   * @throws HttpException An error occurred.
    */
-  public function export(bool $throwExceptions = false) {
+  public function export() {
     $text = implode("\n", array_map([$this, 'formatMessage'], $this->messages));
+    $encoded = mb_convert_encoding($text, 'ISO-8859-1', \Yii::$app->charset);
 
-    $fields = [
-      'msg' => mb_convert_encoding(mb_substr($text, 0, 160), 'ISO-8859-1', \Yii::$app->charset),
+    $client = new Client();
+    $options = ['query' => [
+      'msg' => substr($encoded, 0, 160),
       'pass' => $this->password,
       'user' => $this->userName
-    ];
+    ]];
 
-    $resource = null;
-    $url = $this->endPoint . '?' . http_build_query($fields, '', '&', PHP_QUERY_RFC3986);
-
-    try {
-      $resource = curl_init($url);
-      if(!$resource) throw new NotFoundHttpException($url);
-
-      if(!curl_setopt_array($resource, [
-        CURLOPT_ENCODING => '',
-        CURLOPT_FAILONERROR => true,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT => 5000,
-        CURLOPT_SSL_VERIFYPEER => false
-      ])) throw new ServerErrorHttpException(curl_error($resource));
-
-      $response = curl_exec($resource);
-      if($response === false) throw new ServerErrorHttpException(curl_error($resource));
-    }
-
-    catch(HttpException $e) {
-      if($throwExceptions) throw $e;
-      \Yii::error($e->getMessage(), __METHOD__);
-    }
-
-    finally {
-      if($resource) curl_close($resource);
-    }
+    $client->getAsync($this->endPoint, $options)->then();
   }
 
   /**

@@ -1,6 +1,12 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free Mobile for Yii](https://packagist.org/packages/cedx/yii2-free-mobile) library.
 
+#### Version 2.0.0
+- Replaced the [cURL](https://secure.php.net/manual/en/book.curl.php) functions by the [Guzzle](http://guzzlephp.org) HTTP client.
+- Breaking change: no exception is thrown when a network error occurs.
+- Breaking change: removed the `$throwExceptions` parameter from the `export` method.
+- Breaking change: using asynchronous requests to send the logs to the remote service.
+
 #### Version 1.0.1
 - Code optimization.
 - Updated the package dependencies.

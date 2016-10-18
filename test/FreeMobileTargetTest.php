@@ -3,9 +3,7 @@
  * Implementation of the `yii\test\log\FreeMobileTargetTest` class.
  */
 namespace yii\tests\log;
-
 use yii\log\{FreeMobileTarget, Logger};
-use yii\web\{HttpException};
 
 /**
  * Tests the features of the `yii\log\FreeMobileTarget` class.
@@ -16,15 +14,6 @@ class FreeMobileTargetTest extends \PHPUnit_Framework_TestCase {
    * @var FreeMobileTarget The data context of the tests.
    */
   private $model;
-
-  /**
-   * Tests the `export` method.
-   */
-  public function testExport() {
-    $this->expectException(HttpException::class);
-    $this->model->endPoint = 'https://sms.belin.io/sendmsg';
-    $this->model->export(true);
-  }
 
   /**
    * Tests the `formatMessage` method.
