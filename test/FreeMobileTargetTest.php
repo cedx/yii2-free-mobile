@@ -2,7 +2,7 @@
 /**
  * Implementation of the `yii\test\log\FreeMobileTargetTest` class.
  */
-namespace yii\tests\log;
+namespace yii\test\log;
 use yii\log\{FreeMobileTarget, Logger};
 
 /**
