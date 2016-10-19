@@ -39,14 +39,14 @@ class FreeMobileTarget extends Target {
     $text = implode("\n", array_map([$this, 'formatMessage'], $this->messages));
     $encoded = mb_convert_encoding($text, 'ISO-8859-1', \Yii::$app->charset);
 
-    $client = new Client();
     $options = ['query' => [
       'msg' => substr($encoded, 0, 160),
       'pass' => $this->password,
       'user' => $this->userName
     ]];
 
-    $client->getAsync($this->endPoint, $options)->then();
+    $promise = (new Client())->getAsync($this->endPoint, $options);
+    $promise->then()->wait();
   }
 
   /**
