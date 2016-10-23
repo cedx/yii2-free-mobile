@@ -45,4 +45,4 @@ return [
 - [Continuous Integration](https://travis-ci.org/cedx/yii2-free-mobile)
 
 ## License
-[Free Mobile for Yii](https://packagist.org/packages/cedx/yii2-free-mobile) is distributed under the Apache License, version 2.0.
+[Free Mobile for Yii](https://github.com/cedx/yii2-free-mobile) is distributed under the Apache License, version 2.0.

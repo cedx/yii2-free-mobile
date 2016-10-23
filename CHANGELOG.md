@@ -1,5 +1,5 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Free Mobile for Yii](https://packagist.org/packages/cedx/yii2-free-mobile) library.
+This file contains highlights of what changes on each version of the [Free Mobile for Yii](https://github.com/cedx/yii2-free-mobile) library.
 
 ## Version 2.0.0
 - Replaced the [cURL](https://secure.php.net/manual/en/book.curl.php) functions by the [Guzzle](http://guzzlephp.org) HTTP client.
