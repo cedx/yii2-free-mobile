@@ -20,7 +20,8 @@ From a command prompt, run:
 $ composer require cedx/yii2-free-mobile
 ```
 
-Now in your application configuration file, you can use the following log route:
+## Usage
+In your application configuration file, you can use the following log route:
 
 ```php
 return [
