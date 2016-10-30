@@ -1,7 +1,7 @@
 # Free Mobile for Yii
 ![Release](https://img.shields.io/packagist/v/cedx/yii2-free-mobile.svg) ![License](https://img.shields.io/packagist/l/cedx/yii2-free-mobile.svg) ![Downloads](https://img.shields.io/packagist/dt/cedx/yii2-free-mobile.svg) ![Code quality](https://img.shields.io/codacy/grade/b7169de7f3c845eb86161f66df6875e2.svg) ![Build](https://img.shields.io/travis/cedx/yii2-free-mobile.svg)
 
-[Free Mobile](http://mobile.free.fr) logging for [Yii](http://www.yiiframework.com), high-performance [PHP](http://php.net) framework.
+[Free Mobile](http://mobile.free.fr) logging for [Yii](http://www.yiiframework.com), high-performance [PHP](https://secure.php.net) framework.
 
 This package provides a single class, `yii\log\FreeMobileTarget`
 which is a log target allowing to send log messages by SMS to a mobile phone.
@@ -10,7 +10,7 @@ To use it, you must have a Free Mobile account and have enabled SMS Notification
 in the Options of your [Subscriber Area](https://mobile.free.fr/moncompte).
 
 ## Requirements
-The latest [PHP](http://php.net) and [Composer](https://getcomposer.org) versions.
+The latest [PHP](https://secure.php.net) and [Composer](https://getcomposer.org) versions.
 If you plan to play with the sources, you will also need the [Phing](https://www.phing.info) latest version.
 
 ## Installing via [Composer](https://getcomposer.org)
