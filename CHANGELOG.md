@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free Mobile for Yii](https://github.com/cedx/yii2-free-mobile) library.
 
+## Version 2.0.1
+- Updated the package dependencies.
+
 ## Version 2.0.0
 - Replaced the [cURL](https://secure.php.net/manual/en/book.curl.php) functions by the [Guzzle](http://guzzlephp.org) HTTP client.
 - Breaking change: no exception is thrown when a network error occurs.
@@ -33,7 +36,7 @@ This file contains highlights of what changes on each version of the [Free Mobil
 ## Version 0.4.4
 - Added unit tests.
 - Added code coverage.
-- Upgraded the development dependencies.
+- Updated the development dependencies.
 
 ## Version 0.4.3
 - Changed licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
@@ -51,7 +54,7 @@ This file contains highlights of what changes on each version of the [Free Mobil
 - Replaced the documentation system by [Doxygen](http://www.doxygen.org).
 
 ## Version 0.3.1
-- Upgraded the development dependencies.
+- Updated the development dependencies.
 
 ## Version 0.3.0
 - Breaking change: ported the library API to [Yii](http://www.yiiframework.com) version 2.
