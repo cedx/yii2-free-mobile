@@ -16,7 +16,7 @@ class FreeMobileTargetTest extends \PHPUnit_Framework_TestCase {
   private $model;
 
   /**
-   * Tests the `formatMessage` method.
+   * Tests the `FreeMobileTarget::formatMessage()` method.
    */
   public function testFormatMessage() {
     $message = ['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
