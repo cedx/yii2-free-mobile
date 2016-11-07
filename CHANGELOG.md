@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free Mobile for Yii](https://github.com/cedx/yii2-free-mobile) library.
 
+## Version 2.1.0
+- Externalized the core features.
+- Set the export interval to `1`.
+
 ## Version 2.0.1
 - Updated the package dependencies.
 

@@ -4,7 +4,7 @@
  */
 namespace yii\log;
 
-use GuzzleHttp\{Client};
+use freemobile\{Client};
 use yii\helpers\{VarDumper};
 
 /**
@@ -13,9 +13,9 @@ use yii\helpers\{VarDumper};
 class FreeMobileTarget extends Target {
 
   /**
-   * @var string The URL of the API end point.
+   * @var int How many messages should be accumulated before they are exported.
    */
-  public $endPoint = 'https://smsapi.free-mobile.fr/sendmsg';
+  public $exportInterval = 1;
 
   /**
    * @var array The list of the PHP predefined variables that should be logged in a message.
@@ -36,17 +36,16 @@ class FreeMobileTarget extends Target {
    * Exports log messages to a specific destination.
    */
   public function export() {
+    // Change the internal encoding to match the application charset.
+    $encoding = mb_internal_encoding();
+    mb_internal_encoding(\Yii::$app->charset);
+
+    // Send the messages.
     $text = implode("\n", array_map([$this, 'formatMessage'], $this->messages));
-    $encoded = mb_convert_encoding($text, 'ISO-8859-1', \Yii::$app->charset);
+    (new Client($this->userName, $this->password))->sendMessage($text)->subscribeCallback();
 
-    $options = ['query' => [
-      'msg' => substr($encoded, 0, 160),
-      'pass' => $this->password,
-      'user' => $this->userName
-    ]];
-
-    $promise = (new Client())->getAsync($this->endPoint, $options);
-    $promise->then()->wait();
+    // Restore the previous internal encoding.
+    mb_internal_encoding($encoding);
   }
 
   /**
