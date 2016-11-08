@@ -27,7 +27,7 @@
   ],
   "require": {
     "php": ">=7.0.0",
-    "cedx/free-mobile": "^1.0.0",
+    "cedx/free-mobile": "^1.1.0",
     "yiisoft/yii2": "^2.0.10"
   },
   "require-dev": {

@@ -36,16 +36,16 @@ class FreeMobileTarget extends Target {
    * Exports log messages to a specific destination.
    */
   public function export() {
-    // Change the internal encoding to match the application charset.
     $encoding = mb_internal_encoding();
     mb_internal_encoding(\Yii::$app->charset);
 
-    // Send the messages.
-    $text = implode("\n", array_map([$this, 'formatMessage'], $this->messages));
-    (new Client($this->userName, $this->password))->sendMessage($text)->subscribeCallback();
+    $restoreEncoding = function() use ($encoding) {
+      mb_internal_encoding($encoding);
+    };
 
-    // Restore the previous internal encoding.
-    mb_internal_encoding($encoding);
+    (new Client($this->userName, $this->password))
+      ->sendMessage(implode("\n", array_map([$this, 'formatMessage'], $this->messages)))
+      ->subscribeCallback(null, $restoreEncoding, $restoreEncoding);
   }
 
   /**
