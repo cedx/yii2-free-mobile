@@ -30,7 +30,7 @@ class FreeMobileTarget extends Target {
   /**
    * @var string The user name associated to the account.
    */
-  public $userName = '';
+  public $username = '';
 
   /**
    * Exports log messages to a specific destination.
@@ -43,7 +43,7 @@ class FreeMobileTarget extends Target {
       mb_internal_encoding($encoding);
     };
 
-    (new Client($this->userName, $this->password))
+    (new Client($this->username, $this->password))
       ->sendMessage(implode("\n", array_map([$this, 'formatMessage'], $this->messages)))
       ->subscribeCallback(null, $restoreEncoding, $restoreEncoding);
   }

@@ -33,7 +33,7 @@ return [
           'class' => 'yii\log\FreeMobileTarget',
           'levels' => [ 'error' ],
           'password' => '<your Free Mobile identification key>',
-          'userName' => '<your Free Mobile user name>'
+          'username' => '<your Free Mobile user name>'
         ]
       ]
     ]
