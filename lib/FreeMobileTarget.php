@@ -23,14 +23,18 @@ class FreeMobileTarget extends Target {
   public $logVars = [];
 
   /**
-   * @var string The identification key associated to the account.
+   * @var Client The underlying client used to send the messages.
    */
-  public $password = '';
+  private $client;
 
   /**
-   * @var string The user name associated to the account.
+   * Initializes a new instance of the class.
+   * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
-  public $username = '';
+  public function __construct($config = []) {
+    parent::__construct($config);
+    $this->client = new Client();
+  }
 
   /**
    * Exports log messages to a specific destination.
@@ -43,9 +47,25 @@ class FreeMobileTarget extends Target {
       mb_internal_encoding($encoding);
     };
 
-    (new Client($this->username, $this->password))
+    $this->client
       ->sendMessage(implode("\n", array_map([$this, 'formatMessage'], $this->messages)))
       ->subscribeCallback(null, $restoreEncoding, $restoreEncoding);
+  }
+
+  /**
+   * Gets the identification key associated to the account.
+   * @return string The identification key associated to the account.
+   */
+  public function getPassword(): string {
+    return $this->client->getPassword();
+  }
+
+  /**
+   * Gets the user name associated to the account.
+   * @return string The user name associated to the account.
+   */
+  public function getUsername(): string {
+    return $this->client->getUsername();
   }
 
   /**
@@ -60,5 +80,25 @@ class FreeMobileTarget extends Target {
       '{level}' => Logger::getLevelName($level),
       '{text}' => is_string($text) ? $text : VarDumper::export($text)
     ]);
+  }
+
+  /**
+   * Sets the identification key associated to the account.
+   * @param string $value The new identification key.
+   * @return FreeMobileTarget This instance.
+   */
+  public function setPassword(string $value): self {
+    $this->client->setPassword($value);
+    return $this;
+  }
+
+  /**
+   * Sets the user name associated to the account.
+   * @param string $value The new username.
+   * @return FreeMobileTarget This instance.
+   */
+  public function setUsername(string $value): self {
+    $this->client->setUsername($value);
+    return $this;
   }
 }
