@@ -1,6 +1,11 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free Mobile for Yii](https://github.com/cedx/yii2-free-mobile) library.
 
+## Version 2.2.0
+- Added a fluent interface to the setters.
+- Renamed the `userName` property to `username`.
+- Updated the package dependencies.
+
 ## Version 2.1.0
 - Externalized the core features.
 - Set the export interval to `1`.

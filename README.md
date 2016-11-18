@@ -41,6 +41,8 @@ return [
 ];
 ```
 
+The text of the log messages will be automatically truncated to 160 characters: you can't send multipart messages using this library. As a result, you should not change the default value of the `exportInterval` and `logVars` properties.
+
 ## See Also
 - [Code Quality](https://www.codacy.com/app/cedx/yii2-free-mobile)
 - [Continuous Integration](https://travis-ci.org/cedx/yii2-free-mobile)
