@@ -32,8 +32,8 @@ class FreeMobileTarget extends Target implements \JsonSerializable {
    * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
   public function __construct($config = []) {
-    parent::__construct($config);
     $this->client = new Client();
+    parent::__construct($config);
   }
 
   /**

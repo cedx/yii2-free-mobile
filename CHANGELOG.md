@@ -3,6 +3,7 @@ This file contains highlights of what changes on each version of the [Free Mobil
 
 ## Version 2.3.0
 - Added the `jsonSerialize()` and `toJSON()` methods.
+- Fixed a bug in the constructor.
 
 ## Version 2.2.0
 - Added a fluent interface to the setters.
