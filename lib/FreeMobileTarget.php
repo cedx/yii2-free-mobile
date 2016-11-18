@@ -10,7 +10,7 @@ use yii\helpers\{VarDumper};
 /**
  * Sends the log messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
  */
-class FreeMobileTarget extends Target {
+class FreeMobileTarget extends Target implements \JsonSerializable {
 
   /**
    * @var int How many messages should be accumulated before they are exported.
@@ -83,6 +83,14 @@ class FreeMobileTarget extends Target {
   }
 
   /**
+   * Converts this object to a map in JSON format.
+   * @return \stdClass The map in JSON format corresponding to this object.
+   */
+  final public function jsonSerialize(): \stdClass {
+    return $this->toJSON();
+  }
+
+  /**
    * Sets the identification key associated to the account.
    * @param string $value The new identification key.
    * @return FreeMobileTarget This instance.
@@ -100,5 +108,32 @@ class FreeMobileTarget extends Target {
   public function setUsername(string $value): self {
     $this->client->setUsername($value);
     return $this;
+  }
+
+  /**
+   * Converts this object to a map in JSON format.
+   * @return \stdClass The map in JSON format corresponding to this object.
+   */
+  public function toJSON(): \stdClass {
+    return (object) [
+      'categories' => $this->categories,
+      'enabled' => $this->enabled,
+      'except' => $this->except,
+      'exportInterval' => $this->exportInterval,
+      'levels' => $this->getLevels(),
+      'logVars' => $this->logVars,
+      'messages' => $this->messages,
+      'password' => $this->client->getPassword(),
+      'username' => $this->client->getUsername()
+    ];
+  }
+
+  /**
+   * Returns a string representation of this object.
+   * @return string The string representation of this object.
+   */
+  public function __toString(): string {
+    $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    return static::class." {$json}";
   }
 }

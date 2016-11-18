@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free Mobile for Yii](https://github.com/cedx/yii2-free-mobile) library.
 
+## Version 2.3.0
+- Added the `jsonSerialize()` and `toJSON()` methods.
+
 ## Version 2.2.0
 - Added a fluent interface to the setters.
 - Renamed the `userName` property to `username`.
