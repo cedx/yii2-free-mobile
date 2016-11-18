@@ -15,7 +15,25 @@ class FreeMobileTargetTest extends \PHPUnit_Framework_TestCase {
    */
   public function testFormatMessage() {
     $message = ['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
-    $target = new FreeMobileTarget();
-    $this->assertEquals('[error@tests] Hello World!', $target->formatMessage($message));
+    $this->assertEquals('[error@tests] Hello World!', (new FreeMobileTarget())->formatMessage($message));
+  }
+
+  /**
+   * Tests the `FreeMobileTarget::toJSON` method.
+   */
+  public function testToJSON() {
+    $data = (new FreeMobileTarget([
+      'password' => 'secret',
+      'username' => 'anonymous'
+    ]))->toJSON();
+
+    $this->assertObjectHasAttribute('enabled', $data);
+    $this->assertTrue($data->enabled);
+
+    $this->assertObjectHasAttribute('password', $data);
+    $this->assertEquals('secret', $data->password);
+
+    $this->assertObjectHasAttribute('username', $data);
+    $this->assertEquals('anonymous', $data->username);
   }
 }
