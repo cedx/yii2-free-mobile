@@ -37,6 +37,15 @@ class FreeMobileTarget extends Target implements \JsonSerializable {
   }
 
   /**
+   * Returns a string representation of this object.
+   * @return string The string representation of this object.
+   */
+  public function __toString(): string {
+    $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    return static::class." {$json}";
+  }
+
+  /**
    * Exports log messages to a specific destination.
    */
   public function export() {
@@ -50,6 +59,20 @@ class FreeMobileTarget extends Target implements \JsonSerializable {
     $this->client
       ->sendMessage(implode("\n", array_map([$this, 'formatMessage'], $this->messages)))
       ->subscribeCallback(null, $restoreEncoding, $restoreEncoding);
+  }
+
+  /**
+   * Formats a log message for display as a string.
+   * @param string $message The log message to be formatted.
+   * @return string The formatted message.
+   */
+  public function formatMessage($message): string {
+    list($text, $level, $category) = $message;
+    return strtr('[{level}@{category}] {text}', [
+      '{category}' => $category,
+      '{level}' => Logger::getLevelName($level),
+      '{text}' => is_string($text) ? $text : VarDumper::export($text)
+    ]);
   }
 
   /**
@@ -69,25 +92,21 @@ class FreeMobileTarget extends Target implements \JsonSerializable {
   }
 
   /**
-   * Formats a log message for display as a string.
-   * @param string $message The log message to be formatted.
-   * @return string The formatted message.
-   */
-  public function formatMessage($message): string {
-    list($text, $level, $category) = $message;
-    return strtr('[{level}@{category}] {text}', [
-      '{category}' => $category,
-      '{level}' => Logger::getLevelName($level),
-      '{text}' => is_string($text) ? $text : VarDumper::export($text)
-    ]);
-  }
-
-  /**
    * Converts this object to a map in JSON format.
    * @return \stdClass The map in JSON format corresponding to this object.
    */
-  final public function jsonSerialize(): \stdClass {
-    return $this->toJSON();
+  public function jsonSerialize(): \stdClass {
+    return (object) [
+      'categories' => $this->categories,
+      'enabled' => $this->enabled,
+      'except' => $this->except,
+      'exportInterval' => $this->exportInterval,
+      'levels' => $this->getLevels(),
+      'logVars' => $this->logVars,
+      'messages' => $this->messages,
+      'password' => $this->client->getPassword(),
+      'username' => $this->client->getUsername()
+    ];
   }
 
   /**
@@ -108,32 +127,5 @@ class FreeMobileTarget extends Target implements \JsonSerializable {
   public function setUsername(string $value): self {
     $this->client->setUsername($value);
     return $this;
-  }
-
-  /**
-   * Converts this object to a map in JSON format.
-   * @return \stdClass The map in JSON format corresponding to this object.
-   */
-  public function toJSON(): \stdClass {
-    return (object) [
-      'categories' => $this->categories,
-      'enabled' => $this->enabled,
-      'except' => $this->except,
-      'exportInterval' => $this->exportInterval,
-      'levels' => $this->getLevels(),
-      'logVars' => $this->logVars,
-      'messages' => $this->messages,
-      'password' => $this->client->getPassword(),
-      'username' => $this->client->getUsername()
-    ];
-  }
-
-  /**
-   * Returns a string representation of this object.
-   * @return string The string representation of this object.
-   */
-  public function __toString(): string {
-    $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." {$json}";
   }
 }

@@ -11,7 +11,7 @@ use yii\log\{FreeMobileTarget, Logger};
 class FreeMobileTargetTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * Tests the `FreeMobileTarget::formatMessage()` method.
+   * Tests the `FreeMobileTarget::formatMessage` method.
    */
   public function testFormatMessage() {
     $message = ['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
@@ -19,13 +19,13 @@ class FreeMobileTargetTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `FreeMobileTarget::toJSON` method.
+   * Tests the `FreeMobileTarget::jsonSerialize` method.
    */
-  public function testToJSON() {
+  public function testJsonSerialize() {
     $data = (new FreeMobileTarget([
       'password' => 'secret',
       'username' => 'anonymous'
-    ]))->toJSON();
+    ]))->jsonSerialize();
 
     $this->assertObjectHasAttribute('enabled', $data);
     $this->assertTrue($data->enabled);
