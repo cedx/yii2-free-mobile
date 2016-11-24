@@ -1,6 +1,11 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free Mobile for Yii](https://github.com/cedx/yii2-free-mobile) library.
 
+## Version 3.0.0
+- Breaking change: removed the `toJSON()` method.
+- Removed the `final` modifier from the `jsonSerialize()` method.
+- Updated the package dependencies.
+
 ## Version 2.3.0
 - Added the `jsonSerialize()` and `toJSON()` methods.
 - Fixed a bug in the constructor.
