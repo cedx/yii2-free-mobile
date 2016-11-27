@@ -4,9 +4,7 @@
 [Free Mobile](http://mobile.free.fr) for [Yii](http://www.yiiframework.com), high-performance [PHP](https://secure.php.net) framework.
 
 This package provides classes allowing to send SMS messages to a [Free Mobile](http://mobile.free.fr) account.
-
-To use it, the target account must have enabled SMS Notifications
-in the Options of its [Subscriber Area](https://mobile.free.fr/moncompte).
+To use it, the target account must have enabled SMS Notifications in the Options of its [Subscriber Area](https://mobile.free.fr/moncompte).
 
 ## Requirements
 The latest [PHP](https://secure.php.net) and [Composer](https://getcomposer.org) versions.
@@ -42,7 +40,7 @@ Once the `yii\freemobile\Client` component initialized with your credentials, yo
 $result = \Yii::$app->get('freemobile')->sendMessage('Hello World!');
 
 if ($result) echo 'The message was sent successfully.';
-else echo 'An error occurred: ', $e->getMessage();
+else echo 'An error occurred while sending the message.';
 ```
 
 The text of the messages will be automatically truncated to 160 characters: you can't send multipart messages using this library.
