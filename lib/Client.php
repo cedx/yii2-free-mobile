@@ -5,7 +5,7 @@
 namespace yii\freemobile;
 
 use freemobile\{Client as FreeMobileClient};
-use yii\base\{Component, Exception};
+use yii\base\{Component};
 
 /**
  * Sends messages by SMS to a [Free Mobile](http://mobile.free.fr) account.

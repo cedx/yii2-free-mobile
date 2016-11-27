@@ -37,7 +37,8 @@ return [
 Once the `yii\freemobile\Client` component initialized with your credentials, you can use the `sendMessage()` method:
 
 ```php
-$result = \Yii::$app->get('freemobile')->sendMessage('Hello World!');
+$client = \Yii::$app->get('freemobile');
+$result = $client->sendMessage('Hello World!');
 
 if ($result) echo 'The message was sent successfully.';
 else echo 'An error occurred while sending the message.';
@@ -68,6 +69,31 @@ return [
 The `LogTarget::client` property accepts a `Client` instance or the application component ID of a Free Mobile client.
 
 As text of the log messages are truncated to 160 characters, you should not change the default value of the `exportInterval` and `logVars` properties.
+
+## Events
+The `yii\freemobile\Client` class triggers some events during its life cycle.
+
+### The `request` event
+Emitted every time a request is made to the remote service:
+
+```php
+use yii\freemobile\{Client, RequestEvent};
+
+$client->on(Client::EVENT_REQUEST, function(RequestEvent $event) {
+  echo 'Client request: ', $event->getRequest()->getUri();
+});
+```
+
+### The `response` event
+Emitted every time a response is received from the remote service:
+
+```php
+use yii\freemobile\{Client, ResponseEvent};
+
+$client->on(Client::EVENT_RESPONSE, function(ResponseEvent $event) {
+  echo 'Server response: ', $event->getResponse()->getStatusCode();
+});
+```
 
 ## Unit Tests
 In order to run the tests, you must set two environment variables:
