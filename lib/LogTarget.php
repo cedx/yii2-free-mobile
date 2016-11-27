@@ -1,16 +1,16 @@
 <?php
 /**
- * Implementation of the `yii\log\FreeMobileTarget` class.
+ * Implementation of the `yii\freemobile\LogTarget` class.
  */
-namespace yii\log;
+namespace yii\freemobile;
 
-use freemobile\{Client};
 use yii\helpers\{VarDumper};
+use yii\log\{Logger, Target};
 
 /**
  * Sends the log messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
  */
-class FreeMobileTarget extends Target implements \JsonSerializable {
+class LogTarget extends Target implements \JsonSerializable {
 
   /**
    * @var int How many messages should be accumulated before they are exported.
@@ -32,7 +32,7 @@ class FreeMobileTarget extends Target implements \JsonSerializable {
    * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
   public function __construct($config = []) {
-    $this->client = new Client();
+    $this->client = \Yii::createObject(Client::class);
     parent::__construct($config);
   }
 
@@ -49,16 +49,10 @@ class FreeMobileTarget extends Target implements \JsonSerializable {
    * Exports log messages to a specific destination.
    */
   public function export() {
-    $encoding = mb_internal_encoding();
+    $previousEncoding = mb_internal_encoding();
     mb_internal_encoding(\Yii::$app->charset);
-
-    $restoreEncoding = function() use ($encoding) {
-      mb_internal_encoding($encoding);
-    };
-
-    $this->client
-      ->sendMessage(implode("\n", array_map([$this, 'formatMessage'], $this->messages)))
-      ->subscribeCallback(null, $restoreEncoding, $restoreEncoding);
+    $this->getClient()->sendMessage(implode("\n", array_map([$this, 'formatMessage'], $this->messages)));
+    mb_internal_encoding($previousEncoding);
   }
 
   /**
@@ -76,19 +70,11 @@ class FreeMobileTarget extends Target implements \JsonSerializable {
   }
 
   /**
-   * Gets the identification key associated to the account.
-   * @return string The identification key associated to the account.
+   * Gets the client used to send messages.
+   * @return Client The component used to send messages.
    */
-  public function getPassword(): string {
-    return $this->client->getPassword();
-  }
-
-  /**
-   * Gets the user name associated to the account.
-   * @return string The user name associated to the account.
-   */
-  public function getUsername(): string {
-    return $this->client->getUsername();
+  public function getClient() {
+    return $this->client;
   }
 
   /**
@@ -98,34 +84,26 @@ class FreeMobileTarget extends Target implements \JsonSerializable {
   public function jsonSerialize(): \stdClass {
     return (object) [
       'categories' => $this->categories,
+      'client' => ($client = $this->getClient()) ? get_class($client) : null,
       'enabled' => $this->enabled,
       'except' => $this->except,
       'exportInterval' => $this->exportInterval,
       'levels' => $this->getLevels(),
       'logVars' => $this->logVars,
-      'messages' => $this->messages,
-      'password' => $this->client->getPassword(),
-      'username' => $this->client->getUsername()
+      'messages' => $this->messages
     ];
   }
 
   /**
-   * Sets the identification key associated to the account.
-   * @param string $value The new identification key.
-   * @return FreeMobileTarget This instance.
+   * Sets the client used to send messages.
+   * @param Client|string $value The component to use for sending messages.
+   * @return LogTarget This instance.
    */
-  public function setPassword(string $value): self {
-    $this->client->setPassword($value);
-    return $this;
-  }
+  public function setClient(Client $value = null): self {
+    if ($value instanceof Client) $this->client = $value;
+    else if (is_string($value)) $this->client = \Yii::$app->get($value);
+    else $this->client = null;
 
-  /**
-   * Sets the user name associated to the account.
-   * @param string $value The new username.
-   * @return FreeMobileTarget This instance.
-   */
-  public function setUsername(string $value): self {
-    $this->client->setUsername($value);
     return $this;
   }
 }
