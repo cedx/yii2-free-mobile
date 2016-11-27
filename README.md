@@ -1,7 +1,7 @@
 # Free Mobile for Yii
 ![Release](https://img.shields.io/packagist/v/cedx/yii2-free-mobile.svg) ![License](https://img.shields.io/packagist/l/cedx/yii2-free-mobile.svg) ![Downloads](https://img.shields.io/packagist/dt/cedx/yii2-free-mobile.svg) ![Code quality](https://img.shields.io/codacy/grade/b7169de7f3c845eb86161f66df6875e2.svg) ![Build](https://img.shields.io/travis/cedx/yii2-free-mobile.svg)
 
-[Free Mobile](http://mobile.free.fr) for [Yii](http://www.yiiframework.com), high-performance [PHP](https://secure.php.net) framework.
+[Free Mobile](http://mobile.free.fr) connector for [Yii](http://www.yiiframework.com), high-performance [PHP](https://secure.php.net) framework.
 
 This package provides classes allowing to send SMS messages to a [Free Mobile](http://mobile.free.fr) account.
 To use it, the target account must have enabled SMS Notifications in the Options of its [Subscriber Area](https://mobile.free.fr/moncompte).
