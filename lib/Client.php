@@ -74,7 +74,10 @@ class Client extends Component implements \JsonSerializable {
    * @return \stdClass The map in JSON format corresponding to this object.
    */
   public function jsonSerialize(): \stdClass {
-    return $this->client->jsonSerialize();
+    return (object) [
+      'password' => $this->getPassword(),
+      'username' => $this->getUsername()
+    ];
   }
 
   /**
