@@ -1,6 +1,12 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free Mobile for Yii](https://github.com/cedx/yii2-free-mobile) library.
 
+## Version 4.0.0
+- Breaking: changed the root namespace to `yii\freemobile`.
+- Breaking: renamed the `FreeMobileTarget` class to `LogTarget`.
+- Added the `Client` component.
+- Added the `RequestEvent` and `ResponseEvent` events.
+
 ## Version 3.0.0
 - Breaking change: removed the `toJSON()` method.
 - Removed the `final` modifier from the `jsonSerialize()` method.
