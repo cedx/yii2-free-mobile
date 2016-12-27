@@ -42,7 +42,7 @@ class LogTarget extends Target implements \JsonSerializable {
    */
   public function __toString(): string {
     $json = json_encode($this, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return static::class." {$json}";
+    return static::class." $json";
   }
 
   /**
