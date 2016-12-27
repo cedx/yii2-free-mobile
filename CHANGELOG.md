@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free Mobile for Yii](https://github.com/cedx/yii2-free-mobile) library.
 
+## Version 4.1.0
+- Replaced the [Codacy](https://www.codacy.com) code coverage service by the [Coveralls](https://coveralls.io) one.
+- Updated the package dependencies.
+
 ## Version 4.0.0
 - Breaking: changed the root namespace to `yii\freemobile`.
 - Breaking: renamed the `FreeMobileTarget` class to `LogTarget`.
