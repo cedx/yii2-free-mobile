@@ -99,7 +99,7 @@ class LogTarget extends Target implements \JsonSerializable {
    * @param Client|string $value The component to use for sending messages.
    * @return LogTarget This instance.
    */
-  public function setClient(Client $value = null): self {
+  public function setClient($value): self {
     if ($value instanceof Client) $this->client = $value;
     else if (is_string($value)) $this->client = \Yii::$app->get($value);
     else $this->client = null;
