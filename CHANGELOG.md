@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free Mobile for Yii](https://github.com/cedx/yii2-free-mobile) library.
 
+## Version 4.1.1
+- Fixed the [issue #1](https://github.com/cedx/yii2-free-mobile/issues/1): unable to use an application component ID to initialize the `LogTarget::client` property.
+- Improved the code coverage.
+
 ## Version 4.1.0
 - Replaced the [Codacy](https://www.codacy.com) code coverage service by the [Coveralls](https://coveralls.io) one.
 - Updated the package dependencies.
