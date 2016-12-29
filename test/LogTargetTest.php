@@ -34,4 +34,18 @@ class LogTargetTest extends \PHPUnit_Framework_TestCase {
     $this->assertObjectHasAttribute('enabled', $data);
     $this->assertTrue($data->enabled);
   }
+
+  /**
+   * Tests the `LogTarget::setClient()` method.
+   */
+  public function testSetClient() {
+    \Yii::$app->set('freemobile', \Yii::createObject([
+      'class' => Client::class,
+      'password' => 'secret',
+      'username' => 'anonymous'
+    ]));
+
+    $logTarget = new LogTarget(['client' => 'freemobile']);
+    $this->assertSame(\Yii::$app->get('freemobile'), $logTarget->getClient());
+  }
 }

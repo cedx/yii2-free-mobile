@@ -3,7 +3,7 @@
  * Implementation of the `yii\freemobile\test\ClientTest` class.
  */
 namespace yii\freemobile\test;
-use yii\freemobile\{Client};
+use yii\freemobile\{Client, RequestEvent, ResponseEvent};
 
 /**
  * Tests the features of the `yii\freemobile\Client` class.
@@ -33,6 +33,24 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 
     $this->assertObjectHasAttribute('username', $data);
     $this->assertEquals('anonymous', $data->username);
+  }
+
+  /**
+   * Tests the `Client` "request" event.
+   */
+  public function testOnRequest() {
+    $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
+    $client->on(Client::EVENT_REQUEST, function($request) { $this->assertInstanceOf(RequestEvent::class, $request); });
+    $client->sendMessage('FooBar');
+  }
+
+  /**
+   * Tests the `Client` "response" event.
+   */
+  public function testOnResponse() {
+    $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
+    $client->on(Client::EVENT_RESPONSE, function($response) { $this->assertInstanceOf(ResponseEvent::class, $response); });
+    $client->sendMessage('FooBar');
   }
 
   /**
