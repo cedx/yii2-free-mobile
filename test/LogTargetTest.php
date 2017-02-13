@@ -4,16 +4,17 @@
  */
 namespace yii\freemobile\test;
 
+use PHPUnit\Framework\{TestCase};
 use yii\freemobile\{Client, LogTarget};
 use yii\log\{Logger};
 
 /**
- * Tests the features of the `yii\freemobile\LogTarget` class.
+ * @coversDefaultClass \yii\freemobile\LogTarget` class.
  */
-class LogTargetTest extends \PHPUnit_Framework_TestCase {
+class LogTargetTest extends TestCase {
 
   /**
-   * Tests the `LogTarget::formatMessage` method.
+   * @test ::formatMessage
    */
   public function testFormatMessage() {
     $message = ['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
@@ -21,32 +22,25 @@ class LogTargetTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `LogTarget::jsonSerialize` method.
+   * @test ::jsonSerialize
    */
   public function testJsonSerialize() {
-    $client = \Yii::createObject([
-      'class' => Client::class,
-      'password' => 'secret',
-      'username' => 'anonymous'
-    ]);
-
-    $data = (new LogTarget(['client' => $client]))->jsonSerialize();
-    $this->assertObjectHasAttribute('enabled', $data);
+    $data = (new LogTarget())->jsonSerialize();
+    $this->assertEquals(count(get_object_vars($data)), 8);
+    $this->assertEquals(Client::class, $data->client);
     $this->assertTrue($data->enabled);
   }
 
   /**
-   * Tests the `LogTarget::setClient()` method.
+   * @test ::setClient
    */
   public function testSetClient() {
-    \Yii::$app->set('freemobile', \Yii::createObject([
-      'class' => Client::class,
-      'password' => 'secret',
-      'username' => 'anonymous'
-    ]));
+    \Yii::$app->set('freemobileTest', \Yii::createObject(Client::class));
 
-    $logTarget = new LogTarget(['client' => 'freemobile']);
-    $this->assertSame(\Yii::$app->get('freemobile'), $logTarget->getClient());
+    $logTarget = new LogTarget(['client' => 'freemobileTest']);
+    $this->assertSame(\Yii::$app->get('freemobileTest'), $logTarget->getClient());
+  }
+
   /**
    * @test ::__toString
    */

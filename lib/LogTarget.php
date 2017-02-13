@@ -4,7 +4,7 @@
  */
 namespace yii\freemobile;
 
-use yii\helpers\{VarDumper};
+use yii\helpers\{Json, VarDumper};
 use yii\log\{Logger, Target};
 
 /**
@@ -32,7 +32,7 @@ class LogTarget extends Target implements \JsonSerializable {
    * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
   public function __construct($config = []) {
-    $this->client = \Yii::createObject(Client::class);
+    $this->setClient('freemobile');
     parent::__construct($config);
   }
 
@@ -41,7 +41,7 @@ class LogTarget extends Target implements \JsonSerializable {
    * @return string The string representation of this object.
    */
   public function __toString(): string {
-    $json = json_encode($this, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    $json = Json::encode($this);
     return static::class." $json";
   }
 
