@@ -54,6 +54,14 @@ class Client extends Component implements \JsonSerializable {
   }
 
   /**
+   * Gets the URL of the API end point.
+   * @return string The URL of the API end point.
+   */
+  public function getEndPoint(): string {
+    return $this->client->getEndPoint();
+  }
+
+  /**
    * Gets the identification key associated to the account.
    * @return string The identification key associated to the account.
    */
@@ -89,6 +97,14 @@ class Client extends Component implements \JsonSerializable {
     );
 
     return $result;
+  /**
+   * Sets the URL of the API end point.
+   * @param string $value The new URL of the API end point.
+   * @return Client This instance.
+   */
+  public function setEndPoint(string $value) {
+    $this->client->setEndPoint($value);
+    return $this;
   }
 
   /**
