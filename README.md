@@ -38,11 +38,15 @@ return [
 Once the `yii\freemobile\Client` component initialized with your credentials, you can use the `sendMessage()` method:
 
 ```php
-$client = \Yii::$app->get('freemobile');
-$result = $client->sendMessage('Hello World!');
+try {
+  $client = \Yii::$app->get('freemobile');
+  $client->sendMessage('Hello World!');
+  echo 'The message was sent successfully.';
+}
 
-if ($result) echo 'The message was sent successfully.';
-else echo 'An error occurred while sending the message.';
+catch (\Throwable $e) {
+  echo 'An error occurred while sending the message.';
+}
 ```
 
 The text of the messages will be automatically truncated to 160 characters: you can't send multipart messages using this library.
