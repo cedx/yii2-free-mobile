@@ -68,4 +68,14 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
       $this->assertTrue($client->sendMessage('Bonjour Cédric !'));
     }
   }
+
+  /**
+   * @test ::__toString
+   */
+  public function testToString() {
+    $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
+    $this->assertStringStartsWith('yii\freemobile\Client {', $client);
+    $this->assertContains('"username":"anonymous"', $client);
+    $this->assertContains('"password":"secret"', $client);
+  }
 }

@@ -47,5 +47,13 @@ class LogTargetTest extends \PHPUnit_Framework_TestCase {
 
     $logTarget = new LogTarget(['client' => 'freemobile']);
     $this->assertSame(\Yii::$app->get('freemobile'), $logTarget->getClient());
+  /**
+   * @test ::__toString
+   */
+  public function testToString() {
+    $target = (string) new LogTarget(['client' => \Yii::createObject(Client::class)]);
+    $this->assertStringStartsWith('yii\freemobile\LogTarget {', $target);
+    $this->assertContains('"client":"yii\\freemobile\\Client"', $target);
+    $this->assertContains('"enabled":true', $target);
   }
 }
