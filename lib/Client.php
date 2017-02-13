@@ -6,6 +6,7 @@ namespace yii\freemobile;
 
 use freemobile\{Client as FreeMobileClient};
 use yii\base\{Component};
+use yii\helpers\{Json};
 
 /**
  * Sends messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
@@ -32,7 +33,7 @@ class Client extends Component implements \JsonSerializable {
    * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
   public function __construct(array $config = []) {
-    $this->client = new FreeMobileClient();
+    $this->client = \Yii::createObject(FreeMobileClient::class);
     parent::__construct($config);
 
     $this->client->onRequest()->subscribeCallback(function($request) {
@@ -49,7 +50,7 @@ class Client extends Component implements \JsonSerializable {
    * @return string The string representation of this object.
    */
   public function __toString(): string {
-    $json = json_encode($this, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    $json = Json::encode($this);
     return static::class." $json";
   }
 
@@ -88,15 +89,11 @@ class Client extends Component implements \JsonSerializable {
   /**
    * Sends a SMS message to the underlying account.
    * @param string $text The text of the message to send.
-   * @return bool Whether the operation was successful.
    */
-  public function sendMessage(string $text): bool {
-    $this->client->sendMessage($text)->subscribeCallback(
-      function() use (&$result) { $result = true; },
-      function() use (&$result) { $result = false; }
-    );
+  public function sendMessage(string $text) {
+    $this->client->sendMessage($text);
+  }
 
-    return $result;
   /**
    * Sets the URL of the API end point.
    * @param string $value The new URL of the API end point.

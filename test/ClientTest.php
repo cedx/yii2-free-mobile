@@ -3,29 +3,19 @@
  * Implementation of the `yii\freemobile\test\ClientTest` class.
  */
 namespace yii\freemobile\test;
+
+use PHPUnit\Framework\{TestCase};
 use yii\freemobile\{Client, RequestEvent, ResponseEvent};
 
 /**
- * Tests the features of the `yii\freemobile\Client` class.
+ * @coversDefaultClass \yii\freemobile\Client` class.
  */
-class ClientTest extends \PHPUnit_Framework_TestCase {
+class ClientTest extends TestCase {
 
   /**
-   * Tests the `Client` constructor.
+   * @test ::jsonSerialize
    */
-  public function testConstructor() {
-    $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
-    $this->assertEquals('secret', $client->getPassword());
-    $this->assertEquals('anonymous', $client->getUsername());
-
-    $this->assertSame($client, $client->setPassword(''));
-    $this->assertEmpty($client->getPassword());
-  }
-
-  /**
-   * Tests the `Client::jsonSerialize()` method.
-   */
-  public function testJsonSerializeoJSON() {
+  public function testJsonSerialize() {
     $data = (new Client(['username' => 'anonymous', 'password' => 'secret']))->jsonSerialize();
 
     $this->assertObjectHasAttribute('password', $data);
@@ -36,7 +26,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `Client` "request" event.
+   * @test ::onRequest
    */
   public function testOnRequest() {
     $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
@@ -45,7 +35,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `Client` "response" event.
+   * @test ::onResponse
    */
   public function testOnResponse() {
     $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
@@ -54,7 +44,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `Client::sendMessage()` method.
+   * @test ::sendMessage
    */
   public function testSendMessage() {
     $client = new Client(['username' => '', 'password' => '']);
