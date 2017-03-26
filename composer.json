@@ -31,19 +31,19 @@
     "ext-curl": "*",
     "ext-json": "*",
     "ext-mbstring": "*",
-    "cedx/free-mobile": "^4.0.0",
+    "cedx/free-mobile": "^5.0.0",
     "psr/http-message": "^1.0.1",
     "yiisoft/yii2": "^2.0.11"
   },
   "require-dev": {
-    "cedx/coveralls": "^0.1.0",
+    "cedx/coveralls": "^0.4.0",
+    "cedx/phpunit-expect": "^0.1.0",
     "phing/phing": "^2.16.0",
-    "phpdocumentor/phpdocumentor": "^2.9.0",
-    "phpunit/phpunit": "^6.0.6"
+    "phpdocumentor/phpdocumentor": "^2.9.0"
   },
   "scripts": {
     "coverage": "coveralls --file=var/coverage.xml",
-    "test": "phpunit"
+    "test": "phpunit --colors=auto --verbose"
   },
   "support": {
     "issues": "https://github.com/cedx/yii2-free-mobile/issues"

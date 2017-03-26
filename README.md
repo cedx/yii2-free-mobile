@@ -45,7 +45,7 @@ try {
 }
 
 catch (\Throwable $e) {
-  echo 'An error occurred while sending the message.';
+  echo 'An error occurred: ', $e->getMessage();
 }
 ```
 
