@@ -1,7 +1,4 @@
 <?php
-/**
- * Implementation of the `yii\freemobile\Client` class.
- */
 namespace yii\freemobile;
 
 use freemobile\{Client as FreeMobileClient};
@@ -10,6 +7,9 @@ use yii\helpers\{Json};
 
 /**
  * Sends messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
+ * @property string $endPoint The URL of the API end point.
+ * @property string $password The identification key associated to the account.
+ * @property string $username The user name associated to the account.
  */
 class Client extends Component implements \JsonSerializable {
 
@@ -33,15 +33,15 @@ class Client extends Component implements \JsonSerializable {
    * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
   public function __construct(array $config = []) {
-    $this->client = \Yii::createObject(FreeMobileClient::class);
+    $this->client = new FreeMobileClient();
     parent::__construct($config);
 
-    $this->client->onRequest()->subscribeCallback(function($request) {
-      $this->trigger(static::EVENT_REQUEST, \Yii::createObject(['class' => RequestEvent::class, 'request' => $request]));
+    $this->client->on('request', function($request) {
+      $this->trigger(static::EVENT_REQUEST, new RequestEvent(['request' => $request]));
     });
 
-    $this->client->onResponse()->subscribeCallback(function($response) {
-      $this->trigger(static::EVENT_RESPONSE, \Yii::createObject(['class' => ResponseEvent::class, 'response' => $response]));
+    $this->client->on('response', function($response) {
+      $this->trigger(static::EVENT_RESPONSE, new ResponseEvent(['response' => $response]));
     });
   }
 

@@ -1,7 +1,4 @@
 <?php
-/**
- * Implementation of the `yii\freemobile\LogTarget` class.
- */
 namespace yii\freemobile;
 
 use yii\helpers\{Json, VarDumper};
@@ -9,6 +6,7 @@ use yii\log\{Logger, Target};
 
 /**
  * Sends the log messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
+ * @property Client $client The component used to send messages.
  */
 class LogTarget extends Target implements \JsonSerializable {
 
