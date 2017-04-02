@@ -52,6 +52,15 @@ class Client extends Component implements \JsonSerializable {
    */
   public function __construct(array $config = []) {
     $this->httpClient = new HTTPClient(['transport' => CurlTransport::class]);
+
+    $this->httpClient->on(HTTPClient::EVENT_BEFORE_SEND, function($event) {
+      $this->trigger(static::EVENT_BEFORE_SEND, $event);
+    });
+
+    $this->httpClient->on(HTTPClient::EVENT_AFTER_SEND, function($event) {
+      $this->trigger(static::EVENT_AFTER_SEND, $event);
+    });
+
     parent::__construct($config);
   }
 
@@ -71,14 +80,6 @@ class Client extends Component implements \JsonSerializable {
   public function init() {
     parent::init();
     if (!mb_strlen($this->username) || !mb_strlen($this->password)) throw new InvalidConfigException('The account credentials are invalid.');
-
-    $this->httpClient->on(HTTPClient::EVENT_BEFORE_SEND, function($event) {
-      $this->trigger(static::EVENT_BEFORE_SEND, $event);
-    });
-
-    $this->httpClient->on(HTTPClient::EVENT_AFTER_SEND, function($event) {
-      $this->trigger(static::EVENT_AFTER_SEND, $event);
-    });
   }
 
   /**
