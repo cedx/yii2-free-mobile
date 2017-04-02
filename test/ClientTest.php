@@ -1,71 +1,86 @@
 <?php
-/**
- * Implementation of the `yii\freemobile\test\ClientTest` class.
- */
-namespace yii\freemobile\test;
+namespace yii\freemobile;
 
 use PHPUnit\Framework\{TestCase};
-use yii\freemobile\{Client, RequestEvent, ResponseEvent};
+use yii\base\{InvalidConfigException};
 
 /**
- * @coversDefaultClass \yii\freemobile\Client` class.
+ * Tests the features of the `yii\freemobile\Client` class.
  */
 class ClientTest extends TestCase {
 
   /**
-   * @test ::jsonSerialize
+   * @test Client::init
+   */
+  public function testInit() {
+    it('should throw an exception if the username or password is empty', function() {
+      expect(function() { new Client(); })->to->throw(InvalidConfigException::class);
+    });
+
+    it('should not throw an exception if the username and password are not empty', function() {
+      expect(function() { new Client(['username' => 'anonymous', 'password' => 'secret']); })->to->not->throw;
+    });
+  }
+
+  /**
+   * @test Client::jsonSerialize
    */
   public function testJsonSerialize() {
-    $data = (new Client(['username' => 'anonymous', 'password' => 'secret']))->jsonSerialize();
-
-    $this->assertObjectHasAttribute('password', $data);
-    $this->assertEquals('secret', $data->password);
-
-    $this->assertObjectHasAttribute('username', $data);
-    $this->assertEquals('anonymous', $data->username);
+    it('should return a map with the same public values', function() {
+      $data = (new Client(['username' => 'anonymous', 'password' => 'secret']))->jsonSerialize();
+      expect(get_object_vars($data))->to->have->lengthOf(3);
+      expect($data->password)->to->equal('secret');
+      expect($data->username)->to->equal('anonymous');
+    });
   }
 
   /**
-   * @test ::onRequest
-   */
-  public function testOnRequest() {
-    $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
-    $client->on(Client::EVENT_REQUEST, function($request) { $this->assertInstanceOf(RequestEvent::class, $request); });
-    $client->sendMessage('FooBar');
-  }
-
-  /**
-   * @test ::onResponse
-   */
-  public function testOnResponse() {
-    $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
-    $client->on(Client::EVENT_RESPONSE, function($response) { $this->assertInstanceOf(ResponseEvent::class, $response); });
-    $client->sendMessage('FooBar');
-  }
-
-  /**
-   * @test ::sendMessage
+   * @test Client::sendMessage
    */
   public function testSendMessage() {
-    $client = new Client(['username' => '', 'password' => '']);
-    $this->assertFalse($client->sendMessage('Hello World!'));
+    it('should not send valid messages with invalid credentials', function() {
+      try {
+        (new Client(['username' => '', 'password' => '']))->sendMessage('Hello World!');
+        fail('A message with empty credentials should not be sent.');
+      }
 
-    $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
-    $this->assertFalse($client->sendMessage(''));
+      catch (\Throwable $e) {
+        expect(true)->to->be->true;
+      }
+    });
+
+    it('should not send invalid messages with valid credentials', function() {
+      try {
+        (new Client(['username' => 'anonymous', 'password' => 'secret']))->sendMessage('');
+        fail('An empty message with credentials should not be sent.');
+      }
+
+      catch (\Throwable $e) {
+        expect(true)->to->be->true;
+      }
+    });
 
     if (is_string($username = getenv('FREEMOBILE_USERNAME')) && is_string($password = getenv('FREEMOBILE_PASSWORD'))) {
-      $client = new Client(['username' => $username, 'password' => $password]);
-      $this->assertTrue($client->sendMessage('Bonjour Cédric !'));
+      it('should send valid messages with valid credentials', function() use ($password, $username) {
+        (new Client(['username' => $username, 'password' => $password]))->sendMessage('Bonjour Cédric !');
+        expect(true)->to->be->true;
+      });
     }
   }
 
   /**
-   * @test ::__toString
+   * @test Client::__toString
    */
   public function testToString() {
-    $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
-    $this->assertStringStartsWith('yii\freemobile\Client {', $client);
-    $this->assertContains('"username":"anonymous"', $client);
-    $this->assertContains('"password":"secret"', $client);
+    $client = (string) new Client(['username' => 'anonymous', 'password' => 'secret']);
+
+    it('should start with the class name', function() use ($client) {
+      expect($client)->to->startWith('yii\freemobile\Client {');
+    });
+
+    it('should contain the instance properties', function() use ($client) {
+      expect($client)->to->contain('"username":"anonymous"')
+        ->and->contain('"password":"secret"');
+    });
   }
 }

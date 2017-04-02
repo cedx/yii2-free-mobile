@@ -1,53 +1,59 @@
 <?php
-/**
- * Implementation of the `yii\freemobile\test\LogTargetTest` class.
- */
-namespace yii\freemobile\test;
+namespace yii\freemobile;
 
 use PHPUnit\Framework\{TestCase};
-use yii\freemobile\{Client, LogTarget};
 use yii\log\{Logger};
 
 /**
- * @coversDefaultClass \yii\freemobile\LogTarget` class.
+ * Tests the features of the `yii\freemobile\LogTarget` class.
  */
 class LogTargetTest extends TestCase {
 
   /**
-   * @test ::formatMessage
+   * @test LogTarget::formatMessage
    */
   public function testFormatMessage() {
-    $message = ['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
-    $this->assertEquals('[error@tests] Hello World!', (new LogTarget())->formatMessage($message));
+    it('should return a formatted message including the log level and category', function() {
+      $message = ['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
+      expect((new LogTarget())->formatMessage($message))->to->equal('[error@tests] Hello World!');
+    });
   }
 
   /**
-   * @test ::jsonSerialize
+   * @test LogTarget::jsonSerialize
    */
   public function testJsonSerialize() {
-    $data = (new LogTarget())->jsonSerialize();
-    $this->assertEquals(count(get_object_vars($data)), 8);
-    $this->assertEquals(Client::class, $data->client);
-    $this->assertTrue($data->enabled);
+    it('should return a map with the same public values', function() {
+      $data = (new LogTarget())->jsonSerialize();
+      expect(get_object_vars($data))->to->have->lengthOf(8);
+      expect($data->client)->to->equal(Client::class);
+      expect($data->enabled)->to->be->true;
+    });
   }
 
   /**
-   * @test ::setClient
+   * @test LogTarget::setClient
    */
   public function testSetClient() {
-    \Yii::$app->set('freemobileTest', \Yii::createObject(Client::class));
-
-    $logTarget = new LogTarget(['client' => 'freemobileTest']);
-    $this->assertSame(\Yii::$app->get('freemobileTest'), $logTarget->getClient());
+    it('should handle the application component', function() {
+      \Yii::$app->set('freemobileTest', new Client());
+      expect((new LogTarget(['client' => 'freemobileTest']))->client)->to->be->identicalTo(\Yii::$app->get('freemobileTest'));
+    });
   }
 
   /**
-   * @test ::__toString
+   * @test LogTarget::__toString
    */
   public function testToString() {
-    $target = (string) new LogTarget(['client' => \Yii::createObject(Client::class)]);
-    $this->assertStringStartsWith('yii\freemobile\LogTarget {', $target);
-    $this->assertContains('"client":"yii\\freemobile\\Client"', $target);
-    $this->assertContains('"enabled":true', $target);
+    $target = (string) new LogTarget(['client' => new Client()]);
+
+    it('should start with the class name', function() use ($target) {
+      expect($target)->to->startWith('yii\freemobile\LogTarget {');
+    });
+
+    it('should contain the instance properties', function() use ($target) {
+      expect($target)->to->contain('"client":"yii\\freemobile\\Client"')
+        ->and->contain('"enabled":true');
+    });
   }
 }
