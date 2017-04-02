@@ -1,9 +1,10 @@
 <?php
 namespace yii\freemobile;
 
-use freemobile\{Client as FreeMobileClient};
-use yii\base\{Component};
+use yii\base\{Component, InvalidConfigException, InvalidParamException, InvalidValueException};
 use yii\helpers\{Json};
+use yii\httpclient\{Client as HTTPClient, CurlTransport};
+use yii\web\{ServerErrorHttpException};
 
 /**
  * Sends messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
@@ -11,9 +12,9 @@ use yii\helpers\{Json};
 class Client extends Component implements \JsonSerializable {
 
   /**
-   * @var string An event that is triggered when a request is made to the remote service.
+   * @var string The URL of the default API end point.
    */
-  const EVENT_REQUEST = 'request';
+  const DEFAULT_ENDPOINT = 'https://smsapi.free-mobile.fr';
 
   /**
    * @var string An event that is triggered when a response is received from the remote service.

@@ -7,6 +7,7 @@ This file contains highlights of what changes on each version of the [Free Mobil
 - Breaking change: renamed the `Client::EVENT_RESPONSE` to `EVENT_AFTER_SEND`.
 - Breaking change: replaced most of getters and setters by properties.
 - Added the `Client::endPoint` property.
+- Added the `Client::DEFAULT_ENDPOINT` constant.
 - Ported the unit test assertions from [TDD](https://en.wikipedia.org/wiki/Test-driven_development) to [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development).
 - Updated the package dependencies.
 
