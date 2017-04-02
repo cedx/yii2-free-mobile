@@ -21,12 +21,12 @@ class Client extends Component implements \JsonSerializable {
   /**
    * @var string An event that is triggered when a response is received from the remote service.
    */
-  const EVENT_RESPONSE = 'reponse';
+  const EVENT_AFTER_SEND = HTTPClient::EVENT_AFTER_SEND;
 
   /**
-   * @var string The underlying Free Mobile client.
+   * @var string An event that is triggered when a request is made to the remote service.
    */
-  private $client;
+  const EVENT_BEFORE_SEND = HTTPClient::EVENT_BEFORE_SEND;
 
   /**
    * Initializes a new instance of the class.
@@ -73,6 +73,8 @@ class Client extends Component implements \JsonSerializable {
   /**
    * Sends a SMS message to the underlying account.
    * @param string $text The text of the message to send.
+   * @emits \yii\httpclient\RequestEvent The "beforeSend" event.
+   * @emits \yii\httpclient\RequestEvent The "afterSend" event.
    */
   public function sendMessage(string $text) {
     $this->client->sendMessage($text);

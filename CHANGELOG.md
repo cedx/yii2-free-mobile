@@ -3,6 +3,8 @@ This file contains highlights of what changes on each version of the [Free Mobil
 
 ## Version 5.0.0
 - Breaking change: removed the `RequestEvent` and `RequestResponse` classes.
+- Breaking change: renamed the `Client::EVENT_REQUEST` to `EVENT_BEFORE_SEND`.
+- Breaking change: renamed the `Client::EVENT_RESPONSE` to `EVENT_AFTER_SEND`.
 - Added the `Client::endPoint` property.
 - Ported the unit test assertions from [TDD](https://en.wikipedia.org/wiki/Test-driven_development) to [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development).
 - Updated the package dependencies.
