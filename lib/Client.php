@@ -102,5 +102,22 @@ class Client extends Component implements \JsonSerializable {
    * @throws ServerErrorHttpException An error occurred while querying the end point.
    */
   public function sendMessage(string $text) {
+    $message = trim($text);
+    if (!mb_strlen($message)) throw new InvalidParamException('The specified message is empty.');
+
+    try {
+      $queryParams = [
+        'msg' => mb_substr($message, 0, 160),
+        'pass' => $this->password,
+        'user' => $this->username
+      ];
+
+      $response = $this->httpClient->get("{$this->endPoint}/sendmsg", $queryParams)->send();
+      if (!$response->isOk) throw new InvalidValueException($response->statusCode);
+    }
+
+    catch (\Throwable $e) {
+      throw new ServerErrorHttpException('An error occurred while sending the message.');
+    }
   }
 }

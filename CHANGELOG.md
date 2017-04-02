@@ -8,6 +8,8 @@ This file contains highlights of what changes on each version of the [Free Mobil
 - Breaking change: replaced most of getters and setters by properties.
 - Added the `Client::endPoint` property.
 - Added the `Client::DEFAULT_ENDPOINT` constant.
+- Dropped the dependency on the `cedx/freemobile` module.
+- Moved the initializations from the constrcutors to the `init()` methods.
 - Ported the unit test assertions from [TDD](https://en.wikipedia.org/wiki/Test-driven_development) to [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development).
 - Updated the package dependencies.
 
