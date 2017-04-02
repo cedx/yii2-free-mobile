@@ -11,27 +11,19 @@ use yii\log\{Logger, Target};
 class LogTarget extends Target implements \JsonSerializable {
 
   /**
-   * @var int How many messages should be accumulated before they are exported.
-   */
-  public $exportInterval = 1;
-
-  /**
-   * @var array The list of the PHP predefined variables that should be logged in a message.
-   */
-  public $logVars = [];
-
-  /**
    * @var Client The underlying client used to send the messages.
    */
   private $client;
 
   /**
-   * Initializes a new instance of the class.
-   * @param array $config Name-value pairs that will be used to initialize the object properties.
+   * Initializes the object.
    */
-  public function __construct($config = []) {
+  public function init() {
+    $this->exportInterval = 1;
+    $this->logVars = [];
     $this->setClient('freemobile');
-    parent::__construct($config);
+
+    parent::init();
   }
 
   /**

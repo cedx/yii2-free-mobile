@@ -33,16 +33,7 @@ class Client extends Component implements \JsonSerializable {
    * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
   public function __construct(array $config = []) {
-    $this->client = new FreeMobileClient();
     parent::__construct($config);
-
-    $this->client->on('request', function($request) {
-      $this->trigger(static::EVENT_REQUEST, new RequestEvent(['request' => $request]));
-    });
-
-    $this->client->on('response', function($response) {
-      $this->trigger(static::EVENT_RESPONSE, new ResponseEvent(['response' => $response]));
-    });
   }
 
   /**
@@ -55,27 +46,20 @@ class Client extends Component implements \JsonSerializable {
   }
 
   /**
-   * Gets the URL of the API end point.
-   * @return string The URL of the API end point.
+   * Initializes the object.
+   * @throws InvalidConfigException The account credentials are invalid.
    */
-  public function getEndPoint(): string {
-    return $this->client->getEndPoint();
-  }
+  public function init() {
+    parent::init();
+    if (!mb_strlen($this->username) || !mb_strlen($this->password)) throw new InvalidConfigException('The account credentials are invalid.');
 
-  /**
-   * Gets the identification key associated to the account.
-   * @return string The identification key associated to the account.
-   */
-  public function getPassword(): string {
-    return $this->client->getPassword();
-  }
+    $this->httpClient->on(HTTPClient::EVENT_BEFORE_SEND, function($event) {
+      $this->trigger(static::EVENT_BEFORE_SEND, $event);
+    });
 
-  /**
-   * Gets the user name associated to the account.
-   * @return string The user name associated to the account.
-   */
-  public function getUsername(): string {
-    return $this->client->getUsername();
+    $this->httpClient->on(HTTPClient::EVENT_AFTER_SEND, function($event) {
+      $this->trigger(static::EVENT_AFTER_SEND, $event);
+    });
   }
 
   /**
