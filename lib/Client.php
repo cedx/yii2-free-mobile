@@ -7,9 +7,6 @@ use yii\helpers\{Json};
 
 /**
  * Sends messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
- * @property string $endPoint The URL of the API end point.
- * @property string $password The identification key associated to the account.
- * @property string $username The user name associated to the account.
  */
 class Client extends Component implements \JsonSerializable {
 
@@ -29,10 +26,31 @@ class Client extends Component implements \JsonSerializable {
   const EVENT_BEFORE_SEND = HTTPClient::EVENT_BEFORE_SEND;
 
   /**
+   * @var string The URL of the API end point.
+   */
+  public $endPoint = self::DEFAULT_ENDPOINT;
+
+  /**
+   * @var string The identification key associated to the account.
+   */
+  public $password = '';
+
+  /**
+   * @var string The user name associated to the account.
+   */
+  public $username = '';
+
+  /**
+   * @var HTTPClient The underlying HTTP client.
+   */
+  private $httpClient;
+
+  /**
    * Initializes a new instance of the class.
    * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
   public function __construct(array $config = []) {
+    $this->httpClient = new HTTPClient(['transport' => CurlTransport::class]);
     parent::__construct($config);
   }
 
@@ -67,7 +85,11 @@ class Client extends Component implements \JsonSerializable {
    * @return \stdClass The map in JSON format corresponding to this object.
    */
   public function jsonSerialize(): \stdClass {
-    return $this->client->jsonSerialize();
+    return (object) [
+      'endPoint' => $this->endPoint,
+      'password' => $this->password,
+      'username' => $this->username
+    ];
   }
 
   /**
@@ -75,38 +97,9 @@ class Client extends Component implements \JsonSerializable {
    * @param string $text The text of the message to send.
    * @emits \yii\httpclient\RequestEvent The "beforeSend" event.
    * @emits \yii\httpclient\RequestEvent The "afterSend" event.
+   * @throws InvalidParamException The specified message is empty.
+   * @throws ServerErrorHttpException An error occurred while querying the end point.
    */
   public function sendMessage(string $text) {
-    $this->client->sendMessage($text);
-  }
-
-  /**
-   * Sets the URL of the API end point.
-   * @param string $value The new URL of the API end point.
-   * @return Client This instance.
-   */
-  public function setEndPoint(string $value) {
-    $this->client->setEndPoint($value);
-    return $this;
-  }
-
-  /**
-   * Sets the identification key associated to the account.
-   * @param string $value The new identification key.
-   * @return Client This instance.
-   */
-  public function setPassword(string $value): self {
-    $this->client->setPassword($value);
-    return $this;
-  }
-
-  /**
-   * Sets the user name associated to the account.
-   * @param string $value The new username.
-   * @return Client This instance.
-   */
-  public function setUsername(string $value): self {
-    $this->client->setUsername($value);
-    return $this;
   }
 }
