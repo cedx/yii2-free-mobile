@@ -10,6 +10,13 @@ use yii\log\{Logger};
 class LogTargetTest extends TestCase {
 
   /**
+   * Performs a common set of tasks just before the first test of the class is run.
+   */
+  public static function setUpBeforeClass() {
+    \Yii::$app->set('freemobile', new Client(['username' => 'anonymous', 'password' => 'secret']));
+  }
+
+  /**
    * @test LogTarget::formatMessage
    */
   public function testFormatMessage() {
@@ -36,7 +43,7 @@ class LogTargetTest extends TestCase {
    */
   public function testSetClient() {
     it('should handle the application component', function() {
-      \Yii::$app->set('freemobileTest', new Client());
+      \Yii::$app->set('freemobileTest', new Client(['username' => 'anonymous', 'password' => 'secret']));
       expect((new LogTarget(['client' => 'freemobileTest']))->client)->to->be->identicalTo(\Yii::$app->get('freemobileTest'));
     });
   }
@@ -45,14 +52,14 @@ class LogTargetTest extends TestCase {
    * @test LogTarget::__toString
    */
   public function testToString() {
-    $target = (string) new LogTarget(['client' => new Client()]);
+    $target = (string) new LogTarget();
 
     it('should start with the class name', function() use ($target) {
       expect($target)->to->startWith('yii\freemobile\LogTarget {');
     });
 
     it('should contain the instance properties', function() use ($target) {
-      expect($target)->to->contain('"client":"yii\\freemobile\\Client"')
+      expect($target)->to->contain(sprintf('"client":"%s"', str_replace('\\', '\\\\', Client::class)))
         ->and->contain('"enabled":true');
     });
   }

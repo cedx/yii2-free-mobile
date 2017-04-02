@@ -16,14 +16,14 @@ class LogTarget extends Target implements \JsonSerializable {
   private $client;
 
   /**
-   * Initializes the object.
+   * Initializes a new instance of the class.
+   * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
-  public function init() {
+  public function __construct(array $config = []) {
     $this->exportInterval = 1;
     $this->logVars = [];
-    $this->setClient('freemobile');
 
-    parent::init();
+    parent::__construct($config);
   }
 
   /**
@@ -65,6 +65,14 @@ class LogTarget extends Target implements \JsonSerializable {
    */
   public function getClient() {
     return $this->client;
+  }
+
+  /**
+   * Initializes the object.
+   */
+  public function init() {
+    parent::init();
+    if (!$this->getClient()) $this->setClient('freemobile');
   }
 
   /**
