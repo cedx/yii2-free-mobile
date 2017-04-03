@@ -29,8 +29,8 @@ class ClientTest extends TestCase {
     it('should return a map with the same public values', function() {
       $data = (new Client(['username' => 'anonymous', 'password' => 'secret']))->jsonSerialize();
       expect(get_object_vars($data))->to->have->lengthOf(3);
-      expect($data->password)->to->equal('secret');
-      expect($data->username)->to->equal('anonymous');
+      expect($data)->to->have->property('password')->that->equal('secret');
+      expect($data)->to->have->property('username')->that->equal('anonymous');
     });
   }
 
