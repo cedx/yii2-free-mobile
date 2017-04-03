@@ -100,7 +100,7 @@ class Client extends Component implements \JsonSerializable {
    * @emits \yii\httpclient\RequestEvent The "beforeSend" event.
    * @emits \yii\httpclient\RequestEvent The "afterSend" event.
    * @throws InvalidParamException The specified message is empty.
-   * @throws ServerErrorHttpException An error occurred while querying the end point.
+   * @throws ServerErrorHttpException An error occurred while sending the message.
    */
   public function sendMessage(string $text) {
     $message = trim($text);
@@ -118,7 +118,7 @@ class Client extends Component implements \JsonSerializable {
     }
 
     catch (\Throwable $e) {
-      throw new ServerErrorHttpException('An error occurred while sending the message.');
+      throw new ServerErrorHttpException($e->getMessage());
     }
   }
 }
