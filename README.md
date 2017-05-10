@@ -24,10 +24,12 @@ $ composer require cedx/yii2-free-mobile
 In your application configuration file, you can use the following component:
 
 ```php
+use yii\freemobile\{Client};
+
 return [
   'components' => [
     'freemobile' => [
-      'class' => 'yii\freemobile\Client',
+      'class' => Client::class,
       'password' => '<your Free Mobile identification key>',
       'username' => '<your Free Mobile user name>'
     ]
@@ -39,7 +41,7 @@ Once the `yii\freemobile\Client` component initialized with your credentials, yo
 
 ```php
 try {
-  $client = \Yii::$app->get('freemobile');
+  $client = \Yii::$app->freemobile;
   $client->sendMessage('Hello World!');
   echo 'The message was sent successfully.';
 }
@@ -55,13 +57,15 @@ The text of the messages will be automatically truncated to 160 characters: you 
 In your application configuration file, you can use the following log target:
 
 ```php
+use yii\freemobile\{LogTarget};
+
 return [
   'bootstrap' => [ 'log' ],
   'components' => [
     'log' => [
       'targets' => [
         [
-          'class' => 'yii\freemobile\LogTarget',
+          'class' => LogTarget::class,
           'client' => 'freemobile',
           'levels' => [ 'error' ]
         ]
