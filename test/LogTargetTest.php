@@ -13,7 +13,11 @@ class LogTargetTest extends TestCase {
    * Performs a common set of tasks just before the first test of the class is run.
    */
   public static function setUpBeforeClass() {
-    \Yii::$app->set('freemobile', new Client(['username' => 'anonymous', 'password' => 'secret']));
+    \Yii::$app->set('freemobile', [
+      'class' => Client::class,
+      'username' => 'anonymous',
+      'password' => 'secret'
+    ]);
   }
 
   /**
@@ -43,7 +47,12 @@ class LogTargetTest extends TestCase {
    */
   public function testSetClient() {
     it('should handle the application component', function() {
-      \Yii::$app->set('freemobileTest', new Client(['username' => 'anonymous', 'password' => 'secret']));
+      \Yii::$app->set('freemobileTest', [
+        'class' => Client::class,
+        'username' => 'anonymous',
+        'password' => 'secret'
+      ]);
+
       expect((new LogTarget(['client' => 'freemobileTest']))->client)->to->be->identicalTo(\Yii::$app->get('freemobileTest'));
     });
   }

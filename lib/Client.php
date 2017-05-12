@@ -51,7 +51,10 @@ class Client extends Component implements \JsonSerializable {
    * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
   public function __construct(array $config = []) {
-    $this->httpClient = new HTTPClient(['transport' => CurlTransport::class]);
+    $this->httpClient = \Yii::createObject([
+      'class' => HTTPClient::class,
+      'transport' => CurlTransport::class
+    ]);
 
     $this->httpClient->on(HTTPClient::EVENT_BEFORE_SEND, function($event) {
       $this->trigger(static::EVENT_BEFORE_SEND, $event);
