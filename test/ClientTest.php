@@ -14,7 +14,7 @@ class ClientTest extends TestCase {
    */
   public function testInit() {
     it('should throw an exception if the username or password is empty', function() {
-      expect(function() { new Client(); })->to->throw(InvalidConfigException::class);
+      expect(function() { new Client; })->to->throw(InvalidConfigException::class);
     });
 
     it('should not throw an exception if the username and password are not empty', function() {

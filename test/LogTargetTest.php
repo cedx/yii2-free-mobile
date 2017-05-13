@@ -26,7 +26,7 @@ class LogTargetTest extends TestCase {
   public function testFormatMessage() {
     it('should return a formatted message including the log level and category', function() {
       $message = ['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
-      expect((new LogTarget())->formatMessage($message))->to->equal('[error@tests] Hello World!');
+      expect((new LogTarget)->formatMessage($message))->to->equal('[error@tests] Hello World!');
     });
   }
 
@@ -35,7 +35,7 @@ class LogTargetTest extends TestCase {
    */
   public function testJsonSerialize() {
     it('should return a map with the same public values', function() {
-      $data = (new LogTarget())->jsonSerialize();
+      $data = (new LogTarget)->jsonSerialize();
       expect(get_object_vars($data))->to->have->lengthOf(8);
       expect($data->client)->to->equal(Client::class);
       expect($data->enabled)->to->be->true;
@@ -61,7 +61,7 @@ class LogTargetTest extends TestCase {
    * @test LogTarget::__toString
    */
   public function testToString() {
-    $target = (string) new LogTarget();
+    $target = (string) new LogTarget;
 
     it('should start with the class name', function() use ($target) {
       expect($target)->to->startWith('yii\freemobile\LogTarget {');
