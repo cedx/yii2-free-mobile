@@ -1,6 +1,7 @@
 <?php
 namespace yii\freemobile;
 
+use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 use yii\log\{Logger};
 
