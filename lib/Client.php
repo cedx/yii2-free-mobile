@@ -4,7 +4,7 @@ namespace yii\freemobile;
 
 use yii\base\{Component, InvalidConfigException, InvalidParamException, InvalidValueException};
 use yii\helpers\{Json};
-use yii\httpclient\{Client as HTTPClient, CurlTransport};
+use yii\httpclient\{Client as HTTPClient, CurlTransport, RequestEvent};
 use yii\web\{ServerErrorHttpException};
 
 /**
@@ -57,11 +57,11 @@ class Client extends Component implements \JsonSerializable {
       'transport' => CurlTransport::class
     ]);
 
-    $this->httpClient->on(HTTPClient::EVENT_BEFORE_SEND, function($event) {
+    $this->httpClient->on(HTTPClient::EVENT_BEFORE_SEND, function(RequestEvent $event) {
       $this->trigger(static::EVENT_BEFORE_SEND, $event);
     });
 
-    $this->httpClient->on(HTTPClient::EVENT_AFTER_SEND, function($event) {
+    $this->httpClient->on(HTTPClient::EVENT_AFTER_SEND, function(RequestEvent $event) {
       $this->trigger(static::EVENT_AFTER_SEND, $event);
     });
 
