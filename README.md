@@ -117,10 +117,11 @@ $ export FREEMOBILE_PASSWORD="<your Free Mobile identification key>"
 Then, you can run the `test` script from the command prompt:
 
 ```shell
-$ phing test
+$ composer test
 ```
 
 ## See also
+- [API reference](https://cedx.github.io/yii2-free-mobile)
 - [Code coverage](https://coveralls.io/github/cedx/yii2-free-mobile)
 - [Continuous integration](https://travis-ci.org/cedx/yii2-free-mobile)
 

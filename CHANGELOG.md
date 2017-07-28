@@ -1,6 +1,11 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free Mobile for Yii](https://github.com/cedx/yii2-free-mobile) library.
 
+## Version 5.1.0
+- Enabled the strict typing.
+- Replaced [phpDocumentor](https://www.phpdoc.org) documentation generator by [ApiGen](https://github.com/ApiGen/ApiGen).
+- Updated the package dependencies.
+
 ## Version 5.0.0
 - Breaking change: removed the `RequestEvent` and `RequestResponse` classes.
 - Breaking change: renamed the `Client::EVENT_REQUEST` to `EVENT_BEFORE_SEND`.
