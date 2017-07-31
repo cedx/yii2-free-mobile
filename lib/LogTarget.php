@@ -48,7 +48,7 @@ class LogTarget extends Target implements \JsonSerializable {
 
   /**
    * Formats a log message for display as a string.
-   * @param string $message The log message to be formatted.
+   * @param array $message The log message to be formatted.
    * @return string The formatted message.
    */
   public function formatMessage($message): string {
