@@ -38,7 +38,7 @@ class LogTargetTest extends TestCase {
   public function testJsonSerialize() {
     it('should return a map with the same public values', function() {
       $data = (new LogTarget)->jsonSerialize();
-      expect(get_object_vars($data))->to->have->lengthOf(8);
+      expect(\Yii::getObjectVars($data))->to->have->lengthOf(8);
       expect($data->client)->to->equal(Client::class);
       expect($data->enabled)->to->be->true;
     });

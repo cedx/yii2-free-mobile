@@ -2,6 +2,8 @@
 declare(strict_types=1);
 namespace yii\freemobile;
 
+use GuzzleHttp\Psr7\{Uri};
+use Psr\Http\Message\{UriInterface};
 use yii\base\{Component, InvalidConfigException, InvalidParamException, InvalidValueException};
 use yii\helpers\{Json};
 use yii\httpclient\{Client as HttpClient, CurlTransport};
@@ -9,6 +11,7 @@ use yii\web\{ServerErrorHttpException};
 
 /**
  * Sends messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
+ * @property UriInterface $endPoint The URL of the API end point.
  */
 class Client extends Component implements \JsonSerializable {
 
@@ -28,11 +31,6 @@ class Client extends Component implements \JsonSerializable {
   const EVENT_BEFORE_SEND = HttpClient::EVENT_BEFORE_SEND;
 
   /**
-   * @var string The URL of the API end point.
-   */
-  public $endPoint = self::DEFAULT_ENDPOINT;
-
-  /**
    * @var string The identification key associated to the account.
    */
   public $password = '';
@@ -41,6 +39,11 @@ class Client extends Component implements \JsonSerializable {
    * @var string The user name associated to the account.
    */
   public $username = '';
+
+  /**
+   * @var Uri The URL of the API end point.
+   */
+  private $endPoint;
 
   /**
    * @var HttpClient The underlying HTTP client.
@@ -78,12 +81,21 @@ class Client extends Component implements \JsonSerializable {
   }
 
   /**
+   * Gets the URL of the API end point.
+   * @return UriInterface The URL of the API end point.
+   */
+  public function getEndPoint() {
+    return $this->endPoint;
+  }
+
+  /**
    * Initializes the object.
    * @throws InvalidConfigException The account credentials are invalid.
    */
   public function init() {
     parent::init();
     if (!mb_strlen($this->username) || !mb_strlen($this->password)) throw new InvalidConfigException('The account credentials are invalid.');
+    if (!$this->getEndPoint()) $this->setEndPoint(static::DEFAULT_ENDPOINT);
   }
 
   /**
@@ -124,5 +136,18 @@ class Client extends Component implements \JsonSerializable {
     catch (\Throwable $e) {
       throw new ServerErrorHttpException($e->getMessage());
     }
+  }
+
+  /**
+   * Sets the URL of the API end point.
+   * @param string|UriInterface $value The new URL of the API end point.
+   * @return Client This instance.
+   */
+  public function setEndPoint($value): self {
+    if ($value instanceof UriInterface) $this->endPoint = $value;
+    else if (is_string($value)) $this->endPoint = new Uri($value);
+    else $this->endPoint = null;
+
+    return $this;
   }
 }
