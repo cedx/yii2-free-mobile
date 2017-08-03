@@ -4,6 +4,7 @@ This file contains highlights of what changes on each version of the [Free Mobil
 ## Version 6.0.0
 - Breaking change: the `Client::$endPoint` property is now an instance of [`Psr\Http\Message\UriInterface`](http://www.php-fig.org/psr/psr-7/#35-psrhttpmessageuriinterface) interface.
 - Added new unit tests.
+- Updated the package dependencies.
 
 ## Version 5.1.0
 - Enabled the strict typing.
