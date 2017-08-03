@@ -4,6 +4,7 @@ namespace yii\freemobile;
 
 use function PHPUnit\Expect\{expect, fail, it};
 use PHPUnit\Framework\{TestCase};
+use Psr\Http\Message\{UriInterface};
 use yii\base\{InvalidConfigException};
 
 /**
@@ -30,7 +31,7 @@ class ClientTest extends TestCase {
   public function testJsonSerialize() {
     it('should return a map with the same public values', function() {
       $data = (new Client(['username' => 'anonymous', 'password' => 'secret']))->jsonSerialize();
-      expect(get_object_vars($data))->to->have->lengthOf(3);
+      expect(\Yii::getObjectVars($data))->to->have->lengthOf(3);
       expect($data)->to->have->property('password')->that->equal('secret');
       expect($data)->to->have->property('username')->that->equal('anonymous');
     });
@@ -68,6 +69,24 @@ class ClientTest extends TestCase {
         expect(true)->to->be->true;
       });
     }
+  }
+
+  /**
+   * @test Client::setEndPoint
+   */
+  public function testSetEndPoint() {
+    it('should return an instance of `UriInterface` for strings', function() {
+      $endPoint = (new Client(['username' => 'anonymous', 'password' => 'secret']))
+        ->setEndPoint('https://github.com/cedx/free-mobile.php')->getEndPoint();
+
+      expect($endPoint)->to->be->instanceOf(UriInterface::class);
+      expect((string) $endPoint)->to->equal('https://github.com/cedx/free-mobile.php');
+    });
+
+    it('should return a `null` reference for unsupported values', function() {
+      expect((new Client(['username' => 'anonymous', 'password' => 'secret']))
+        ->setEndPoint(123)->getEndPoint())->to->be->null;
+    });
   }
 
   /**
