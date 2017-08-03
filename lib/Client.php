@@ -104,7 +104,7 @@ class Client extends Component implements \JsonSerializable {
    */
   public function jsonSerialize(): \stdClass {
     return (object) [
-      'endPoint' => $this->endPoint,
+      'endPoint' => ($endPoint = $this->getEndPoint()) ? (string) $endPoint : null,
       'password' => $this->password,
       'username' => $this->username
     ];
@@ -129,7 +129,8 @@ class Client extends Component implements \JsonSerializable {
         'user' => $this->username
       ];
 
-      $response = $this->httpClient->get("{$this->endPoint}/sendmsg", $queryParams)->send();
+      $uri = $this->getEndPoint()->withPath('/sendmsg');
+      $response = $this->httpClient->get((string) $uri, $queryParams)->send();
       if (!$response->isOk) throw new InvalidValueException($response->statusCode);
     }
 
