@@ -76,16 +76,16 @@ class ClientTest extends TestCase {
    */
   public function testSetEndPoint() {
     it('should return an instance of `UriInterface` for strings', function() {
-      $endPoint = (new Client(['username' => 'anonymous', 'password' => 'secret']))
-        ->setEndPoint('https://github.com/cedx/free-mobile.php')->getEndPoint();
-
-      expect($endPoint)->to->be->instanceOf(UriInterface::class);
-      expect((string) $endPoint)->to->equal('https://github.com/cedx/free-mobile.php');
+      $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
+      $client->endPoint = 'https://github.com/cedx/yii2-free-mobile';
+      expect($client->endPoint)->to->be->instanceOf(UriInterface::class);
+      expect((string) $client->endPoint)->to->equal('https://github.com/cedx/yii2-free-mobile');
     });
 
     it('should return a `null` reference for unsupported values', function() {
-      expect((new Client(['username' => 'anonymous', 'password' => 'secret']))
-        ->setEndPoint(123)->getEndPoint())->to->be->null;
+      $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
+      $client->endPoint = 123;
+      expect($client->endPoint)->to->be->null;
     });
   }
 
