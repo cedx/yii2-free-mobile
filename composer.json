@@ -1,11 +1,9 @@
 {
   "description": "Free Mobile connector for the Yii Framework.",
   "homepage": "https://github.com/cedx/yii2-free-mobile",
-  "name": "cedx/yii2-free-mobile",
-
   "license": "Apache-2.0",
+  "name": "cedx/yii2-free-mobile",
   "type": "yii2-extension",
-
   "authors": [{
     "email": "cedric@belin.io",
     "name": "Cédric Belin"
