@@ -1,7 +1,7 @@
 {
   "description": "Free Mobile connector for the Yii Framework.",
   "homepage": "https://github.com/cedx/yii2-free-mobile",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "name": "cedx/yii2-free-mobile",
   "type": "yii2-extension",
   "authors": [{
