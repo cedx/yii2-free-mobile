@@ -100,7 +100,7 @@ This file contains highlights of what changes on each version of the [Free Mobil
 ## Version [0.4.1](https://github.com/cedx/yii2-free-mobile/compare/v0.4.0...v0.4.1)
 - Replaced the custom build scripts by [Phing](https://www.phing.info).
 
-## Version [0.4.0](https://github.com/cedx/yii2-free-mobile/compare/v0.3.0...v0.4.0)
+## Version [0.4.0](https://github.com/cedx/yii2-free-mobile/compare/v0.3.1...v0.4.0)
 - Dropped the development dependencies based on [Node.js](https://nodejs.org).
 - Replaced the build system by custom scripts.
 - Replaced the documentation system by [Doxygen](http://www.doxygen.org).
