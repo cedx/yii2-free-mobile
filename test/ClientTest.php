@@ -4,7 +4,6 @@ namespace yii\freemobile;
 
 use function PHPUnit\Expect\{expect, fail, it};
 use PHPUnit\Framework\{TestCase};
-use Psr\Http\Message\{UriInterface};
 use yii\base\{InvalidConfigException};
 
 /**
@@ -57,23 +56,5 @@ class ClientTest extends TestCase {
         expect(true)->to->be->true;
       });
     }
-  }
-
-  /**
-   * @test Client::setEndPoint
-   */
-  public function testSetEndPoint() {
-    it('should return an instance of `UriInterface` for strings', function() {
-      $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
-      $client->endPoint = 'https://github.com/cedx/yii2-free-mobile';
-      expect($client->endPoint)->to->be->instanceOf(UriInterface::class);
-      expect((string) $client->endPoint)->to->equal('https://github.com/cedx/yii2-free-mobile');
-    });
-
-    it('should return a `null` reference for unsupported values', function() {
-      $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
-      $client->endPoint = 123;
-      expect($client->endPoint)->to->be->null;
-    });
   }
 }
