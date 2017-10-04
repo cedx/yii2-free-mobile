@@ -26,18 +26,6 @@ class ClientTest extends TestCase {
   }
 
   /**
-   * @test Client::jsonSerialize
-   */
-  public function testJsonSerialize() {
-    it('should return a map with the same public values', function() {
-      $data = (new Client(['username' => 'anonymous', 'password' => 'secret']))->jsonSerialize();
-      expect(\Yii::getObjectVars($data))->to->have->lengthOf(3);
-      expect($data)->to->have->property('password')->that->equal('secret');
-      expect($data)->to->have->property('username')->that->equal('anonymous');
-    });
-  }
-
-  /**
    * @test Client::sendMessage
    */
   public function testSendMessage() {
@@ -86,22 +74,6 @@ class ClientTest extends TestCase {
       $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
       $client->endPoint = 123;
       expect($client->endPoint)->to->be->null;
-    });
-  }
-
-  /**
-   * @test Client::__toString
-   */
-  public function testToString() {
-    $client = (string) new Client(['username' => 'anonymous', 'password' => 'secret']);
-
-    it('should start with the class name', function() use ($client) {
-      expect($client)->to->startWith('yii\freemobile\Client {');
-    });
-
-    it('should contain the instance properties', function() use ($client) {
-      expect($client)->to->contain('"username":"anonymous"')
-        ->and->contain('"password":"secret"');
     });
   }
 }

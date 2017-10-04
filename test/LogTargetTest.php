@@ -33,18 +33,6 @@ class LogTargetTest extends TestCase {
   }
 
   /**
-   * @test LogTarget::jsonSerialize
-   */
-  public function testJsonSerialize() {
-    it('should return a map with the same public values', function() {
-      $data = (new LogTarget)->jsonSerialize();
-      expect(\Yii::getObjectVars($data))->to->have->lengthOf(8);
-      expect($data->client)->to->equal(Client::class);
-      expect($data->enabled)->to->be->true;
-    });
-  }
-
-  /**
    * @test LogTarget::setClient
    */
   public function testSetClient() {
@@ -56,22 +44,6 @@ class LogTargetTest extends TestCase {
       ]);
 
       expect((new LogTarget(['client' => 'freemobileTest']))->client)->to->be->identicalTo(\Yii::$app->get('freemobileTest'));
-    });
-  }
-
-  /**
-   * @test LogTarget::__toString
-   */
-  public function testToString() {
-    $target = (string) new LogTarget;
-
-    it('should start with the class name', function() use ($target) {
-      expect($target)->to->startWith('yii\freemobile\LogTarget {');
-    });
-
-    it('should contain the instance properties', function() use ($target) {
-      expect($target)->to->contain(sprintf('"client":"%s"', str_replace('\\', '\\\\', Client::class)))
-        ->and->contain('"enabled":true');
     });
   }
 }

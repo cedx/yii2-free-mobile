@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Free Mobile for Yii](https://github.com/cedx/yii2-free-mobile) library.
 
+## Version [7.0.0](https://github.com/cedx/yii2-free-mobile/compare/v6.0.0...v7.0.0)
+- Breaking change: removed the `jsonSerialize()` and `__toString()` methods.
+- Updated the package dependencies.
+
 ## Version [6.0.0](https://github.com/cedx/yii2-free-mobile/compare/v5.1.0...v6.0.0)
 - Breaking change: the `Client::$endPoint` property is now an instance of [`Psr\Http\Message\UriInterface`](http://www.php-fig.org/psr/psr-7/#35-psrhttpmessageuriinterface) interface.
 - Added new unit tests.

@@ -5,7 +5,6 @@ namespace yii\freemobile;
 use GuzzleHttp\Psr7\{Uri};
 use Psr\Http\Message\{UriInterface};
 use yii\base\{Component, InvalidConfigException, InvalidParamException, InvalidValueException};
-use yii\helpers\{Json};
 use yii\httpclient\{Client as HttpClient, CurlTransport};
 use yii\web\{ServerErrorHttpException};
 
@@ -13,7 +12,7 @@ use yii\web\{ServerErrorHttpException};
  * Sends messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
  * @property UriInterface $endPoint The URL of the API end point.
  */
-class Client extends Component implements \JsonSerializable {
+class Client extends Component {
 
   /**
    * @var string The URL of the default API end point.
@@ -72,15 +71,6 @@ class Client extends Component implements \JsonSerializable {
   }
 
   /**
-   * Returns a string representation of this object.
-   * @return string The string representation of this object.
-   */
-  public function __toString(): string {
-    $json = Json::encode($this);
-    return static::class." $json";
-  }
-
-  /**
    * Gets the URL of the API end point.
    * @return UriInterface The URL of the API end point.
    */
@@ -97,19 +87,6 @@ class Client extends Component implements \JsonSerializable {
     if (!mb_strlen($this->username) || !mb_strlen($this->password)) throw new InvalidConfigException('The account credentials are invalid.');
     if (!$this->getEndPoint()) $this->setEndPoint(static::DEFAULT_ENDPOINT);
   }
-
-  /**
-   * Converts this object to a map in JSON format.
-   * @return \stdClass The map in JSON format corresponding to this object.
-   */
-  public function jsonSerialize(): \stdClass {
-    return (object) [
-      'endPoint' => ($endPoint = $this->getEndPoint()) ? (string) $endPoint : null,
-      'password' => $this->password,
-      'username' => $this->username
-    ];
-  }
-
   /**
    * Sends a SMS message to the underlying account.
    * @param string $text The text of the message to send.
@@ -145,10 +122,7 @@ class Client extends Component implements \JsonSerializable {
    * @return Client This instance.
    */
   public function setEndPoint($value): self {
-    if ($value instanceof UriInterface) $this->endPoint = $value;
-    else if (is_string($value)) $this->endPoint = new Uri($value);
-    else $this->endPoint = null;
-
+    $this->endPoint = is_string($value) ? new Uri($value) : $value;
     return $this;
   }
 }
