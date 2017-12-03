@@ -54,7 +54,7 @@ class LogTarget extends Target {
    * Gets the client used to send messages.
    * @return Client The component used to send messages.
    */
-  public function getClient() {
+  public function getClient(): ?Client {
     return $this->client;
   }
 
