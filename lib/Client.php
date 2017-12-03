@@ -74,7 +74,7 @@ class Client extends Component {
    * Gets the URL of the API end point.
    * @return UriInterface The URL of the API end point.
    */
-  public function getEndPoint() {
+  public function getEndPoint(): ?UriInterface {
     return $this->endPoint;
   }
 
