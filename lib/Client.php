@@ -82,7 +82,7 @@ class Client extends Component {
    * Initializes the object.
    * @throws InvalidConfigException The account credentials are invalid.
    */
-  public function init() {
+  public function init(): void {
     parent::init();
     if (!mb_strlen($this->username) || !mb_strlen($this->password)) throw new InvalidConfigException('The account credentials are invalid.');
     if (!$this->getEndPoint()) $this->setEndPoint(static::DEFAULT_ENDPOINT);
@@ -95,7 +95,7 @@ class Client extends Component {
    * @throws InvalidParamException The specified message is empty.
    * @throws ServerErrorHttpException An error occurred while sending the message.
    */
-  public function sendMessage(string $text) {
+  public function sendMessage(string $text): void {
     $message = trim($text);
     if (!mb_strlen($message)) throw new InvalidParamException('The specified message is empty.');
 

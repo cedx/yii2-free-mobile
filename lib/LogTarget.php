@@ -29,7 +29,7 @@ class LogTarget extends Target {
   /**
    * Exports log messages to a specific destination.
    */
-  public function export() {
+  public function export(): void {
     $previousEncoding = mb_internal_encoding();
     mb_internal_encoding(\Yii::$app->charset);
     $this->getClient()->sendMessage(implode("\n", array_map([$this, 'formatMessage'], $this->messages)));
@@ -61,7 +61,7 @@ class LogTarget extends Target {
   /**
    * Initializes the object.
    */
-  public function init() {
+  public function init(): void {
     parent::init();
     if (!$this->getClient()) $this->setClient('freemobile');
   }

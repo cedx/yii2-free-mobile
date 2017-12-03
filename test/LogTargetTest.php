@@ -14,7 +14,7 @@ class LogTargetTest extends TestCase {
   /**
    * Performs a common set of tasks just before the first test of the class is run.
    */
-  public static function setUpBeforeClass() {
+  public static function setUpBeforeClass(): void {
     \Yii::$app->set('freemobile', [
       'class' => Client::class,
       'username' => 'anonymous',
@@ -25,7 +25,7 @@ class LogTargetTest extends TestCase {
   /**
    * @test LogTarget::formatMessage
    */
-  public function testFormatMessage() {
+  public function testFormatMessage(): void {
     it('should return a formatted message including the log level and category', function() {
       $message = ['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
       expect((new LogTarget)->formatMessage($message))->to->equal('[error@tests] Hello World!');
@@ -35,7 +35,7 @@ class LogTargetTest extends TestCase {
   /**
    * @test LogTarget::setClient
    */
-  public function testSetClient() {
+  public function testSetClient(): void {
     it('should handle the application component', function() {
       \Yii::$app->set('freemobileTest', [
         'class' => Client::class,

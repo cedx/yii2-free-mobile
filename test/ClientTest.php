@@ -14,7 +14,7 @@ class ClientTest extends TestCase {
   /**
    * @test Client::init
    */
-  public function testInit() {
+  public function testInit(): void {
     it('should throw an exception if the username or password is empty', function() {
       expect(function() { new Client; })->to->throw(InvalidConfigException::class);
     });
@@ -27,7 +27,7 @@ class ClientTest extends TestCase {
   /**
    * @test Client::sendMessage
    */
-  public function testSendMessage() {
+  public function testSendMessage(): void {
     it('should not send valid messages with invalid credentials', function() {
       try {
         (new Client(['username' => '', 'password' => '']))->sendMessage('Hello World!');
