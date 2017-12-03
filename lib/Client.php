@@ -15,19 +15,19 @@ use yii\web\{ServerErrorHttpException};
 class Client extends Component {
 
   /**
-   * @var string The URL of the default API end point.
-   */
-  const DEFAULT_ENDPOINT = 'https://smsapi.free-mobile.fr';
-
-  /**
    * @var string An event that is triggered when a response is received from the remote service.
    */
-  const EVENT_AFTER_SEND = HttpClient::EVENT_AFTER_SEND;
+  public const EVENT_AFTER_SEND = HttpClient::EVENT_AFTER_SEND;
 
   /**
    * @var string An event that is triggered when a request is made to the remote service.
    */
-  const EVENT_BEFORE_SEND = HttpClient::EVENT_BEFORE_SEND;
+  public const EVENT_BEFORE_SEND = HttpClient::EVENT_BEFORE_SEND;
+
+  /**
+   * @var string The URL of the default API end point.
+   */
+  private const DEFAULT_ENDPOINT = 'https://smsapi.free-mobile.fr';
 
   /**
    * @var string The identification key associated to the account.
