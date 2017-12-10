@@ -89,7 +89,7 @@ Emitted every time a request is made to the remote service:
 use yii\freemobile\{Client};
 use yii\httpclient\{RequestEvent};
 
-$client->on(Client::EVENT_BEFORE_SEND, function(RequestEvent $event) {
+$client->on(Client::EVENT_REQUEST, function(RequestEvent $event) {
   echo 'Client request: ', $event->request->url;
 });
 ```
@@ -101,7 +101,7 @@ Emitted every time a response is received from the remote service:
 use yii\freemobile\{Client};
 use yii\httpclient\{RequestEvent};
 
-$client->on(Client::EVENT_AFTER_SEND, function(RequestEvent $event) {
+$client->on(Client::EVENT_RESPONSE, function(RequestEvent $event) {
   echo 'Server response: ', $event->response->statusCode;
 });
 ```
