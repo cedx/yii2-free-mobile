@@ -3,6 +3,7 @@ This file contains highlights of what changes on each version of the [Free Mobil
 
 ## Version [8.0.0](https://github.com/cedx/yii2-free-mobile/compare/v7.0.0...v8.0.0)
 - Breaking change: raised the required [PHP](https://secure.php.net) version.
+- Breaking change: renamed the `Client::EVENT_BEFORE_SEND` constant to `EVENT_REQUEST`.
 - Breaking change: using PHP 7.1 features, like nullable types and void functions.
 
 ## Version [7.0.0](https://github.com/cedx/yii2-free-mobile/compare/v6.0.0...v7.0.0)
