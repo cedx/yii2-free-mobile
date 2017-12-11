@@ -82,7 +82,7 @@ As text of the log messages are truncated to 160 characters, you should not chan
 ## Events
 The `yii\freemobile\Client` class triggers some events during its life cycle.
 
-### The `beforeSend` event
+### The `request` event
 Emitted every time a request is made to the remote service:
 
 ```php
@@ -94,7 +94,7 @@ $client->on(Client::EVENT_REQUEST, function(RequestEvent $event) {
 });
 ```
 
-### The `afterSend` event
+### The `response` event
 Emitted every time a response is received from the remote service:
 
 ```php
