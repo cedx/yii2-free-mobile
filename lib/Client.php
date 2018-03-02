@@ -6,7 +6,6 @@ use GuzzleHttp\Psr7\{Uri};
 use Psr\Http\Message\{UriInterface};
 use yii\base\{Component, InvalidArgumentException, InvalidConfigException, InvalidValueException};
 use yii\httpclient\{Client as HttpClient, CurlTransport};
-use yii\web\{ServerErrorHttpException};
 
 /**
  * Sends messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
