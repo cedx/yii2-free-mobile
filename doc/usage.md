@@ -31,10 +31,8 @@ if the specified message is empty. It throws a `yii\freemobile\ClientException` 
     The text of the messages will be automatically truncated to **160** characters:  
     you can't send multipart messages using this library.
 
-## Yii integration
-
-### Client events
-The `yii\freemobile\Client` class triggers some events during its life cycle:
+## Client events
+The `yii\freemobile\Client` class triggers some [events](http://www.yiiframework.com/doc-2.0/guide-concept-events.html) during its life cycle:
 
 - `Client::EVENT_REQUEST` : emitted every time a request is made to the remote service.
 - `Client::EVENT_RESPONSE` : emitted every time a response is received from the remote service.
@@ -54,6 +52,8 @@ $client->on(Client::EVENT_RESPONSE, function(RequestEvent $event) {
   echo 'Server response: ', $event->response->statusCode;
 });
 ```
+
+## Yii integration
 
 ### Application component
 In your [application configuration](http://www.yiiframework.com/doc-2.0/guide-concept-configurations.html#application-configurations) file, you can register the `yii\freemobile\Client` class as an [application component](http://www.yiiframework.com/doc-2.0/guide-structure-application-components.html):
