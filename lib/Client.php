@@ -4,7 +4,7 @@ namespace yii\freemobile;
 
 use GuzzleHttp\Psr7\{Uri};
 use Psr\Http\Message\{UriInterface};
-use yii\base\{Component, InvalidConfigException, InvalidParamException, InvalidValueException};
+use yii\base\{Component, InvalidArgumentException, InvalidConfigException, InvalidValueException};
 use yii\httpclient\{Client as HttpClient, CurlTransport};
 use yii\web\{ServerErrorHttpException};
 
@@ -81,35 +81,32 @@ class Client extends Component {
    */
   public function init(): void {
     parent::init();
-    if (!mb_strlen($this->username) || !mb_strlen($this->password)) throw new InvalidConfigException('The account credentials are invalid.');
+    if (!mb_strlen($this->username) || !mb_strlen($this->password)) throw new InvalidConfigException('The account credentials are invalid');
     if (!$this->getEndPoint()) $this->setEndPoint(static::DEFAULT_ENDPOINT);
   }
   /**
    * Sends a SMS message to the underlying account.
    * @param string $text The text of the message to send.
-   * @emits \yii\httpclient\RequestEvent The "beforeSend" event.
-   * @emits \yii\httpclient\RequestEvent The "afterSend" event.
-   * @throws InvalidParamException The specified message is empty.
-   * @throws ServerErrorHttpException An error occurred while sending the message.
+   * @throws InvalidArgumentException The specified message is empty.
+   * @throws ClientException An error occurred while sending the message.
    */
   public function sendMessage(string $text): void {
     $message = trim($text);
-    if (!mb_strlen($message)) throw new InvalidParamException('The specified message is empty.');
+    if (!mb_strlen($message)) throw new InvalidArgumentException('The specified message is empty');
+
+    $uri = $this->getEndPoint()->withPath('/sendmsg')->withQuery(http_build_query([
+      'msg' => mb_substr($message, 0, 160),
+      'pass' => $this->password,
+      'user' => $this->username
+    ]));
 
     try {
-      $queryParams = [
-        'msg' => mb_substr($message, 0, 160),
-        'pass' => $this->password,
-        'user' => $this->username
-      ];
-
-      $uri = $this->getEndPoint()->withPath('/sendmsg');
-      $response = $this->httpClient->get((string) $uri, $queryParams)->send();
-      if (!$response->isOk) throw new InvalidValueException($response->statusCode);
+      $response = $this->httpClient->get((string) $uri)->send();
+      if (!$response->isOk) throw new InvalidValueException($response->content, (int) $response->statusCode);
     }
 
     catch (\Throwable $e) {
-      throw new ServerErrorHttpException($e->getMessage());
+      throw new ClientException($e->getMessage(), $uri, $e);
     }
   }
 

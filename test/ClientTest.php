@@ -31,7 +31,7 @@ class ClientTest extends TestCase {
     it('should not send valid messages with invalid credentials', function() {
       try {
         (new Client(['username' => '', 'password' => '']))->sendMessage('Hello World!');
-        fail('A message with empty credentials should not be sent.');
+        fail('A message with empty credentials should not be sent');
       }
 
       catch (\Throwable $e) {
@@ -42,7 +42,7 @@ class ClientTest extends TestCase {
     it('should not send invalid messages with valid credentials', function() {
       try {
         (new Client(['username' => 'anonymous', 'password' => 'secret']))->sendMessage('');
-        fail('An empty message with credentials should not be sent.');
+        fail('An empty message with credentials should not be sent');
       }
 
       catch (\Throwable $e) {

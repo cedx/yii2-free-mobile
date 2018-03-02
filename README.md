@@ -14,8 +14,8 @@ If you plan to play with the sources, you will also need the latest [Phing](http
 From a command prompt, run:
 
 ```shell
-$ composer global require fxp/composer-asset-plugin
-$ composer require cedx/yii2-free-mobile
+composer global require fxp/composer-asset-plugin
+composer require cedx/yii2-free-mobile
 ```
 
 ## Usage
@@ -110,14 +110,14 @@ $client->on(Client::EVENT_RESPONSE, function(RequestEvent $event) {
 In order to run the tests, you must set two environment variables:
 
 ```shell
-$ export FREEMOBILE_USERNAME="<your Free Mobile user name>"
-$ export FREEMOBILE_PASSWORD="<your Free Mobile identification key>"
+export FREEMOBILE_USERNAME="<your Free Mobile user name>"
+export FREEMOBILE_PASSWORD="<your Free Mobile identification key>"
 ```
 
 Then, you can run the `test` script from the command prompt:
 
 ```shell
-$ composer test
+composer test
 ```
 
 ## See also
