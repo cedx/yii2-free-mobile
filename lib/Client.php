@@ -54,10 +54,7 @@ class Client extends Component {
    * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
   public function __construct(array $config = []) {
-    $this->httpClient = \Yii::createObject([
-      'class' => HttpClient::class,
-      'transport' => CurlTransport::class
-    ]);
+    $this->httpClient = new HttpClient(['transport' => CurlTransport::class]);
 
     $this->httpClient->on(HttpClient::EVENT_BEFORE_SEND, function($event) {
       $this->trigger(static::EVENT_REQUEST, $event);
