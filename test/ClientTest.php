@@ -4,7 +4,8 @@ namespace yii\freemobile;
 
 use function PHPUnit\Expect\{expect, fail, it};
 use PHPUnit\Framework\{TestCase};
-use yii\base\{InvalidConfigException};
+use Psr\Http\Message\{UriInterface};
+use yii\base\{InvalidArgumentException, InvalidConfigException};
 
 /**
  * Tests the features of the `yii\freemobile\Client` class.
@@ -35,7 +36,7 @@ class ClientTest extends TestCase {
       }
 
       catch (\Throwable $e) {
-        expect(true)->to->be->true;
+        expect($e)->to->be->an->instanceOf(InvalidConfigException::class);
       }
     });
 
@@ -46,7 +47,18 @@ class ClientTest extends TestCase {
       }
 
       catch (\Throwable $e) {
-        expect(true)->to->be->true;
+        expect($e)->to->be->an->instanceOf(InvalidArgumentException::class);
+      }
+    });
+
+    it('should throw a `ClientException` if a network error occurred', function() {
+      try {
+        (new Client(['username' => 'anonymous', 'password' => 'secret', 'endPoint' => 'http://localhost']))->sendMessage('Hello World!');
+        fail('A message with an invalid endpoint should not be sent');
+      }
+
+      catch (\Throwable $e) {
+        expect($e)->to->be->an->instanceOf(ClientException::class);
       }
     });
 
@@ -56,5 +68,23 @@ class ClientTest extends TestCase {
         expect(true)->to->be->true;
       });
     }
+  }
+
+  /**
+   * @test Client::setEndPoint
+   */
+  public function testSetEndPoint(): void {
+    $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
+
+    it('should not be empty by default', function() use ($client) {
+      expect($client->endPoint)->to->be->an->instanceOf(UriInterface::class);
+      expect((string) $client->endPoint)->to->equal('https://smsapi.free-mobile.fr');
+    });
+
+    it('should be an instance of the `Uri` class', function() use ($client) {
+      $client->endPoint = 'http://localhost';
+      expect($client->endPoint)->to->be->an->instanceOf(UriInterface::class);
+      expect((string) $client->endPoint)->to->equal('http://localhost');
+    });
   }
 }

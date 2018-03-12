@@ -2,8 +2,10 @@
 declare(strict_types=1);
 namespace yii\freemobile;
 
+use yii\base\{InvalidConfigException};
+use yii\di\{Instance};
 use yii\helpers\{VarDumper};
-use yii\log\{Logger, Target};
+use yii\log\{Target};
 
 /**
  * Sends the log messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
@@ -12,9 +14,9 @@ use yii\log\{Logger, Target};
 class LogTarget extends Target {
 
   /**
-   * @var Client The underlying client used to send the messages.
+   * @var array|string|Client The Free Mobile client or the application component ID of the Free Mobile client.
    */
-  private $client;
+  public $client = 'freemobile';
 
   /**
    * Initializes a new instance of the class.
@@ -30,10 +32,7 @@ class LogTarget extends Target {
    * Exports log messages to a specific destination.
    */
   public function export(): void {
-    $previousEncoding = mb_internal_encoding();
-    mb_internal_encoding(\Yii::$app->charset);
-    $this->getClient()->sendMessage(implode("\n", array_map([$this, 'formatMessage'], $this->messages)));
-    mb_internal_encoding($previousEncoding);
+    $this->client->sendMessage(implode("\n", array_map([$this, 'formatMessage'], $this->messages)));
   }
 
   /**
@@ -42,37 +41,16 @@ class LogTarget extends Target {
    * @return string The formatted message.
    */
   public function formatMessage($message): string {
-    list($text, $level, $category) = $message;
-    return strtr('[{level}@{category}] {text}', [
-      '{category}' => $category,
-      '{level}' => Logger::getLevelName($level),
-      '{text}' => is_string($text) ? $text : VarDumper::export($text)
-    ]);
-  }
-
-  /**
-   * Gets the client used to send messages.
-   * @return Client The component used to send messages.
-   */
-  public function getClient(): ?Client {
-    return $this->client;
+    list($text,, $category) = $message;
+    return sprintf('[%s] %s', $category, is_string($text) ? $text : VarDumper::export($text));
   }
 
   /**
    * Initializes the object.
+   * @throws InvalidConfigException The client component is not properly configured.
    */
   public function init(): void {
     parent::init();
-    if (!$this->getClient()) $this->setClient('freemobile');
-  }
-
-  /**
-   * Sets the client used to send messages.
-   * @param Client|string $value The component to use for sending messages.
-   * @return LogTarget This instance.
-   */
-  public function setClient($value): self {
-    $this->client = is_string($value) ? \Yii::$app->get($value) : $value;
-    return $this;
+    $this->client = Instance::ensure($this->client, Client::class);
   }
 }
