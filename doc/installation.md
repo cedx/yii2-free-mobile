@@ -36,5 +36,9 @@ Now in your [PHP](https://secure.php.net) code, you can use:
 
 ```php
 <?php
-use yii\freemobile\{Client, ClientException};
+use yii\freemobile\{
+  Client,
+  ClientException,
+  LogTarget
+};
 ```

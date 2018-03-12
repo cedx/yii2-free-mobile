@@ -104,7 +104,7 @@ return [
 ];
 ```
 
-The `LogTarget->client` property accepts a `Client` instance or the application component ID of a Free Mobile client.
+The optional `LogTarget->client` property accepts a `yii\freemobile\Client` instance or the application component ID of a Free Mobile client. It defaults to the `"freemobile"` string.
 
 !!! tip
     As text of the log messages is truncated to **160** characters,

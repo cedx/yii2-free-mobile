@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [8.2.0](https://github.com/cedx/yii2-free-mobile/compare/v8.1.0...v8.2.0)
+- Optimized the build system.
+- Updated the package dependencies.
+
 ## Version [8.1.0](https://github.com/cedx/yii2-free-mobile/compare/v8.0.0...v8.1.0)
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Added the `ClientException` class.
