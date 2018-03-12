@@ -1,6 +1,7 @@
 # Changelog
 
 ## Version [8.2.0](https://github.com/cedx/yii2-free-mobile/compare/v8.1.0...v8.2.0)
+- Added new unit tests.
 - Optimized the build system.
 - Updated the package dependencies.
 
