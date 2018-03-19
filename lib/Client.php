@@ -9,7 +9,7 @@ use yii\httpclient\{Client as HttpClient, CurlTransport};
 use yii\web\{HttpException};
 
 /**
- * Sends messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
+ * Sends messages by SMS to a Free Mobile account.
  * @property UriInterface $endPoint The URL of the API end point.
  */
 class Client extends Component {

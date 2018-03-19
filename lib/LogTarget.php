@@ -8,7 +8,7 @@ use yii\helpers\{VarDumper};
 use yii\log\{Target};
 
 /**
- * Sends the log messages by SMS to a [Free Mobile](http://mobile.free.fr) account.
+ * Sends the log messages by SMS to a Free Mobile account.
  * @property Client $client The component used to send messages.
  */
 class LogTarget extends Target {
