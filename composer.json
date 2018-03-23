@@ -2,9 +2,7 @@
   "description": "Free Mobile connector for the Yii Framework.",
   "homepage": "https://cedx.github.io/yii2-free-mobile",
   "license": "MIT",
-  "minimum-stability": "dev",
   "name": "cedx/yii2-free-mobile",
-  "prefer-stable": true,
   "type": "yii2-extension",
   "authors": [{
     "email": "cedric@belin.io",
@@ -30,13 +28,12 @@
     "ext-json": "*",
     "ext-mbstring": "*",
     "guzzlehttp/psr7": "^1.4.2",
-    "yiisoft/yii2": "^2.0.14",
+    "yiisoft/yii2": "^2.0.15",
     "yiisoft/yii2-httpclient": "^2.0.6"
   },
   "require-dev": {
     "cedx/coveralls": "^6.0.0",
     "cedx/phpunit-expect": "^0.4.0",
-    "phpdocumentor/phpdocumentor": "dev-develop",
     "phing/phing": "^2.16.1"
   },
   "scripts": {
