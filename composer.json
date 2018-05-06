@@ -1,6 +1,6 @@
 {
   "description": "Free Mobile connector for the Yii Framework.",
-  "homepage": "https://cedx.github.io/yii2-free-mobile",
+  "homepage": "https://dev.belin.io/yii2-free-mobile",
   "license": "MIT",
   "name": "cedx/yii2-free-mobile",
   "type": "yii2-extension",
@@ -41,7 +41,7 @@
     "test": "phpunit --colors=auto --verbose"
   },
   "support": {
-    "docs": "https://cedx.github.io/yii2-free-mobile/api",
+    "docs": "https://dev.belin.io/yii2-free-mobile/api",
     "issues": "https://github.com/cedx/yii2-free-mobile/issues"
   }
 }
