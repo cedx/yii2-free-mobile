@@ -12,7 +12,7 @@ try {
     'username' => 'your account identifier', // e.g. "12345678"
     'password' => 'your API key' // e.g. "a9BkVohJun4MA"
   ];
-  
+
   $client = new Client($config);
   $client->sendMessage('Hello World!');
   echo 'The message was sent successfully';
@@ -24,7 +24,7 @@ catch (\Throwable $e) {
 }
 ```
 
-The `Client->sendMessage()` method throws a [`yii\base\InvalidArgumentException`](http://www.yiiframework.com/doc-2.0/yii-base-invalidargumentexception.html)
+The `Client->sendMessage()` method throws a [`yii\base\InvalidArgumentException`](https://www.yiiframework.com/doc/api/2.0/yii-base-invalidargumentexception)
 if the specified message is empty. It throws a `yii\freemobile\ClientException` if any error occurred while sending the message.
 
 !!! warning
@@ -32,7 +32,7 @@ if the specified message is empty. It throws a `yii\freemobile\ClientException` 
     you can't send multipart messages using this library.
 
 ## Client events
-The `yii\freemobile\Client` class triggers some [events](http://www.yiiframework.com/doc-2.0/guide-concept-events.html) during its life cycle:
+The `yii\freemobile\Client` class triggers some [events](https://www.yiiframework.com/doc/guide/2.0/en/concept-events) during its life cycle:
 
 - `Client::EVENT_REQUEST` : emitted every time a request is made to the remote service.
 - `Client::EVENT_RESPONSE` : emitted every time a response is received from the remote service.
@@ -56,7 +56,7 @@ $client->on(Client::EVENT_RESPONSE, function(RequestEvent $event) {
 ## Yii integration
 
 ### Application component
-In your [application configuration](http://www.yiiframework.com/doc-2.0/guide-concept-configurations.html#application-configurations) file, you can register the `yii\freemobile\Client` class as an [application component](http://www.yiiframework.com/doc-2.0/guide-structure-application-components.html):
+In your [application configuration](https://www.yiiframework.com/doc/guide/2.0/en/concept-configurations#application-configurations) file, you can register the `yii\freemobile\Client` class as an [application component](https://www.yiiframework.com/doc/guide/2.0/en/structure-application-components):
 
 ```php
 <?php
@@ -73,7 +73,7 @@ return [
 ];
 ```
 
-Once the `freemobile` component is initialized with your credentials, you can use its `sendMessage()` method, available through the [application instance](http://www.yiiframework.com/doc-2.0/guide-structure-applications.html):
+Once the `freemobile` component is initialized with your credentials, you can use its `sendMessage()` method, available through the [application instance](https://www.yiiframework.com/doc/guide/2.0/en/structure-applications):
 
 ```php
 <?php
@@ -82,7 +82,7 @@ $client->sendMessage('Hello World!');
 ```
 
 ### Logging
-In your [application configuration](http://www.yiiframework.com/doc-2.0/guide-concept-configurations.html#application-configurations) file, you can register the `yii\freemobile\LogTarget` class as a [log target](http://www.yiiframework.com/doc-2.0/guide-runtime-logging.html#log-targets):
+In your [application configuration](https://www.yiiframework.com/doc/guide/2.0/en/concept-configurations#application-configurations) file, you can register the `yii\freemobile\LogTarget` class as a [log target](https://www.yiiframework.com/doc/guide/2.0/en/runtime-logging#log-targets):
 
 ```php
 <?php
