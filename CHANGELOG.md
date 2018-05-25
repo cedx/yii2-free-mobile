@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [9.0.0](https://github.com/cedx/yii2-free-mobile/compare/v8.2.0...v9.0.0)
+- Breaking change: raised the required [PHP](https://secure.php.net) version.
+- Updated the package dependencies.
+
 ## Version [8.2.0](https://github.com/cedx/yii2-free-mobile/compare/v8.1.0...v8.2.0)
 - Added new unit tests.
 - Optimized the build system.
