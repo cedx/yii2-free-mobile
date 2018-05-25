@@ -5,16 +5,16 @@ Before installing **Free Mobile for Yii**, you need to make sure you have [PHP](
 and [Composer](https://getcomposer.org), the PHP package manager, up and running.
 
 !!! warning
-    Free Mobile for Yii requires PHP >= **7.1.0**.
-    
+    Free Mobile for Yii requires PHP >= **7.2.0**.
+
 You can verify if you're already good to go with the following commands:
 
 ```shell
 php --version
-# PHP 7.2.3-1ubuntu1 (cli) (built: Mar 14 2018 22:03:58) ( NTS )
+# PHP 7.2.5-0ubuntu0.18.04.1 (cli) (built: May  9 2018 17:21:02) ( NTS )
 
 composer --version
-# Composer version 1.6.4 2018-04-13 12:04:24
+# Composer version 1.6.5 2018-05-04 11:44:59
 ```
 
 !!! info
