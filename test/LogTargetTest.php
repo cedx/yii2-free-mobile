@@ -5,7 +5,6 @@ namespace yii\freemobile;
 use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 use yii\base\{InvalidConfigException};
-use yii\console\{Application};
 use yii\log\{Logger};
 
 /**
@@ -54,10 +53,6 @@ class LogTargetTest extends TestCase {
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp(): void {
-    new Application([
-      'id' => 'yii2-free-mobile',
-      'basePath' => '@root/lib',
-      'components' => ['freemobile' => new Client(['username' => 'anonymous', 'password' => 'secret'])]
-    ]);
+    \Yii::$app->set('freemobile', new Client(['username' => 'anonymous', 'password' => 'secret']));
   }
 }
