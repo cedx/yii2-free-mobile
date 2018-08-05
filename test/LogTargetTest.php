@@ -2,7 +2,6 @@
 declare(strict_types=1);
 namespace yii\freemobile;
 
-use function PHPUnit\Expect\{expect, it};
 use PHPUnit\Framework\{TestCase};
 use yii\base\{InvalidConfigException};
 use yii\log\{Logger};
@@ -16,37 +15,47 @@ class LogTargetTest extends TestCase {
    * @test LogTarget::formatMessage
    */
   public function testFormatMessage(): void {
-    it('should return a formatted message including the log level and category', function() {
-      $message = ['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
-      expect((new LogTarget)->formatMessage($message))->to->equal('[tests] Hello World!');
-    });
+    // It should return a formatted message including the log level and category.
+    $message = ['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
+    assertThat((new LogTarget)->formatMessage($message), equalTo('[tests] Hello World!'));
   }
 
   /**
    * @test LogTarget::init
    */
   public function testInit(): void {
-    it('should throw an exception if the client is empty', function() {
+    // It should throw an exception if the client is empty.
+    try {
       \Yii::$app->set('freemobile', null);
-      expect(function() { new LogTarget; })->to->throw(InvalidConfigException::class);
-    });
+      new LogTarget;
+      $this->fail('Exception not thrown.');
+    }
 
-    it('should not throw an exception if the client is not empty', function() {
+    catch (\Throwable $e) {
+      assertThat($e, isInstanceOf(InvalidConfigException::class));
+    }
+
+    // It should not throw an exception if the client is not empty.
+    try {
       \Yii::$app->set('freemobile', new Client(['username' => 'anonymous', 'password' => 'secret']));
-      expect(function() { new LogTarget; })->to->not->throw;
-    });
+      new LogTarget;
+    }
 
-    it('should allow a customized client component ID', function() {
-      \Yii::$app->set('freemobileTest', [
-        'class' => Client::class,
-        'username' => 'anonymous',
-        'password' => 'secret'
-      ]);
+    catch (\Throwable $e) {
+      $this->fail($e->getMessage());
+    }
 
-      expect((new LogTarget(['client' => 'freemobileTest']))->client)
-        ->to->be->an->instanceOf(Client::class)
-        ->and->be->identicalTo(\Yii::$app->get('freemobileTest'));
-    });
+    // It should allow a customized client component ID.
+    \Yii::$app->set('freemobileTest', [
+      'class' => Client::class,
+      'username' => 'anonymous',
+      'password' => 'secret'
+    ]);
+
+    assertThat((new LogTarget(['client' => 'freemobileTest']))->client, logicalAnd(
+      isInstanceOf(Client::class),
+      identicalTo(\Yii::$app->get('freemobileTest'))
+    ));
   }
 
   /**
