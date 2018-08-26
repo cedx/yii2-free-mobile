@@ -12,18 +12,18 @@ use yii\base\{InvalidArgumentException, InvalidConfigException};
 class ClientTest extends TestCase {
 
   /**
-   * @test Client::init
+   * Tests the `Client::init
    */
-  public function testInit(): void {
+  function testInit(): void {
     // It should throw an exception if the username or password is empty.
     $this->expectException(InvalidConfigException::class);
     new Client;
   }
 
   /**
-   * @test Client::sendMessage
+   * Tests the `Client::sendMessage
    */
-  public function testSendMessage(): void {
+  function testSendMessage(): void {
     // It should not send invalid messages with valid credentials.
     try {
       (new Client(['username' => 'anonymous', 'password' => 'secret']))->sendMessage('');
@@ -58,9 +58,9 @@ class ClientTest extends TestCase {
   }
 
   /**
-   * @test Client::setEndPoint
+   * Tests the `Client::setEndPoint
    */
-  public function testSetEndPoint(): void {
+  function testSetEndPoint(): void {
     $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
 
     // It should not be empty by default.

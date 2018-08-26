@@ -12,18 +12,18 @@ use yii\log\{Logger};
 class LogTargetTest extends TestCase {
 
   /**
-   * @test LogTarget::formatMessage
+   * Tests the `LogTarget::formatMessage
    */
-  public function testFormatMessage(): void {
+  function testFormatMessage(): void {
     // It should return a formatted message including the log level and category.
     $message = ['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
     assertThat((new LogTarget)->formatMessage($message), equalTo('[tests] Hello World!'));
   }
 
   /**
-   * @test LogTarget::init
+   * Tests the `LogTarget::init
    */
-  public function testInit(): void {
+  function testInit(): void {
     // It should throw an exception if the client is empty.
     try {
       \Yii::$app->set('freemobile', null);

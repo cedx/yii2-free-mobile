@@ -17,12 +17,12 @@ class Client extends Component {
   /**
    * @var string An event that is triggered when a request is made to the remote service.
    */
-  public const EVENT_REQUEST = 'request';
+  const EVENT_REQUEST = 'request';
 
   /**
    * @var string An event that is triggered when a response is received from the remote service.
    */
-  public const EVENT_RESPONSE = 'response';
+  const EVENT_RESPONSE = 'response';
 
   /**
    * @var string The identification key associated to the account.
@@ -48,7 +48,7 @@ class Client extends Component {
    * Initializes a new instance of the class.
    * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
-  public function __construct(array $config = []) {
+  function __construct(array $config = []) {
     $this->httpClient = new HttpClient(['transport' => CurlTransport::class]);
 
     $this->httpClient->on(HttpClient::EVENT_BEFORE_SEND, function($event) {
@@ -66,7 +66,7 @@ class Client extends Component {
    * Gets the URL of the API end point.
    * @return UriInterface The URL of the API end point.
    */
-  public function getEndPoint(): ?UriInterface {
+  function getEndPoint(): ?UriInterface {
     return $this->endPoint;
   }
 
@@ -74,7 +74,7 @@ class Client extends Component {
    * Initializes the object.
    * @throws InvalidConfigException The account credentials are invalid.
    */
-  public function init(): void {
+  function init(): void {
     parent::init();
     if (!mb_strlen($this->username) || !mb_strlen($this->password)) throw new InvalidConfigException('The account credentials are invalid');
     if (!$this->getEndPoint()) $this->setEndPoint('https://smsapi.free-mobile.fr');
@@ -85,7 +85,7 @@ class Client extends Component {
    * @throws InvalidArgumentException The specified message is empty.
    * @throws ClientException An error occurred while sending the message.
    */
-  public function sendMessage(string $text): void {
+  function sendMessage(string $text): void {
     $message = trim($text);
     if (!mb_strlen($message)) throw new InvalidArgumentException('The specified message is empty');
 
@@ -110,7 +110,7 @@ class Client extends Component {
    * @param string|UriInterface $value The new URL of the API end point.
    * @return self This instance.
    */
-  public function setEndPoint($value): self {
+  function setEndPoint($value): self {
     $this->endPoint = is_string($value) ? new Uri($value) : $value;
     return $this;
   }

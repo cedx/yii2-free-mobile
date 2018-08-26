@@ -5,7 +5,7 @@ use yii\freemobile\{Client, ClientException, LogTarget};
 /**
  * Sends an SMS notification to a Free Mobile account.
  */
-function sendNotification() {
+function sendNotification(): void {
   try {
     $client = new Client([
       'username' => 'your account identifier', // e.g. "12345678"
@@ -25,6 +25,6 @@ function sendNotification() {
 /**
  * TODO
  */
-function logMessage() {
+function logMessage(): void {
 
 }

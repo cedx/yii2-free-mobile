@@ -22,7 +22,7 @@ class LogTarget extends Target {
    * Initializes a new instance of the class.
    * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
-  public function __construct(array $config = []) {
+  function __construct(array $config = []) {
     $this->exportInterval = 1;
     $this->logVars = [];
     parent::__construct($config);
@@ -31,7 +31,7 @@ class LogTarget extends Target {
   /**
    * Exports log messages to a specific destination.
    */
-  public function export(): void {
+  function export(): void {
     $this->client->sendMessage(implode("\n", array_map([$this, 'formatMessage'], $this->messages)));
   }
 
@@ -40,7 +40,7 @@ class LogTarget extends Target {
    * @param array $message The log message to be formatted.
    * @return string The formatted message.
    */
-  public function formatMessage($message): string {
+  function formatMessage($message): string {
     list($text,, $category) = $message;
     return sprintf('[%s] %s', $category, is_string($text) ? $text : VarDumper::export($text));
   }
@@ -49,7 +49,7 @@ class LogTarget extends Target {
    * Initializes the object.
    * @throws InvalidConfigException The client component is not properly configured.
    */
-  public function init(): void {
+  function init(): void {
     parent::init();
     $this->client = Instance::ensure($this->client, Client::class);
   }
