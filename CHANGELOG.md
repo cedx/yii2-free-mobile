@@ -143,7 +143,7 @@
 - Lowered the required [PHP](https://secure.php.net) version.
 
 ## Version [0.1.1](https://github.com/cedx/yii2-free-mobile/compare/v0.1.0...v0.1.1)
-- Using [Gulp.js](http://gulpjs.com) as build system.
+- Using [Gulp](https://gulpjs.com) as build system.
 
 ## Version 0.1.0
 - Initial release.
