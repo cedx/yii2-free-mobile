@@ -45,7 +45,7 @@ class Client extends Component {
   private $httpClient;
 
   /**
-   * Initializes a new instance of the class.
+   * Creates a new client.
    * @param array $config Name-value pairs that will be used to initialize the object properties.
    */
   function __construct(array $config = []) {
