@@ -13,6 +13,7 @@ class LogTargetTest extends TestCase {
 
   /**
    * Tests the `LogTarget::formatMessage
+   * @test
    */
   function testFormatMessage(): void {
     // It should return a formatted message including the log level and category.
@@ -22,6 +23,7 @@ class LogTargetTest extends TestCase {
 
   /**
    * Tests the `LogTarget::init
+   * @test
    */
   function testInit(): void {
     // It should throw an exception if the client is empty.
@@ -60,6 +62,7 @@ class LogTargetTest extends TestCase {
 
   /**
    * Performs a common set of tasks just before each test method is called.
+   * @before
    */
   protected function setUp(): void {
     \Yii::$app->set('freemobile', new Client(['username' => 'anonymous', 'password' => 'secret']));
