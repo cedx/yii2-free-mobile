@@ -35,7 +35,7 @@ class Client extends Component {
   public $username = '';
 
   /**
-   * @var Uri The URL of the API end point.
+   * @var UriInterface The URL of the API end point.
    */
   private $endPoint;
 
