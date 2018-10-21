@@ -7,20 +7,22 @@
 <?php
 use yii\freemobile\{Client, ClientException};
 
-try {
-  $config = [
-    'username' => 'your account identifier', // e.g. "12345678"
-    'password' => 'your API key' // e.g. "a9BkVohJun4MA"
-  ];
+function main(): void {
+  try {
+    $config = [
+      'username' => 'your account identifier', // e.g. "12345678"
+      'password' => 'your API key' // e.g. "a9BkVohJun4MA"
+    ];
 
-  $client = new Client($config);
-  $client->sendMessage('Hello World!');
-  echo 'The message was sent successfully';
-}
+    $client = new Client($config);
+    $client->sendMessage('Hello World!');
+    echo 'The message was sent successfully';
+  }
 
-catch (\Throwable $e) {
-  echo 'An error occurred: ', $e->getMessage(), PHP_EOL;
-  if ($e instanceof ClientException) echo 'From: ', $e->getUri(), PHP_EOL;
+  catch (\Throwable $e) {
+    echo 'An error occurred: ', $e->getMessage(), PHP_EOL;
+    if ($e instanceof ClientException) echo 'From: ', $e->getUri(), PHP_EOL;
+  }
 }
 ```
 
@@ -44,13 +46,17 @@ You can subscribe to them using the `on()` method:
 use yii\freemobile\{Client};
 use yii\httpclient\{RequestEvent};
 
-$client->on(Client::EVENT_REQUEST, function(RequestEvent $event) {
-  echo 'Client request: ', $event->request->url;
-});
+function main(): void {
+  $client = new Client;
+  
+  $client->on(Client::EVENT_REQUEST, function(RequestEvent $event) {
+    echo 'Client request: ', $event->request->url;
+  });
 
-$client->on(Client::EVENT_RESPONSE, function(RequestEvent $event) {
-  echo 'Server response: ', $event->response->statusCode;
-});
+  $client->on(Client::EVENT_RESPONSE, function(RequestEvent $event) {
+    echo 'Server response: ', $event->response->statusCode;
+  });
+}
 ```
 
 ## Yii integration
