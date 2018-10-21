@@ -2,7 +2,6 @@
 declare(strict_types=1);
 namespace yii\freemobile;
 
-use yii\base\{InvalidConfigException};
 use yii\di\{Instance};
 use yii\helpers\{VarDumper};
 use yii\log\{Target};
@@ -47,7 +46,6 @@ class LogTarget extends Target {
 
   /**
    * Initializes the object.
-   * @throws InvalidConfigException The client component is not properly configured.
    */
   function init(): void {
     parent::init();
