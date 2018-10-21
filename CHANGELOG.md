@@ -3,6 +3,7 @@
 ## Version [9.1.0](https://github.com/cedx/yii2-free-mobile/compare/v9.0.0...v9.1.0)
 - Added an example code.
 - Dropped the dependency on [PHPUnit-Expect](https://dev.belin.io/phpunit-expect).
+- Updated the package dependencies.
 
 ## Version [9.0.0](https://github.com/cedx/yii2-free-mobile/compare/v8.2.0...v9.0.0)
 - Breaking change: raised the required [PHP](https://secure.php.net) version.

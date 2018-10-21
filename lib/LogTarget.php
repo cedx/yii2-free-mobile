@@ -8,7 +8,6 @@ use yii\log\{Target};
 
 /**
  * Sends the log messages by SMS to a Free Mobile account.
- * @property Client $client The component used to send messages.
  */
 class LogTarget extends Target {
 
@@ -31,7 +30,9 @@ class LogTarget extends Target {
    * Exports log messages to a specific destination.
    */
   function export(): void {
-    $this->client->sendMessage(implode("\n", array_map([$this, 'formatMessage'], $this->messages)));
+    /** @var Client $client */
+    $client = $this->client;
+    $client->sendMessage(implode("\n", array_map([$this, 'formatMessage'], $this->messages)));
   }
 
   /**
@@ -49,6 +50,11 @@ class LogTarget extends Target {
    */
   function init(): void {
     parent::init();
-    $this->client = Instance::ensure($this->client, Client::class);
+
+    if (!$this->client instanceof Client) {
+      /** @var Client $client */
+      $client = Instance::ensure($this->client, Client::class);
+      $this->client = $client;
+    }
   }
 }

@@ -2,9 +2,10 @@
 declare(strict_types=1);
 namespace yii\freemobile;
 
+use GuzzleHttp\Psr7\{Uri};
 use PHPUnit\Framework\{TestCase};
 use Psr\Http\Message\{UriInterface};
-use yii\base\{InvalidArgumentException, InvalidConfigException};
+use yii\base\{InvalidArgumentException};
 
 /**
  * Tests the features of the `yii\freemobile\Client` class.
@@ -13,7 +14,7 @@ class ClientTest extends TestCase {
 
   /**
    * Tests the `Client::init()` method.
-   * @expectedException yii\base\InvalidConfigException
+   * @expectedException \yii\base\InvalidConfigException
    */
   function testInit(): void {
     // It should throw an exception if the username or password is empty.
@@ -70,7 +71,7 @@ class ClientTest extends TestCase {
     assertThat((string) $client->endPoint, equalTo('https://smsapi.free-mobile.fr'));
 
     // It should be an instance of the `Uri` class.
-    $client->endPoint = 'http://localhost';
+    $client->setEndPoint('http://localhost');
     assertThat($client->endPoint, isInstanceOf(UriInterface::class));
     assertThat((string) $client->endPoint, equalTo('http://localhost'));
   }

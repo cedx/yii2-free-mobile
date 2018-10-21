@@ -35,7 +35,7 @@ class Client extends Component {
   public $username = '';
 
   /**
-   * @var UriInterface The URL of the API end point.
+   * @var UriInterface|null The URL of the API end point.
    */
   private $endPoint;
 
@@ -64,7 +64,7 @@ class Client extends Component {
 
   /**
    * Gets the URL of the API end point.
-   * @return UriInterface The URL of the API end point.
+   * @return UriInterface|null The URL of the API end point.
    */
   function getEndPoint(): ?UriInterface {
     return $this->endPoint;
@@ -89,7 +89,9 @@ class Client extends Component {
     $message = trim($text);
     if (!mb_strlen($message)) throw new InvalidArgumentException('The specified message is empty');
 
-    $uri = $this->getEndPoint()->withPath('/sendmsg')->withQuery(http_build_query([
+    /** @var UriInterface $endPoint */
+    $endPoint = $this->getEndPoint();
+    $uri = $endPoint->withPath('/sendmsg')->withQuery(http_build_query([
       'msg' => mb_substr($message, 0, 160),
       'pass' => $this->password,
       'user' => $this->username
