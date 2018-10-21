@@ -23,8 +23,18 @@ function sendNotification(): void {
 }
 
 /**
- * TODO
+ * Logs a message by using an SMS notification.
  */
 function logMessage(): void {
+  \Yii::$app->log->targets[] = new LogTarget([
+    'categories' => ['app*'],
+    'levels' => ['error'],
+    'client' => [
+      'class' => Client::class,
+      'username' => 'your account identifier', // e.g. "12345678"
+      'password' => 'your API key' // e.g. "a9BkVohJun4MA"
+    ]
+  ]);
 
+  \Yii::error('An error occurred.');
 }
