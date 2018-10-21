@@ -12,7 +12,7 @@ use yii\log\{Logger};
 class LogTargetTest extends TestCase {
 
   /**
-   * Tests the `LogTarget::formatMessage
+   * Tests the `LogTarget::formatMessage()` method.
    * @test
    */
   function testFormatMessage(): void {
@@ -22,7 +22,7 @@ class LogTargetTest extends TestCase {
   }
 
   /**
-   * Tests the `LogTarget::init
+   * Tests the `LogTarget::init()` method.
    * @test
    */
   function testInit(): void {
