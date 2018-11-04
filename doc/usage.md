@@ -66,12 +66,10 @@ In your [application configuration](https://www.yiiframework.com/doc/guide/2.0/e
 
 ```php
 <?php
-use yii\freemobile\{Client};
-
 return [
   'components' => [
     'freemobile' => [
-      'class' => Client::class,
+      'class' => 'yii\freemobile\Client',
       'username' => 'your account identifier', // e.g. "12345678"
       'password' => 'your API key' // e.g. "a9BkVohJun4MA"
     ]
@@ -92,15 +90,13 @@ In your [application configuration](https://www.yiiframework.com/doc/guide/2.0/e
 
 ```php
 <?php
-use yii\freemobile\{LogTarget};
-
 return [
   'bootstrap' => ['log'],
   'components' => [
     'log' => [
       'targets' => [
         [
-          'class' => LogTarget::class,
+          'class' => 'yii\freemobile\LogTarget',
           'client' => 'freemobile',
           'levels' => ['error']
         ]
