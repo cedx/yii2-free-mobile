@@ -54,7 +54,7 @@
 - Updated the package dependencies.
 
 ## Version [4.1.1](https://github.com/cedx/yii2-free-mobile/compare/v4.1.0...v4.1.1)
-- Fixed the [issue #1](https://github.com/cedx/yii2-free-mobile/issues/1): unable to use an application component ID to initialize the `LogTarget::client` property.
+- Fixed the [GitHub issue #1](https://github.com/cedx/yii2-free-mobile/issues/1): unable to use an application component ID to initialize the `LogTarget::client` property.
 - Improved the code coverage.
 
 ## Version [4.1.0](https://github.com/cedx/yii2-free-mobile/compare/v4.0.0...v4.1.0)

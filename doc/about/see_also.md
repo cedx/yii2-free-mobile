@@ -3,7 +3,7 @@
 ## Development
 - [API reference](https://dev.belin.io/yii2-free-mobile/api)
 - [Packagist package](https://packagist.org/packages/cedx/yii2-free-mobile)
-- [Yii Framework](https://www.yiiframework.com)
+- [Submit an issue](https://git.belin.io/cedx/yii2-free-mobile/issues)
 
 ## Testing
 - [Continuous integration](https://travis-ci.com/cedx/yii2-free-mobile)
