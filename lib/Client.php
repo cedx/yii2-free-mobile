@@ -2,15 +2,14 @@
 declare(strict_types=1);
 namespace yii\freemobile;
 
-use GuzzleHttp\Psr7\{Uri};
-use Psr\Http\Message\{UriInterface};
+use League\Uri\{Http as Uri};
 use yii\base\{Component, InvalidArgumentException, InvalidConfigException};
 use yii\httpclient\{Client as HttpClient, CurlTransport};
 use yii\web\{HttpException};
 
 /**
  * Sends messages by SMS to a Free Mobile account.
- * @property UriInterface $endPoint The URL of the API end point.
+ * @property Uri $endPoint The URL of the API end point.
  */
 class Client extends Component {
 
@@ -35,7 +34,7 @@ class Client extends Component {
   public $username = '';
 
   /**
-   * @var UriInterface|null The URL of the API end point.
+   * @var Uri|null The URL of the API end point.
    */
   private $endPoint;
 
@@ -64,9 +63,9 @@ class Client extends Component {
 
   /**
    * Gets the URL of the API end point.
-   * @return UriInterface|null The URL of the API end point.
+   * @return Uri|null The URL of the API end point.
    */
-  function getEndPoint(): ?UriInterface {
+  function getEndPoint(): ?Uri {
     return $this->endPoint;
   }
 
@@ -89,7 +88,7 @@ class Client extends Component {
     $message = trim($text);
     if (!mb_strlen($message)) throw new InvalidArgumentException('The specified message is empty');
 
-    /** @var UriInterface $endPoint */
+    /** @var Uri $endPoint */
     $endPoint = $this->getEndPoint();
     $uri = $endPoint->withPath('/sendmsg')->withQuery(http_build_query([
       'msg' => mb_substr($message, 0, 160),
@@ -109,11 +108,11 @@ class Client extends Component {
 
   /**
    * Sets the URL of the API end point.
-   * @param UriInterface|string $value The new URL of the API end point.
+   * @param Uri|string $value The new URL of the API end point.
    * @return $this This instance.
    */
   function setEndPoint($value): self {
-    $this->endPoint = is_string($value) ? new Uri($value) : $value;
+    $this->endPoint = is_string($value) ? Uri::createFromString($value) : $value;
     return $this;
   }
 }

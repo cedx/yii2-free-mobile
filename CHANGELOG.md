@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [9.2.0](https://github.com/cedx/yii2-free-mobile/compare/v9.1.0...v9.2.0)
+- Replaced [Guzzle](https://github.com/guzzle/psr7) library by [PHP League](https://uri.thephpleague.com) for URIs.
+- Updated the package dependencies.
+
 ## Version [9.1.0](https://github.com/cedx/yii2-free-mobile/compare/v9.0.0...v9.1.0)
 - Added an example code.
 - Dropped the dependency on [PHPUnit-Expect](https://dev.belin.io/phpunit-expect).
