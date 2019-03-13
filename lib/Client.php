@@ -2,14 +2,14 @@
 declare(strict_types=1);
 namespace yii\freemobile;
 
-use League\Uri\{Http as Uri};
+use function League\Uri\{create as createUri};
+use League\Uri\{UriInterface};
 use yii\base\{Component, InvalidArgumentException, InvalidConfigException};
 use yii\httpclient\{Client as HttpClient, CurlTransport};
 use yii\web\{HttpException};
 
 /**
  * Sends messages by SMS to a Free Mobile account.
- * @property Uri $endPoint The URL of the API end point.
  */
 class Client extends Component {
 
@@ -24,6 +24,11 @@ class Client extends Component {
   const EVENT_RESPONSE = 'response';
 
   /**
+   * @var UriInterface|null The URL of the API end point.
+   */
+  public $endPoint;
+
+  /**
    * @var string The identification key associated to the account.
    */
   public $password = '';
@@ -32,11 +37,6 @@ class Client extends Component {
    * @var string The user name associated to the account.
    */
   public $username = '';
-
-  /**
-   * @var Uri|null The URL of the API end point.
-   */
-  private $endPoint;
 
   /**
    * @var HttpClient The underlying HTTP client.
@@ -55,21 +55,17 @@ class Client extends Component {
   }
 
   /**
-   * Gets the URL of the API end point.
-   * @return Uri|null The URL of the API end point.
-   */
-  function getEndPoint(): ?Uri {
-    return $this->endPoint;
-  }
-
-  /**
    * Initializes the object.
    * @throws InvalidConfigException The account credentials are invalid.
    */
   function init(): void {
     parent::init();
     if (!mb_strlen($this->username) || !mb_strlen($this->password)) throw new InvalidConfigException('The account credentials are invalid');
-    if (!$this->getEndPoint()) $this->setEndPoint('https://smsapi.free-mobile.fr');
+    if (!$this->endPoint) {
+      /** @var UriInterface $uri */
+      $uri = createUri('https://smsapi.free-mobile.fr');
+      $this->endPoint = $uri;
+    }
   }
   /**
    * Sends a SMS message to the underlying account.
@@ -81,8 +77,8 @@ class Client extends Component {
     $message = trim($text);
     if (!mb_strlen($message)) throw new InvalidArgumentException('The specified message is empty');
 
-    /** @var Uri $endPoint */
-    $endPoint = $this->getEndPoint();
+    /** @var UriInterface $endPoint */
+    $endPoint = $this->endPoint;
     $uri = $endPoint->withPath('/sendmsg')->withQuery(http_build_query([
       'msg' => mb_substr($message, 0, 160),
       'pass' => $this->password,
@@ -97,15 +93,5 @@ class Client extends Component {
     catch (\Throwable $e) {
       throw new ClientException($e->getMessage(), $uri, $e);
     }
-  }
-
-  /**
-   * Sets the URL of the API end point.
-   * @param Uri|string $value The new URL of the API end point.
-   * @return $this This instance.
-   */
-  function setEndPoint($value): self {
-    $this->endPoint = is_string($value) ? Uri::createFromString($value) : $value;
-    return $this;
   }
 }

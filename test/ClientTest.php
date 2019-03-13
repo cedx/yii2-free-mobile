@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace yii\freemobile;
 
-use League\Uri\{Http as Uri};
+use function League\Uri\{create as createUri};
 use PHPUnit\Framework\{TestCase};
 use yii\base\{InvalidArgumentException, InvalidConfigException};
 
@@ -37,7 +37,8 @@ class ClientTest extends TestCase {
 
     // It should throw a `ClientException` if a network error occurred.
     try {
-      (new Client(['username' => 'anonymous', 'password' => 'secret', 'endPoint' => 'http://localhost']))->sendMessage('Hello World!');
+      $config = ['username' => 'anonymous', 'password' => 'secret', 'endPoint' => createUri('http://localhost')];
+      (new Client($config))->sendMessage('Hello World!');
       $this->fail('A message with an invalid endpoint should not be sent');
     }
 
@@ -56,22 +57,5 @@ class ClientTest extends TestCase {
         assertThat($e, isInstanceOf(ClientException::class));
       }
     }
-  }
-
-  /**
-   * Tests the `Client::setEndPoint()` method.
-   * @test
-   */
-  function testSetEndPoint(): void {
-    $client = new Client(['username' => 'anonymous', 'password' => 'secret']);
-
-    // It should not be empty by default.
-    assertThat($client->endPoint, isInstanceOf(Uri::class));
-    assertThat((string) $client->endPoint, equalTo('https://smsapi.free-mobile.fr'));
-
-    // It should be an instance of the `Uri` class.
-    $client->setEndPoint('http://localhost');
-    assertThat($client->endPoint, isInstanceOf(Uri::class));
-    assertThat((string) $client->endPoint, equalTo('http://localhost'));
   }
 }

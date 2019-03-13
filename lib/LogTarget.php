@@ -50,7 +50,6 @@ class LogTarget extends Target {
    */
   function init(): void {
     parent::init();
-
     if (!$this->client instanceof Client) {
       /** @var Client $client */
       $client = Instance::ensure($this->client, Client::class);
