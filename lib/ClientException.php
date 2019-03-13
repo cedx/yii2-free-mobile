@@ -2,27 +2,28 @@
 declare(strict_types=1);
 namespace yii\freemobile;
 
-use League\Uri\{Http as Uri};
+use League\Uri\{UriInterface};
+use yii\base\{Exception};
 
 /**
  * An exception caused by an error in a `Client` request.
  */
-class ClientException extends \RuntimeException {
+class ClientException extends Exception {
 
   /**
-   * @var Uri|null The URL of the HTTP request or response that failed.
+   * @var UriInterface|null The URL of the HTTP request or response that failed.
    */
   private $uri;
 
   /**
    * Creates a new client exception.
    * @param string $message A message describing the error.
-   * @param string|Uri $uri The URL of the HTTP request or response that failed.
+   * @param UriInterface|null $uri The URL of the HTTP request or response that failed.
    * @param \Throwable $previous The previous exception used for the exception chaining.
    */
-  function __construct($message, $uri = null, \Throwable $previous = null) {
+  function __construct(string $message, UriInterface $uri = null, \Throwable $previous = null) {
     parent::__construct($message, 0, $previous);
-    $this->uri = is_string($uri) ? Uri::createFromString($uri) : $uri;
+    $this->uri = $uri;
   }
 
   /**
@@ -36,10 +37,18 @@ class ClientException extends \RuntimeException {
   }
 
   /**
-   * Gets the URL of the HTTP request or response that failed.
-   * @return Uri|null The URL of the HTTP request or response that failed.
+   * Gets the user-friendly name of this exception.
+   * @return string The user-friendly name of this exception.
    */
-  function getUri(): ?Uri {
+  function getName() {
+    return 'Free Mobile Client Exception';
+  }
+
+  /**
+   * Gets the URL of the HTTP request or response that failed.
+   * @return UriInterface|null The URL of the HTTP request or response that failed.
+   */
+  function getUri(): ?UriInterface {
     return $this->uri;
   }
 }
