@@ -47,7 +47,7 @@ use yii\freemobile\{Client};
 use yii\httpclient\{RequestEvent};
 
 function main(): void {
-  $client = new Client;
+  $client = new Client('your account identifier', 'your API key');
   
   $client->on(Client::EVENT_REQUEST, function(RequestEvent $event) {
     echo 'Client request: ', $event->request->url;
