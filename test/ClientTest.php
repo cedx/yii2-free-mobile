@@ -28,7 +28,7 @@ class ClientTest extends TestCase {
     // It should not send invalid messages with valid credentials.
     try {
       (new Client(['username' => 'anonymous', 'password' => 'secret']))->sendMessage('');
-      $this->fail('An empty message with credentials should not be sent');
+      $this->fail('An empty message with credentials should not be sent.');
     }
 
     catch (\Throwable $e) {
@@ -39,7 +39,7 @@ class ClientTest extends TestCase {
     try {
       $config = ['username' => 'anonymous', 'password' => 'secret', 'endPoint' => createUri('http://localhost')];
       (new Client($config))->sendMessage('Hello World!');
-      $this->fail('A message with an invalid endpoint should not be sent');
+      $this->fail('A message with an invalid endpoint should not be sent.');
     }
 
     catch (\Throwable $e) {
@@ -54,7 +54,7 @@ class ClientTest extends TestCase {
       }
 
       catch (\Throwable $e) {
-        assertThat($e, isInstanceOf(ClientException::class));
+        $this->fail('A valid message with valid credentials should be sent.');
       }
     }
   }
