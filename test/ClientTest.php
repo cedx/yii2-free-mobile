@@ -36,7 +36,7 @@ class ClientTest extends TestCase {
 
     // It should throw a `ClientException` if a network error occurred.
     try {
-      $config = ['username' => 'anonymous', 'password' => 'secret', 'endPoint' => createUri('http://localhost')];
+      $config = ['username' => 'anonymous', 'password' => 'secret', 'endPoint' => createUri('http://localhost/')];
       (new Client($config))->sendMessage('Hello World!');
       $this->fail('Exception not thrown.');
     }

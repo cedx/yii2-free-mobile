@@ -62,7 +62,7 @@ class Client extends Component {
     if (!mb_strlen($this->username) || !mb_strlen($this->password)) throw new InvalidConfigException('The account credentials are invalid');
     if (!$this->endPoint) {
       /** @var UriInterface $uri */
-      $uri = createUri('https://smsapi.free-mobile.fr');
+      $uri = createUri('https://smsapi.free-mobile.fr/');
       $this->endPoint = $uri;
     }
   }
@@ -78,7 +78,7 @@ class Client extends Component {
 
     /** @var UriInterface $endPoint */
     $endPoint = $this->endPoint;
-    $uri = $endPoint->withPath('/sendmsg')->withQuery(http_build_query([
+    $uri = $endPoint->withPath('sendmsg')->withQuery(http_build_query([
       'msg' => mb_substr($message, 0, 160),
       'pass' => $this->password,
       'user' => $this->username
