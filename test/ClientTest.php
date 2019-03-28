@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 namespace yii\freemobile;
 
-use function League\Uri\{create as createUri};
+use GuzzleHttp\Psr7\{Uri};
 use PHPUnit\Framework\{TestCase};
 use yii\base\{InvalidArgumentException, InvalidConfigException};
 
@@ -36,7 +36,7 @@ class ClientTest extends TestCase {
 
     // It should throw a `ClientException` if a network error occurred.
     try {
-      $config = ['username' => 'anonymous', 'password' => 'secret', 'endPoint' => createUri('http://localhost/')];
+      $config = ['username' => 'anonymous', 'password' => 'secret', 'endPoint' => new Uri('http://localhost/')];
       (new Client($config))->sendMessage('Hello World!');
       $this->fail('Exception not thrown.');
     }

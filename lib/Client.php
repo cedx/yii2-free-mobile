@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 namespace yii\freemobile;
 
-use function League\Uri\{create as createUri};
-use League\Uri\{UriInterface};
+use function GuzzleHttp\Psr7\{build_query};
+use GuzzleHttp\Psr7\{Uri, UriResolver};
 use yii\base\{Component, InvalidArgumentException, InvalidConfigException};
 use yii\httpclient\{Client as HttpClient, CurlTransport};
 use yii\web\{HttpException};
@@ -23,7 +23,7 @@ class Client extends Component {
   const EVENT_RESPONSE = 'response';
 
   /**
-   * @var UriInterface|null The URL of the API end point.
+   * @var \Psr\Http\Message\UriInterface The URL of the API end point.
    */
   public $endPoint;
 
@@ -60,11 +60,10 @@ class Client extends Component {
   function init(): void {
     parent::init();
     if (!mb_strlen($this->username) || !mb_strlen($this->password)) throw new InvalidConfigException('The account credentials are invalid');
-    if (!$this->endPoint) {
-      /** @var UriInterface $uri */
-      $uri = createUri('https://smsapi.free-mobile.fr/');
-      $this->endPoint = $uri;
-    }
+
+    /** @var \Psr\Http\Message\UriInterface|null $endPoint */
+    $endPoint = $this->endPoint;
+    if (!$endPoint) $this->endPoint = new Uri('https://smsapi.free-mobile.fr/');
   }
   /**
    * Sends a SMS message to the underlying account.
@@ -76,9 +75,7 @@ class Client extends Component {
     $message = trim($text);
     if (!mb_strlen($message)) throw new InvalidArgumentException('The specified message is empty');
 
-    /** @var UriInterface $endPoint */
-    $endPoint = $this->endPoint;
-    $uri = $endPoint->withPath('sendmsg')->withQuery(http_build_query([
+    $uri = UriResolver::resolve($this->endPoint, new Uri('sendmsg'))->withQuery(build_query([
       'msg' => mb_substr($message, 0, 160),
       'pass' => $this->password,
       'user' => $this->username
