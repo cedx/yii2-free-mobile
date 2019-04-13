@@ -3,6 +3,7 @@
 ## Version [9.3.0](https://github.com/cedx/yii2-free-mobile/compare/v9.2.0...v9.3.0)
 - Modified the package layout.
 - Reverted the handling of URIs to [Guzzle](https://github.com/guzzle/psr7) library.
+- The `ClientException` class now extends from `yii\base\Exception`.
 - Updated the package dependencies.
 
 ## Version [9.2.0](https://github.com/cedx/yii2-free-mobile/compare/v9.1.0...v9.2.0)
