@@ -19,7 +19,7 @@ function main(): void {
     echo 'The message was sent successfully';
   }
 
-  catch (\Throwable $e) {
+  catch (Throwable $e) {
     echo 'An error occurred: ', $e->getMessage(), PHP_EOL;
     if ($e instanceof ClientException) echo 'From: ', $e->getUri(), PHP_EOL;
   }
@@ -36,8 +36,8 @@ if the specified message is empty. It throws a `yii\freemobile\ClientException` 
 ## Client events
 The `yii\freemobile\Client` class triggers some [events](https://www.yiiframework.com/doc/guide/2.0/en/concept-events) during its life cycle:
 
-- `Client::EVENT_REQUEST` : emitted every time a request is made to the remote service.
-- `Client::EVENT_RESPONSE` : emitted every time a response is received from the remote service.
+- `Client::eventRequest` : emitted every time a request is made to the remote service.
+- `Client::eventResponse` : emitted every time a response is received from the remote service.
 
 You can subscribe to them using the `on()` method:
 
@@ -47,13 +47,16 @@ use yii\freemobile\{Client};
 use yii\httpclient\{RequestEvent};
 
 function main(): void {
-  $client = new Client('your account identifier', 'your API key');
+  $client = new Client([
+   'username' => 'your account identifier', // e.g. "12345678"
+   'password' => 'your API key' // e.g. "a9BkVohJun4MA"
+  ]);
   
-  $client->on(Client::EVENT_REQUEST, function(RequestEvent $event) {
+  $client->on(Client::eventRequest, function(RequestEvent $event) {
     echo 'Client request: ', $event->request->url;
   });
 
-  $client->on(Client::EVENT_RESPONSE, function(RequestEvent $event) {
+  $client->on(Client::eventResponse, function(RequestEvent $event) {
     echo 'Server response: ', $event->response->statusCode;
   });
 }
@@ -81,7 +84,7 @@ Once the `freemobile` component is initialized with your credentials, you can us
 
 ```php
 <?php
-$client = \Yii::$app->freemobile;
+$client = \Yii::$app->get('freemobile');
 $client->sendMessage('Hello World!');
 ```
 
