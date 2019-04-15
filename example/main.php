@@ -19,9 +19,7 @@ function sendNotification(): void {
   }
 }
 
-/**
- * Logs a message by using an SMS notification.
- */
+/** Logs a message by using an SMS notification. */
 function logMessage(): void {
   \Yii::$app->log->targets[] = new LogTarget([
     'categories' => ['app*'],
