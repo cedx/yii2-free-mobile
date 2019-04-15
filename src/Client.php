@@ -11,10 +11,10 @@ use yii\web\{HttpException};
 class Client extends Component {
 
   /** @var string An event that is triggered when a request is made to the remote service. */
-  const EVENT_REQUEST = 'request';
+  const eventRequest = 'request';
 
   /** @var string An event that is triggered when a response is received from the remote service. */
-  const EVENT_RESPONSE = 'response';
+  const eventResponse = 'response';
 
   /** @var \Psr\Http\Message\UriInterface The URL of the API end point. */
   public $endPoint;
@@ -34,8 +34,8 @@ class Client extends Component {
    */
   function __construct(array $config = []) {
     $this->httpClient = new HttpClient(['transport' => CurlTransport::class]);
-    $this->httpClient->on(HttpClient::EVENT_BEFORE_SEND, function($event) { $this->trigger(static::EVENT_REQUEST, $event); });
-    $this->httpClient->on(HttpClient::EVENT_AFTER_SEND, function($event) { $this->trigger(static::EVENT_RESPONSE, $event); });
+    $this->httpClient->on(HttpClient::EVENT_BEFORE_SEND, function($event) { $this->trigger(static::eventRequest, $event); });
+    $this->httpClient->on(HttpClient::EVENT_AFTER_SEND, function($event) { $this->trigger(static::eventResponse, $event); });
     parent::__construct($config);
   }
 
