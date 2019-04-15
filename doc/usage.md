@@ -68,8 +68,7 @@ function main(): void {
 In your [application configuration](https://www.yiiframework.com/doc/guide/2.0/en/concept-configurations#application-configurations) file, you can register the `yii\freemobile\Client` class as an [application component](https://www.yiiframework.com/doc/guide/2.0/en/structure-application-components):
 
 ```php
-<?php
-return [
+<?php return [
   'components' => [
     'freemobile' => [
       'class' => 'yii\freemobile\Client',
@@ -92,8 +91,7 @@ $client->sendMessage('Hello World!');
 In your [application configuration](https://www.yiiframework.com/doc/guide/2.0/en/concept-configurations#application-configurations) file, you can register the `yii\freemobile\LogTarget` class as a [log target](https://www.yiiframework.com/doc/guide/2.0/en/runtime-logging#log-targets):
 
 ```php
-<?php
-return [
+<?php return [
   'bootstrap' => ['log'],
   'components' => [
     'log' => [
