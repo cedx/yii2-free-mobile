@@ -5,24 +5,17 @@ use GuzzleHttp\Psr7\{Uri};
 use PHPUnit\Framework\{TestCase};
 use yii\base\{InvalidArgumentException, InvalidConfigException};
 
-/**
- * Tests the features of the `yii\freemobile\Client` class.
- */
+/** Tests the features of the `yii\freemobile\Client` class. */
 class ClientTest extends TestCase {
 
-  /**
-   * Tests the `Client::init()` method.
-   */
+  /** @test Tests the `Client::init()` method. */
   function testInit(): void {
     // It should throw an exception if the username or password is empty.
     $this->expectException(InvalidConfigException::class);
     new Client;
   }
 
-  /**
-   * Tests the `Client::sendMessage()` method.
-   * @test
-   */
+  /** @test Tests the `Client::sendMessage()` method. */
   function testSendMessage(): void {
     // It should not send invalid messages with valid credentials.
     try {

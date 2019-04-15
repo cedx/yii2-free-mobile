@@ -5,25 +5,17 @@ use PHPUnit\Framework\{TestCase};
 use yii\base\{InvalidConfigException};
 use yii\log\{Logger};
 
-/**
- * Tests the features of the `yii\freemobile\LogTarget` class.
- */
+/** Tests the features of the `yii\freemobile\LogTarget` class. */
 class LogTargetTest extends TestCase {
 
-  /**
-   * Tests the `LogTarget::formatMessage()` method.
-   * @test
-   */
+  /** @test Tests the `LogTarget::formatMessage()` method. */
   function testFormatMessage(): void {
     // It should return a formatted message including the log level and category.
     $message = ['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
     assertThat((new LogTarget)->formatMessage($message), equalTo('[tests] Hello World!'));
   }
 
-  /**
-   * Tests the `LogTarget::init()` method.
-   * @test
-   */
+  /** @test Tests the `LogTarget::init()` method. */
   function testInit(): void {
     // It should throw an exception if the client is empty.
     try {
@@ -59,10 +51,7 @@ class LogTargetTest extends TestCase {
     ));
   }
 
-  /**
-   * This method is called before each test.
-   * @before
-   */
+  /** @before This method is called before each test. */
   protected function setUp(): void {
     \Yii::$app->set('freemobile', new Client(['username' => 'anonymous', 'password' => 'secret']));
   }

@@ -7,39 +7,25 @@ use yii\base\{Component, InvalidArgumentException, InvalidConfigException};
 use yii\httpclient\{Client as HttpClient, CurlTransport};
 use yii\web\{HttpException};
 
-/**
- * Sends messages by SMS to a Free Mobile account.
- */
+/** Sends messages by SMS to a Free Mobile account. */
 class Client extends Component {
 
-  /**
-   * @var string An event that is triggered when a request is made to the remote service.
-   */
+  /** @var string An event that is triggered when a request is made to the remote service. */
   const EVENT_REQUEST = 'request';
 
-  /**
-   * @var string An event that is triggered when a response is received from the remote service.
-   */
+  /** @var string An event that is triggered when a response is received from the remote service. */
   const EVENT_RESPONSE = 'response';
 
-  /**
-   * @var \Psr\Http\Message\UriInterface The URL of the API end point.
-   */
+  /** @var \Psr\Http\Message\UriInterface The URL of the API end point. */
   public $endPoint;
 
-  /**
-   * @var string The identification key associated to the account.
-   */
+  /** @var string The identification key associated to the account. */
   public $password = '';
 
-  /**
-   * @var string The user name associated to the account.
-   */
+  /** @var string The user name associated to the account. */
   public $username = '';
 
-  /**
-   * @var HttpClient The underlying HTTP client.
-   */
+  /** @var HttpClient The underlying HTTP client. */
   private $httpClient;
 
   /**
@@ -54,7 +40,7 @@ class Client extends Component {
   }
 
   /**
-   * Initializes the object.
+   * Initializes this object.
    * @throws InvalidConfigException The account credentials are invalid.
    */
   function init(): void {
@@ -65,6 +51,7 @@ class Client extends Component {
     $endPoint = $this->endPoint;
     if (!$endPoint) $this->endPoint = new Uri('https://smsapi.free-mobile.fr/');
   }
+  
   /**
    * Sends a SMS message to the underlying account.
    * @param string $text The text of the message to send.

@@ -5,14 +5,10 @@ use yii\di\{Instance};
 use yii\helpers\{VarDumper};
 use yii\log\{Target};
 
-/**
- * Sends the log messages by SMS to a Free Mobile account.
- */
+/** Sends the log messages by SMS to a Free Mobile account. */
 class LogTarget extends Target {
 
-  /**
-   * @var array|string|Client The Free Mobile client or the application component ID of the Free Mobile client.
-   */
+  /** @var array|string|Client The Free Mobile client or the application component ID of the Free Mobile client. */
   public $client = 'freemobile';
 
   /**
@@ -25,9 +21,7 @@ class LogTarget extends Target {
     parent::__construct($config);
   }
 
-  /**
-   * Exports log messages to a specific destination.
-   */
+  /** Exports log messages to a specific destination. */
   function export(): void {
     /** @var Client $client */
     $client = $this->client;
@@ -44,9 +38,7 @@ class LogTarget extends Target {
     return sprintf('[%s] %s', $category, is_string($text) ? $text : VarDumper::export($text));
   }
 
-  /**
-   * Initializes the object.
-   */
+  /** Initializes this object. */
   function init(): void {
     parent::init();
     if (!$this->client instanceof Client) {

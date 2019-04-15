@@ -1,9 +1,7 @@
 <?php declare(strict_types=1);
 use yii\freemobile\{Client, ClientException, LogTarget};
 
-/**
- * Sends an SMS notification to a Free Mobile account.
- */
+/** Sends an SMS notification to a Free Mobile account. */
 function sendNotification(): void {
   try {
     $client = new Client([
