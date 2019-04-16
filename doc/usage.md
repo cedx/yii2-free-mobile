@@ -34,12 +34,10 @@ if the specified message is empty. It throws a `yii\freemobile\ClientException` 
     you can't send multipart messages using this library.
 
 ## Client events
-The `yii\freemobile\Client` class triggers some [events](https://www.yiiframework.com/doc/guide/2.0/en/concept-events) during its life cycle:
+The `yii\freemobile\Client` class triggers some [events](https://www.yiiframework.com/doc/guide/2.0/en/concept-events) during its life cycle.
 
-- `Client::eventRequest` : emitted every time a request is made to the remote service.
-- `Client::eventResponse` : emitted every time a response is received from the remote service.
-
-You can subscribe to them using the `on()` method:
+### The `Client::eventRequest` event
+Emitted every time a request is made to the remote service:
 
 ```php
 <?php
@@ -47,15 +45,23 @@ use yii\freemobile\{Client};
 use yii\httpclient\{RequestEvent};
 
 function main(): void {
-  $client = new Client([
-   'username' => 'your account identifier', // e.g. "12345678"
-   'password' => 'your API key' // e.g. "a9BkVohJun4MA"
-  ]);
-  
+  $client = new Client(['username' => 'your account identifier', 'password' => 'your API key']);
   $client->on(Client::eventRequest, function(RequestEvent $event) {
     echo 'Client request: ', $event->request->url;
   });
+}
+```
 
+### The `Client::eventResponse` event
+Emitted every time a response is received from the remote service:
+
+```php
+<?php
+use yii\freemobile\{Client};
+use yii\httpclient\{RequestEvent};
+
+function main(): void {
+  $client = new Client(['username' => 'your account identifier', 'password' => 'your API key']);
   $client->on(Client::eventResponse, function(RequestEvent $event) {
     echo 'Server response: ', $event->response->statusCode;
   });
