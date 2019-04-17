@@ -131,5 +131,5 @@ export FREEMOBILE_PASSWORD="your API key"
 Then, you can run the `test` script from the command prompt:
 
 ```shell
-composer test
+composer run-script test
 ```
