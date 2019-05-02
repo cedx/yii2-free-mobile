@@ -8,14 +8,14 @@ use yii\log\{Logger};
 /** Tests the features of the `yii\freemobile\LogTarget` class. */
 class LogTargetTest extends TestCase {
 
-  /** @test Tests the `LogTarget::formatMessage()` method. */
+  /** @test LogTarget->formatMessage() */
   function testFormatMessage(): void {
     // It should return a formatted message including the log level and category.
     $message = ['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
     assertThat((new LogTarget)->formatMessage($message), equalTo('[tests] Hello World!'));
   }
 
-  /** @test Tests the `LogTarget::init()` method. */
+  /** @test LogTarget->init() */
   function testInit(): void {
     // It should throw an exception if the client is empty.
     try {
