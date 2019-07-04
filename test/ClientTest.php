@@ -39,15 +39,14 @@ class ClientTest extends TestCase {
     }
 
     // It should send valid messages with valid credentials.
-    if (is_string($username = getenv('FREEMOBILE_USERNAME')) && is_string($password = getenv('FREEMOBILE_PASSWORD'))) {
-      try {
-        (new Client(['username' => $username, 'password' => $password]))->sendMessage('Bonjour Cédric !');
-        assertThat(true, isTrue());
-      }
+    try {
+      $config = ['username' => getenv('FREEMOBILE_USERNAME'), 'password' => getenv('FREEMOBILE_PASSWORD')];
+      (new Client($config))->sendMessage('Bonjour Cédric, à partir du Yii Framework !');
+      assertThat(true, isTrue());
+    }
 
-      catch (\Throwable $e) {
-        $this->fail($e->getMessage());
-      }
+    catch (\Throwable $e) {
+      $this->fail($e->getMessage());
     }
   }
 }
