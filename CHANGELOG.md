@@ -2,6 +2,7 @@
 
 ## Version [10.0.0](https://github.com/cedx/yii2-free-mobile/compare/v9.3.0...v10.0.0)
 - Breaking change: using camelcase instead of all caps for constants.
+- Updated the package dependencies.
 
 ## Version [9.3.0](https://github.com/cedx/yii2-free-mobile/compare/v9.2.0...v9.3.0)
 - Modified the package layout.
