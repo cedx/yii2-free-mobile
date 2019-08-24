@@ -21,7 +21,7 @@
 - Updated the package dependencies.
 
 ## Version [9.0.0](https://github.com/cedx/yii2-free-mobile/compare/v8.2.0...v9.0.0)
-- Breaking change: raised the required [PHP](https://secure.php.net) version.
+- Breaking change: raised the required [PHP](https://www.php.net) version.
 - Updated the package dependencies.
 
 ## Version [8.2.0](https://github.com/cedx/yii2-free-mobile/compare/v8.1.0...v8.2.0)
@@ -35,7 +35,7 @@
 - Updated the package dependencies.
 
 ## Version [8.0.0](https://github.com/cedx/yii2-free-mobile/compare/v7.0.0...v8.0.0)
-- Breaking change: raised the required [PHP](https://secure.php.net) version.
+- Breaking change: raised the required [PHP](https://www.php.net) version.
 - Breaking change: renamed the `Client::EVENT_BEFORE_SEND` constant to `EVENT_REQUEST`.
 - Breaking change: renamed the `Client::EVENT_AFTER_SEND` constant to `EVENT_RESPONSE`.
 - Breaking change: using PHP 7.1 features, like nullable types and void functions.
@@ -103,7 +103,7 @@
 - Updated the package dependencies.
 
 ## Version [2.0.0](https://github.com/cedx/yii2-free-mobile/compare/v1.0.1...v2.0.0)
-- Replaced the [cURL](https://secure.php.net/manual/en/book.curl.php) functions by the [Guzzle](http://guzzlephp.org) HTTP client.
+- Replaced the [cURL](https://www.php.net/manual/en/book.curl.php) functions by the [Guzzle](http://guzzlephp.org) HTTP client.
 - Breaking change: no exception is thrown when a network error occurs.
 - Breaking change: removed the `$throwExceptions` parameter from the `export` method.
 - Breaking change: using asynchronous requests to send the logs to the remote service.
@@ -126,7 +126,7 @@
 - Updated the package dependencies.
 
 ## Version [0.5.0](https://github.com/cedx/yii2-free-mobile/compare/v0.4.4...v0.5.0)
-- Breaking change: using [PHP 7](https://secure.php.net/manual/en/migration70.new-features.php) features, like scalar and return type declarations.
+- Breaking change: using [PHP 7](https://www.php.net/manual/en/migration70.new-features.php) features, like scalar and return type declarations.
 
 ## Version [0.4.4](https://github.com/cedx/yii2-free-mobile/compare/v0.4.3...v0.4.4)
 - Added unit tests.
@@ -155,8 +155,8 @@
 - Breaking change: ported the library API to [Yii](https://www.yiiframework.com) version 2.
 
 ## Version [0.2.0](https://github.com/cedx/yii2-free-mobile/compare/v0.1.1...v0.2.0)
-- Breaking change: ported the library API to [namespaces](https://secure.php.net/manual/en/language.namespaces.php).
-- Lowered the required [PHP](https://secure.php.net) version.
+- Breaking change: ported the library API to [namespaces](https://www.php.net/manual/en/language.namespaces.php).
+- Lowered the required [PHP](https://www.php.net) version.
 
 ## Version [0.1.1](https://github.com/cedx/yii2-free-mobile/compare/v0.1.0...v0.1.1)
 - Using [Gulp](https://gulpjs.com) as build system.
