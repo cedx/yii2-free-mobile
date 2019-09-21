@@ -6,7 +6,7 @@
 - [Submit an issue](https://github.com/cedx/yii2-free-mobile/issues)
 
 ## Testing
-- [Continuous integration](https://travis-ci.com/cedx/yii2-free-mobile)
+- [Continuous integration](https://github.com/cedx/yii2-free-mobile/actions)
 - [Code coverage](https://coveralls.io/github/cedx/yii2-free-mobile)
 
 ## Other implementations
