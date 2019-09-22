@@ -11,5 +11,5 @@
 
 ## Other implementations
 - Dart: [Free Mobile for Dart](https://dev.belin.io/free-mobile.dart)
-- Node.js: [Free Mobile for JS](https://dev.belin.io/free-mobile.js)
+- JavaScript: [Free Mobile for JS](https://dev.belin.io/free-mobile.js)
 - PHP: [Free Mobile for PHP](https://dev.belin.io/free-mobile.php)
