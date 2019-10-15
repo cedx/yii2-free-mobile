@@ -6,10 +6,10 @@ use PHPUnit\Framework\{TestCase};
 use yii\base\{InvalidConfigException};
 use yii\log\{Logger};
 
-/** Tests the features of the `yii\freemobile\LogTarget` class. */
+/** @testdox yii\freemobile\LogTarget */
 class LogTargetTest extends TestCase {
 
-  /** @test LogTarget->formatMessage() */
+  /** @testdox ->formatMessage() */
   function testFormatMessage(): void {
     it('should return a formatted message including the log level and category', function() {
       $message = ['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
@@ -17,7 +17,7 @@ class LogTargetTest extends TestCase {
     });
   }
 
-  /** @test LogTarget->init() */
+  /** @testdox ->init() */
   function testInit(): void {
     it('should throw an exception if the client is empty', function() {
       expect(function() {
