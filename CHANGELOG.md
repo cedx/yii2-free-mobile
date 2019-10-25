@@ -1,6 +1,8 @@
 # Changelog
 
 ## Version [11.0.0](https://github.com/cedx/yii2-free-mobile/compare/v10.0.0...v11.0.0)
+- Breaking change: raised the required [PHP](https://www.php.net) version.
+- Breaking change: using PHP 7.4 features, like arrow functions and typed properties.
 
 ## Version [10.0.0](https://github.com/cedx/yii2-free-mobile/compare/v9.3.0...v10.0.0)
 - Breaking change: using camelcase instead of all caps for constants.
