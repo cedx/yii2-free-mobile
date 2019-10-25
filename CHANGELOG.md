@@ -1,5 +1,7 @@
 # Changelog
 
+## Version [11.0.0](https://github.com/cedx/yii2-free-mobile/compare/v10.0.0...v11.0.0)
+
 ## Version [10.0.0](https://github.com/cedx/yii2-free-mobile/compare/v9.3.0...v10.0.0)
 - Breaking change: using camelcase instead of all caps for constants.
 - Updated the package dependencies.
