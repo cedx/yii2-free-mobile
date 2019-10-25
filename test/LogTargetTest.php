@@ -20,17 +20,13 @@ class LogTargetTest extends TestCase {
   /** @testdox ->init() */
   function testInit(): void {
     it('should throw an exception if the client is empty', function() {
-      expect(function() {
-        \Yii::$app->set('freemobile', null);
-        new LogTarget;
-      })->to->throw(InvalidConfigException::class);
+      \Yii::$app->set('freemobile', null);
+      expect(fn() => new LogTarget)->to->throw(InvalidConfigException::class);
     });
 
     it('should not throw an exception if the client is not empty', function() {
-      expect(function() {
-        \Yii::$app->set('freemobile', new Client(['username' => 'anonymous', 'password' => 'secret']));
-        new LogTarget;
-      })->to->not->throw;
+      \Yii::$app->set('freemobile', new Client(['username' => 'anonymous', 'password' => 'secret']));
+      expect(fn() => new LogTarget)->to->not->throw;
     });
 
     it('should allow a customized client component ID', function() {
