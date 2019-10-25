@@ -34,7 +34,7 @@ class LogTarget extends Target {
    * @return string The formatted message.
    */
   function formatMessage($message): string {
-    [$text, $level, $category, $timestamp] = $message;
+    [$text, , $category] = $message;
     return sprintf('[%s] %s', $category, is_string($text) ? $text : VarDumper::export($text));
   }
 
