@@ -3,6 +3,7 @@ namespace yii\freemobile;
 
 use function GuzzleHttp\Psr7\{build_query};
 use GuzzleHttp\Psr7\{Uri, UriResolver};
+use Psr\Http\Message\{UriInterface};
 use yii\base\{Component, InvalidArgumentException, InvalidConfigException};
 use yii\httpclient\{Client as HttpClient, CurlTransport};
 use yii\web\{HttpException};
@@ -16,17 +17,17 @@ class Client extends Component {
   /** @var string An event that is triggered when a response is received from the remote service. */
   const eventResponse = 'response';
 
-  /** @var \Psr\Http\Message\UriInterface The URL of the API end point. */
-  public $endPoint;
+  /** @var UriInterface The URL of the API end point. */
+  public UriInterface $endPoint;
 
   /** @var string The identification key associated to the account. */
-  public $password = '';
+  public string $password = '';
 
   /** @var string The user name associated to the account. */
-  public $username = '';
+  public string $username = '';
 
   /** @var HttpClient The underlying HTTP client. */
-  private $httpClient;
+  private HttpClient $httpClient;
 
   /**
    * Creates a new client.
@@ -47,11 +48,11 @@ class Client extends Component {
     parent::init();
     if (!mb_strlen($this->username) || !mb_strlen($this->password)) throw new InvalidConfigException('The account credentials are invalid');
 
-    /** @var \Psr\Http\Message\UriInterface|null $endPoint */
+    /** @var UriInterface|null $endPoint */
     $endPoint = $this->endPoint;
     if (!$endPoint) $this->endPoint = new Uri('https://smsapi.free-mobile.fr/');
   }
-  
+
   /**
    * Sends a SMS message to the underlying account.
    * @param string $text The text of the message to send.
