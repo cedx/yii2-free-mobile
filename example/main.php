@@ -13,7 +13,7 @@ function sendNotification(): void {
     echo 'The message was sent successfully';
   }
 
-  catch (\Throwable $e) {
+  catch (Throwable $e) {
     echo 'An error occurred: ', $e->getMessage(), PHP_EOL;
     if ($e instanceof ClientException) echo 'From: ', $e->getUri(), PHP_EOL;
   }
@@ -21,7 +21,7 @@ function sendNotification(): void {
 
 /** Logs a message by using an SMS notification. */
 function logMessage(): void {
-  \Yii::$app->log->targets[] = new LogTarget([
+  Yii::$app->log->targets[] = new LogTarget([
     'categories' => ['app*'],
     'levels' => ['error'],
     'client' => [
@@ -31,5 +31,5 @@ function logMessage(): void {
     ]
   ]);
 
-  \Yii::error('An error occurred.');
+  Yii::error('An error occurred.');
 }
