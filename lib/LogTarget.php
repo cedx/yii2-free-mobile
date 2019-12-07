@@ -8,12 +8,12 @@ use yii\log\{Target};
 /** Sends the log messages by SMS to a Free Mobile account. */
 class LogTarget extends Target {
 
-  /** @var array|string|Client The Free Mobile client or the application component ID of the Free Mobile client. */
+  /** @var string|array<string, mixed>|Client The Free Mobile client or the application component ID of the Free Mobile client. */
   public $client = 'freemobile';
 
   /**
    * Creates a new log target.
-   * @param array $config Name-value pairs that will be used to initialize the object properties.
+   * @param array<string, mixed> $config Name-value pairs that will be used to initialize the object properties.
    */
   function __construct(array $config = []) {
     $this->exportInterval = 1;
@@ -30,7 +30,7 @@ class LogTarget extends Target {
 
   /**
    * Formats a log message for display as a string.
-   * @param array $message The log message to be formatted.
+   * @param array<int|string> $message The log message to be formatted.
    * @return string The formatted message.
    */
   function formatMessage($message): string {
