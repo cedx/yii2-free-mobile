@@ -13,7 +13,7 @@ class LogTargetTest extends TestCase {
   function testFormatMessage(): void {
     it('should return a formatted message including the log level and category', function() {
       $message = ['Hello World!', Logger::LEVEL_ERROR, 'tests', time()];
-      expect((new LogTarget)->formatMessage($message))->to->equal('[tests] Hello World!');
+      expect((new LogTarget)->formatMessage($message))->to->equal('tests: Hello World!');
     });
   }
 
