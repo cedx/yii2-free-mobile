@@ -35,7 +35,7 @@ class LogTarget extends Target {
    */
   function formatMessage($message): string {
     [$text, , $category] = $message;
-    return sprintf('[%s] %s', $category, is_string($text) ? $text : VarDumper::export($text));
+    return sprintf('[%s] %s', $category, is_string($text) ? $text : ($text instanceof \Throwable ? (string) $text : VarDumper::export($text)));
   }
 
   /** Initializes this object. */
