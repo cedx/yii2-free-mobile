@@ -4,7 +4,7 @@ namespace yii\freemobile;
 use function PHPUnit\Expect\{expect, it};
 use GuzzleHttp\Psr7\{Uri};
 use PHPUnit\Framework\{TestCase};
-use yii\base\{InvalidArgumentException, InvalidConfigException};
+use yii\base\{InvalidConfigException};
 
 /** @testdox yii\freemobile\Client */
 class ClientTest extends TestCase {
@@ -18,17 +18,12 @@ class ClientTest extends TestCase {
 
   /** @testdox ->sendMessage() */
   function testSendMessage(): void {
-    it('should not send invalid messages with valid credentials', function() {
-      $configuration = ['username' => 'anonymous', 'password' => 'secret'];
-      expect(fn() => (new Client($configuration))->sendMessage(''))->to->throw(InvalidArgumentException::class);
-    });
-
     it('should throw a `ClientException` if a network error occurred', function() {
       $configuration = ['username' => 'anonymous', 'password' => 'secret', 'endPoint' => new Uri('http://localhost/')];
       expect(fn() => (new Client($configuration))->sendMessage('Hello World!'))->to->throw();
     });
 
-    it('should send valid messages with valid credentials', function() {
+    it('should send SMS messages if credentials are valid', function() {
       $configuration = ['username' => getenv('FREEMOBILE_USERNAME'), 'password' => getenv('FREEMOBILE_PASSWORD')];
       expect(fn() => (new Client($configuration))->sendMessage('Bonjour Cédric, à partir du Yii Framework !'))->to->not->throw;
     });
