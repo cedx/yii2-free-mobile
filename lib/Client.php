@@ -4,7 +4,7 @@ namespace yii\freemobile;
 use function GuzzleHttp\Psr7\{build_query};
 use GuzzleHttp\Psr7\{Uri, UriResolver};
 use Psr\Http\Message\{UriInterface};
-use yii\base\{Component, InvalidArgumentException, InvalidConfigException};
+use yii\base\{Component, InvalidConfigException};
 use yii\httpclient\{Client as HttpClient, CurlTransport};
 use yii\web\{HttpException};
 
@@ -64,15 +64,13 @@ class Client extends Component {
   /**
    * Sends a SMS message to the underlying account.
    * @param string $text The text of the message to send.
-   * @throws InvalidArgumentException The specified message is empty.
    * @throws ClientException An error occurred while sending the message.
    */
   function sendMessage(string $text): void {
-    $message = trim($text);
-    if (!mb_strlen($message)) throw new InvalidArgumentException('The specified message is empty.');
+    assert(mb_strlen($text) > 0);
 
     $uri = UriResolver::resolve($this->endPoint, new Uri('sendmsg'))->withQuery(build_query([
-      'msg' => mb_substr($message, 0, 160),
+      'msg' => mb_substr(trim($text), 0, 160),
       'pass' => $this->password,
       'user' => $this->username
     ]));
