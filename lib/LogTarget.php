@@ -30,13 +30,11 @@ class LogTarget extends Target {
 
   /**
    * Formats a log message for display as a string.
-   * @param array<int|string> $message The log message to be formatted.
+   * @param array<int, mixed> $message The log message to be formatted.
    * @return string The formatted message.
    */
   function formatMessage($message): string {
     assert(is_array($message) && count($message) >= 3);
-
-    /** @var mixed $text */
     [$text, , $category] = $message;
     if (!is_string($text)) $text = $text instanceof \Throwable ? (string) $text : VarDumper::export($text);
     return "$category: $text";
