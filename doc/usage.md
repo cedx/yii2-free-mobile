@@ -119,17 +119,3 @@ The optional `LogTarget->client` property accepts a `yii\freemobile\Client` inst
     As text of the log messages is truncated to **160** characters,
     you should not change the default value of the `LogTarget->exportInterval`
     and `LogTarget->logVars` properties.
-
-## Unit tests
-If you want to run the library tests, you must set two environment variables:
-
-```shell
-export FREEMOBILE_USERNAME="your account identifier"
-export FREEMOBILE_PASSWORD="your API key"
-```
-
-Then, you can run the `test` script from the command prompt:
-
-```shell
-composer run-script test
-```
