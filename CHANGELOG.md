@@ -50,7 +50,7 @@
 - Updated the package dependencies.
 
 ## Version [6.0.0](https://github.com/cedx/yii2-free-mobile/compare/v5.1.0...v6.0.0)
-- Breaking change: the `Client::$endPoint` property is now an instance of [`Psr\Http\Message\UriInterface`](http://www.php-fig.org/psr/psr-7/#35-psrhttpmessageuriinterface) interface.
+- Breaking change: the `Client->endPoint` property is now an instance of [`Psr\Http\Message\UriInterface`](http://www.php-fig.org/psr/psr-7/#35-psrhttpmessageuriinterface) interface.
 - Added new unit tests.
 - Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
 - Updated the package dependencies.
@@ -65,7 +65,7 @@
 - Breaking change: renamed the `Client::EVENT_REQUEST` to `EVENT_BEFORE_SEND`.
 - Breaking change: renamed the `Client::EVENT_RESPONSE` to `EVENT_AFTER_SEND`.
 - Breaking change: replaced most of getters and setters by properties.
-- Added the `Client::endPoint` property.
+- Added the `Client->endPoint` property.
 - Added the `Client::DEFAULT_ENDPOINT` constant.
 - Dropped the dependency on the `cedx/freemobile` module.
 - Moved the initializations from the constructors to the `init()` methods.
@@ -73,7 +73,7 @@
 - Updated the package dependencies.
 
 ## Version [4.1.1](https://github.com/cedx/yii2-free-mobile/compare/v4.1.0...v4.1.1)
-- Fixed the [issue #1](https://github.com/cedx/yii2-free-mobile/issues/1): unable to use an application component ID to initialize the `LogTarget::client` property.
+- Fixed the [issue #1](https://github.com/cedx/yii2-free-mobile/issues/1): unable to use an application component ID to initialize the `LogTarget->client` property.
 - Improved the code coverage.
 
 ## Version [4.1.0](https://github.com/cedx/yii2-free-mobile/compare/v4.0.0...v4.1.0)
@@ -110,7 +110,7 @@
 ## Version [2.0.0](https://github.com/cedx/yii2-free-mobile/compare/v1.0.1...v2.0.0)
 - Replaced the [cURL](https://www.php.net/manual/en/book.curl.php) functions by the [Guzzle](http://guzzlephp.org) HTTP client.
 - Breaking change: no exception is thrown when a network error occurs.
-- Breaking change: removed the `$throwExceptions` parameter from the `export` method.
+- Breaking change: removed the `$throwExceptions` parameter from the `export()` method.
 - Breaking change: using asynchronous requests to send the logs to the remote service.
 
 ## Version [1.0.1](https://github.com/cedx/yii2-free-mobile/compare/v1.0.0...v1.0.1)
