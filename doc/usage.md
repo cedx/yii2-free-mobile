@@ -9,12 +9,12 @@ use yii\freemobile\{Client, ClientException};
 
 function main(): void {
   try {
-    $configuration = [
+    $config = [
       'username' => 'your account identifier', // e.g. "12345678"
       'password' => 'your API key' // e.g. "a9BkVohJun4MA"
     ];
 
-    $client = new Client($configuration);
+    $client = new Client($config);
     $client->sendMessage('Hello World!');
     echo 'The message was sent successfully';
   }

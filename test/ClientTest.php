@@ -19,13 +19,13 @@ class ClientTest extends TestCase {
   /** @testdox ->sendMessage() */
   function testSendMessage(): void {
     it('should throw a `ClientException` if a network error occurred', function() {
-      $configuration = ['username' => 'anonymous', 'password' => 'secret', 'endPoint' => new Uri('http://localhost/')];
-      expect(fn() => (new Client($configuration))->sendMessage('Hello World!'))->to->throw();
+      $config = ['username' => 'anonymous', 'password' => 'secret', 'endPoint' => new Uri('http://localhost/')];
+      expect(fn() => (new Client($config))->sendMessage('Hello World!'))->to->throw();
     });
 
     it('should send SMS messages if credentials are valid', function() {
-      $configuration = ['username' => getenv('FREEMOBILE_USERNAME'), 'password' => getenv('FREEMOBILE_PASSWORD')];
-      expect(fn() => (new Client($configuration))->sendMessage('Bonjour Cédric, à partir du Yii Framework !'))->to->not->throw;
+      $config = ['username' => getenv('FREEMOBILE_USERNAME'), 'password' => getenv('FREEMOBILE_PASSWORD')];
+      expect(fn() => (new Client($config))->sendMessage('Bonjour Cédric, à partir du Yii Framework !'))->to->not->throw;
     });
   }
 }
