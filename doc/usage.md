@@ -26,8 +26,7 @@ function main(): void {
 }
 ```
 
-The `Client->sendMessage()` method throws a [`yii\base\InvalidArgumentException`](https://www.yiiframework.com/doc/api/2.0/yii-base-invalidargumentexception)
-if the specified message is empty. It throws a `yii\freemobile\ClientException` if any error occurred while sending the message.
+The `Client->sendMessage()` method throws a  `yii\freemobile\ClientException` if any error occurred while sending the message.
 
 !!! warning
     The text of the messages will be automatically truncated to **160** characters:  
