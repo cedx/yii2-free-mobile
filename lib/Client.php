@@ -1,11 +1,10 @@
 <?php declare(strict_types=1);
 namespace yii\freemobile;
 
-use function GuzzleHttp\Psr7\{build_query};
-use GuzzleHttp\Psr7\{Uri, UriResolver};
+use Nyholm\Psr7\{Uri};
 use Psr\Http\Message\{UriInterface};
 use yii\base\{Component, InvalidConfigException};
-use yii\httpclient\{Client as HttpClient, CurlTransport};
+use yii\httpclient\{Client as HttpClient, CurlTransport, StreamTransport};
 use yii\web\{HttpException};
 
 /**
@@ -30,7 +29,7 @@ class Client extends Component {
   private UriInterface $endPoint;
 
   /** @var HttpClient The underlying HTTP client. */
-  private HttpClient $httpClient;
+  private HttpClient $http;
 
   /**
    * Creates a new client.
@@ -38,9 +37,9 @@ class Client extends Component {
    */
   function __construct(array $config = []) {
     $this->endPoint = new Uri('https://smsapi.free-mobile.fr/');
-    $this->httpClient = new HttpClient(['transport' => CurlTransport::class]);
-    $this->httpClient->on(HttpClient::EVENT_BEFORE_SEND, fn($event) => $this->trigger(static::eventRequest, $event));
-    $this->httpClient->on(HttpClient::EVENT_AFTER_SEND, fn($event) => $this->trigger(static::eventResponse, $event));
+    $this->http = new HttpClient(['transport' => extension_loaded('curl') ? CurlTransport::class : StreamTransport::class]);
+    $this->http->on(HttpClient::EVENT_BEFORE_SEND, fn($event) => $this->trigger(static::eventRequest, $event));
+    $this->http->on(HttpClient::EVENT_AFTER_SEND, fn($event) => $this->trigger(static::eventResponse, $event));
     parent::__construct($config);
   }
 
@@ -69,14 +68,15 @@ class Client extends Component {
   function sendMessage(string $text): void {
     assert(mb_strlen($text) > 0);
 
-    $uri = UriResolver::resolve($this->endPoint, new Uri('sendmsg'))->withQuery(build_query([
+    $endPoint = $this->getEndPoint();
+    $uri = $endPoint->withPath("{$endPoint->getPath()}sendmsg")->withQuery(http_build_query([
       'msg' => mb_substr(trim($text), 0, 160),
       'pass' => $this->password,
       'user' => $this->username
-    ]));
+    ], '', '&', PHP_QUERY_RFC3986));
 
     try {
-      $response = $this->httpClient->get((string) $uri)->send();
+      $response = $this->http->get((string) $uri)->send();
       if (!$response->isOk) throw new HttpException((int) $response->statusCode, $response->content);
     }
 
