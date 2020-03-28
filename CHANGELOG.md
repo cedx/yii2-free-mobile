@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [11.1.0](https://github.com/cedx/yii2-free-mobile/compare/v11.0.0...v11.1.0)
+- The [cURL extension](https://www.php.net/manual/en/book.curl.php) is not required anymore.
+- Updated the package dependencies.
+
 ## Version [11.0.0](https://github.com/cedx/yii2-free-mobile/compare/v10.0.0...v11.0.0)
 - Breaking change: raised the required [PHP](https://www.php.net) version.
 - Breaking change: using PHP 7.4 features, like arrow functions and typed properties.
