@@ -91,7 +91,8 @@ class Client extends Component {
    * @return $this This instance.
    */
   function setEndPoint($value): self {
-    $this->endPoint = new Uri((string) $value);
+    assert(is_string($value) || $value instanceof UriInterface);
+    $this->endPoint = is_string($value) ? new Uri($value) : $value;
     return $this;
   }
 }
