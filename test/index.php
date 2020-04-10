@@ -10,7 +10,7 @@ $rootPath = dirname(__DIR__);
 require_once "$rootPath/vendor/autoload.php";
 require_once "$rootPath/vendor/yiisoft/yii2/Yii.php";
 Yii::setAlias('@root', $rootPath);
-Yii::setAlias('@yii/freemobile', "$rootPath/lib");
+Yii::setAlias('@yii/freemobile', "$rootPath/src");
 
 // Start the application.
-new Application(['id' => 'yii2-free-mobile', 'basePath' => '@root/lib']);
+new Application(['id' => 'yii2-free-mobile', 'basePath' => '@root/src']);
