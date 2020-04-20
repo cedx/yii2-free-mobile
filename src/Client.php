@@ -7,10 +7,7 @@ use yii\base\{Component, InvalidConfigException};
 use yii\httpclient\{Client as HttpClient, CurlTransport, StreamTransport};
 use yii\web\{HttpException};
 
-/**
- * Sends messages by SMS to a Free Mobile account.
- * @property UriInterface $endPoint The URL of the API end point.
- */
+/** Sends messages by SMS to a Free Mobile account. */
 class Client extends Component {
 
   /** @var string An event that is triggered when a request is made to the remote service. */
@@ -67,9 +64,7 @@ class Client extends Component {
    */
   function sendMessage(string $text): void {
     assert(mb_strlen($text) > 0);
-
-    $endPoint = $this->getEndPoint();
-    $uri = $endPoint->withPath("{$endPoint->getPath()}sendmsg")->withQuery(http_build_query([
+    $uri = $this->endPoint->withPath("{$this->endPoint->getPath()}sendmsg")->withQuery(http_build_query([
       'msg' => mb_substr(trim($text), 0, 160),
       'pass' => $this->password,
       'user' => $this->username
@@ -77,7 +72,7 @@ class Client extends Component {
 
     try {
       $response = $this->http->get((string) $uri)->send();
-      if (!$response->isOk) throw new HttpException((int) $response->statusCode, $response->content);
+      if (!$response->getIsOk()) throw new HttpException((int) $response->getStatusCode(), $response->getContent());
     }
 
     catch (\Throwable $e) {

@@ -32,7 +32,7 @@ class ClientTest extends TestCase {
     // It should trigger events.
     $client = new Client(['username' => getenv('FREEMOBILE_USERNAME'), 'password' => getenv('FREEMOBILE_PASSWORD')]);
     $client->on(Client::eventRequest, function(RequestEvent $event) {
-      assertThat($event->request->fullUrl, stringStartsWith('https://smsapi.free-mobile.fr/sendmsg?'));
+      assertThat($event->request->getFullUrl(), stringStartsWith('https://smsapi.free-mobile.fr/sendmsg?'));
     });
 
     // It should send SMS messages if credentials are valid.
