@@ -35,7 +35,7 @@ class LogTarget extends Target {
    */
   function formatMessage($message): string {
     assert(is_array($message) && count($message) >= 3);
-    [$text, , $category] = $message;
+    [$text,, $category] = $message;
     if (!is_string($text)) $text = $text instanceof \Throwable ? (string) $text : VarDumper::export($text);
     return "$category: $text";
   }
