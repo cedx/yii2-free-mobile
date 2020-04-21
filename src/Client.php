@@ -64,7 +64,9 @@ class Client extends Component {
    */
   function sendMessage(string $text): void {
     assert(mb_strlen($text) > 0);
-    $uri = $this->endPoint->withPath("{$this->endPoint->getPath()}sendmsg")->withQuery(http_build_query([
+
+    $endPoint = $this->getEndPoint();
+    $uri = $endPoint->withPath("{$endPoint->getPath()}sendmsg")->withQuery(http_build_query([
       'msg' => mb_substr(trim($text), 0, 160),
       'pass' => $this->password,
       'user' => $this->username
