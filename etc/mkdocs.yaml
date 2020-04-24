@@ -1,5 +1,7 @@
 site_name: Free Mobile for Yii
-site_description: Free Mobile connector for Yii, high-performance PHP framework.
+site_description: >
+  Send SMS messages to your Free Mobile device, for the Yii Framework.
+  A simple and free way to monitor your applications using a Free Mobile account.
 site_author: Cédric Belin - cedric@belin.io
 site_url: https://docs.belin.io/yii2-free-mobile
 

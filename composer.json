@@ -1,5 +1,5 @@
 {
-  "description": "Send SMS messages to your Free Mobile device. A simple and free way to monitor your applications using a Free Mobile account.",
+  "description": "Send SMS messages to your Free Mobile device, for the Yii Framework. A simple and free way to monitor your applications using a Free Mobile account.",
   "homepage": "https://docs.belin.io/yii2-free-mobile",
   "license": "MIT",
   "name": "cedx/yii2-free-mobile",
