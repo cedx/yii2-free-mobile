@@ -1,6 +1,6 @@
 {
   "description": "Send SMS messages to your Free Mobile device. A simple and free way to monitor your applications using a Free Mobile account.",
-  "homepage": "https://dev.belin.io/yii2-free-mobile",
+  "homepage": "https://docs.belin.io/yii2-free-mobile",
   "license": "MIT",
   "name": "cedx/yii2-free-mobile",
   "type": "yii2-extension",
@@ -49,7 +49,7 @@
     "test": "robo test"
   },
   "support": {
-    "docs": "https://dev.belin.io/yii2-free-mobile/api",
-    "issues": "https://github.com/cedx/yii2-free-mobile/issues"
+    "docs": "https://api.belin.io/yii2-free-mobile",
+    "issues": "https://git.belin.io/cedx/yii2-free-mobile/issues"
   }
 }

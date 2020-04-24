@@ -4,13 +4,13 @@
 [Free Mobile](http://mobile.free.fr) connector for [Yii](https://www.yiiframework.com), high-performance [PHP](https://www.php.net) framework.
 
 ## Documentation
-- [User guide](https://dev.belin.io/yii2-free-mobile)
-- [API reference](https://dev.belin.io/yii2-free-mobile/api)
+- [User guide](https://docs.belin.io/yii2-free-mobile)
+- [API reference](https://api.belin.io/yii2-free-mobile)
 
 ## Development
-- [Git repository](https://github.com/cedx/yii2-free-mobile)
+- [Git repository](https://git.belin.io/cedx/yii2-free-mobile)
 - [Packagist package](https://packagist.org/packages/cedx/yii2-free-mobile)
-- [Submit an issue](https://github.com/cedx/yii2-free-mobile/issues)
+- [Submit an issue](https://git.belin.io/cedx/yii2-free-mobile/issues)
 
 ## License
-[Free Mobile for Yii](https://dev.belin.io/yii2-free-mobile) is distributed under the MIT License.
+[Free Mobile for Yii](https://docs.belin.io/yii2-free-mobile) is distributed under the MIT License.
