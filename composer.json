@@ -4,6 +4,7 @@
   "license": "MIT",
   "name": "cedx/yii2-free-mobile",
   "type": "yii2-extension",
+  "version": "11.2.0",
   "authors": [
     {"email": "cedric@belin.io", "homepage": "https://belin.io", "name": "Cédric Belin"}
   ],
@@ -40,7 +41,6 @@
   },
   "require-dev": {
     "cedx/coveralls": "^13.0.0",
-    "consolidation/robo": "^2.0.3",
     "phpstan/phpstan": "^0.12.23",
     "phpunit/phpunit": "^9.1.4"
   },
