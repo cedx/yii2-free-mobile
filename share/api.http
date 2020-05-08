@@ -1,7 +1,11 @@
+@baseUrl = https://smsapi.free-mobile.fr
+@password =
+@username =
+
+###
+
 // Sends a SMS message to the underlying account.
 GET {{baseUrl}}/sendmsg
   ?msg=Bonjour%20C%C3%A9dric%20!
   &pass={{password}}
   &user={{username}}
-
-###
