@@ -1,5 +1,5 @@
 # Free Mobile for Yii
-![PHP](https://badgen.net/packagist/php/cedx/yii2-free-mobile) ![Yii Framework](https://badgen.net/badge/yii/%3E%3D2.0/green) ![Release](https://badgen.net/packagist/v/cedx/yii2-free-mobile) ![License](https://badgen.net/packagist/license/cedx/yii2-free-mobile) ![Downloads](https://badgen.net/packagist/dt/cedx/yii2-free-mobile) ![Coverage](https://badgen.net/coveralls/c/github/cedx/yii2-free-mobile) ![Build](https://badgen.net/github/checks/cedx/yii2-free-mobile)
+![Yii Framework](https://badgen.net/badge/yii/%3E%3D2.0.0/green) ![Runtime](https://badgen.net/packagist/php/cedx/yii2-free-mobile) ![Release](https://badgen.net/packagist/v/cedx/yii2-free-mobile) ![License](https://badgen.net/packagist/license/cedx/yii2-free-mobile) ![Downloads](https://badgen.net/packagist/dt/cedx/yii2-free-mobile) ![Coverage](https://badgen.net/coveralls/c/github/cedx/yii2-free-mobile) ![Build](https://badgen.net/github/checks/cedx/yii2-free-mobile)
 
 [Free Mobile](http://mobile.free.fr) client library for the [Yii Framework](https://www.yiiframework.com).
 
