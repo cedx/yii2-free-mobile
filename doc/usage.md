@@ -29,8 +29,8 @@ function main(): void {
 The `Client->sendMessage()` method throws a  `yii\freemobile\ClientException` if any error occurred while sending the message.
 
 !!! warning
-		The text of the messages will be automatically truncated to **160** characters:  
-		you can't send multipart messages using this library.
+	The text of the messages will be automatically truncated to **160** characters:  
+	you can't send multipart messages using this library.
 
 ## Client events
 The `yii\freemobile\Client` class triggers some [events](https://www.yiiframework.com/doc/guide/2.0/en/concept-events) during its life cycle.
@@ -115,6 +115,6 @@ In your [application configuration](https://www.yiiframework.com/doc/guide/2.0/e
 The optional `LogTarget->client` property accepts a `yii\freemobile\Client` instance or the application component ID of a Free Mobile client. It defaults to the `"freemobile"` string.
 
 !!! tip
-		As text of the log messages is truncated to **160** characters,
-		you should not change the default value of the `LogTarget->exportInterval`
-		and `LogTarget->logVars` properties.
+	As text of the log messages is truncated to **160** characters,
+	you should not change the default value of the `LogTarget->exportInterval`
+	and `LogTarget->logVars` properties.
