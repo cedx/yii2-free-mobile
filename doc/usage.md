@@ -8,29 +8,29 @@
 use yii\freemobile\{Client, ClientException};
 
 function main(): void {
-  try {
-    $config = [
-      'username' => 'your account identifier', // e.g. "12345678"
-      'password' => 'your API key' // e.g. "a9BkVohJun4MA"
-    ];
+	try {
+		$config = [
+			"username" => "your account identifier", // e.g. "12345678"
+			"password" => "your API key" // e.g. "a9BkVohJun4MA"
+		];
 
-    $client = new Client($config);
-    $client->sendMessage('Hello World!');
-    echo 'The message was sent successfully';
-  }
+		$client = new Client($config);
+		$client->sendMessage("Hello World!");
+		echo "The message was sent successfully";
+	}
 
-  catch (Throwable $e) {
-    echo 'An error occurred: ', $e->getMessage(), PHP_EOL;
-    if ($e instanceof ClientException) echo 'From: ', $e->getUri(), PHP_EOL;
-  }
+	catch (Throwable $e) {
+		echo "An error occurred: ", $e->getMessage(), PHP_EOL;
+		if ($e instanceof ClientException) echo "From: ", $e->getUri(), PHP_EOL;
+	}
 }
 ```
 
 The `Client->sendMessage()` method throws a  `yii\freemobile\ClientException` if any error occurred while sending the message.
 
 !!! warning
-    The text of the messages will be automatically truncated to **160** characters:  
-    you can't send multipart messages using this library.
+		The text of the messages will be automatically truncated to **160** characters:  
+		you can't send multipart messages using this library.
 
 ## Client events
 The `yii\freemobile\Client` class triggers some [events](https://www.yiiframework.com/doc/guide/2.0/en/concept-events) during its life cycle.
@@ -44,10 +44,10 @@ use yii\freemobile\{Client};
 use yii\httpclient\{RequestEvent};
 
 function main(): void {
-  $client = new Client(['username' => 'your account identifier', 'password' => 'your API key']);
-  $client->on(Client::eventRequest, function(RequestEvent $event) {
-    echo 'Client request: ', $event->request->url;
-  });
+	$client = new Client(["username" => "your account identifier", "password" => "your API key"]);
+	$client->on(Client::eventRequest, function(RequestEvent $event) {
+		echo "Client request: ", $event->request->url;
+	});
 }
 ```
 
@@ -60,10 +60,10 @@ use yii\freemobile\{Client};
 use yii\httpclient\{RequestEvent};
 
 function main(): void {
-  $client = new Client(['username' => 'your account identifier', 'password' => 'your API key']);
-  $client->on(Client::eventResponse, function(RequestEvent $event) {
-    echo 'Server response: ', $event->response->statusCode;
-  });
+	$client = new Client(["username" => "your account identifier", "password" => "your API key"]);
+	$client->on(Client::eventResponse, function(RequestEvent $event) {
+		echo "Server response: ", $event->response->statusCode;
+	});
 }
 ```
 
@@ -74,13 +74,13 @@ In your [application configuration](https://www.yiiframework.com/doc/guide/2.0/e
 
 ```php
 <?php return [
-  'components' => [
-    'freemobile' => [
-      'class' => 'yii\freemobile\Client',
-      'username' => 'your account identifier', // e.g. "12345678"
-      'password' => 'your API key' // e.g. "a9BkVohJun4MA"
-    ]
-  ]
+	"components" => [
+		"freemobile" => [
+			"class" => "yii\\freemobile\\Client",
+			"username" => "your account identifier", // e.g. "12345678"
+			"password" => "your API key" // e.g. "a9BkVohJun4MA"
+		]
+	]
 ];
 ```
 
@@ -88,8 +88,8 @@ Once the `freemobile` component is initialized with your credentials, you can us
 
 ```php
 <?php
-$client = \Yii::$app->get('freemobile');
-$client->sendMessage('Hello World!');
+$client = \Yii::$app->get("freemobile");
+$client->sendMessage("Hello World!");
 ```
 
 ### Logging
@@ -97,24 +97,24 @@ In your [application configuration](https://www.yiiframework.com/doc/guide/2.0/e
 
 ```php
 <?php return [
-  'bootstrap' => ['log'],
-  'components' => [
-    'log' => [
-      'targets' => [
-        [
-          'class' => 'yii\freemobile\LogTarget',
-          'client' => 'freemobile',
-          'levels' => ['error']
-        ]
-      ]
-    ]
-  ]
+	"bootstrap" => ["log"],
+	"components" => [
+		"log" => [
+			"targets" => [
+				[
+					"class" => "yii\\freemobile\\LogTarget",
+					"client" => "freemobile",
+					"levels" => ["error"]
+				]
+			]
+		]
+	]
 ];
 ```
 
 The optional `LogTarget->client` property accepts a `yii\freemobile\Client` instance or the application component ID of a Free Mobile client. It defaults to the `"freemobile"` string.
 
 !!! tip
-    As text of the log messages is truncated to **160** characters,
-    you should not change the default value of the `LogTarget->exportInterval`
-    and `LogTarget->logVars` properties.
+		As text of the log messages is truncated to **160** characters,
+		you should not change the default value of the `LogTarget->exportInterval`
+		and `LogTarget->logVars` properties.

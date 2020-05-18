@@ -1,55 +1,55 @@
 {
-  "description": "Send SMS messages to your Free Mobile device, for the Yii Framework. A simple and free way to monitor your applications using a Free Mobile account.",
-  "homepage": "https://docs.belin.io/yii2-free-mobile",
-  "license": "MIT",
-  "name": "cedx/yii2-free-mobile",
-  "type": "yii2-extension",
-  "version": "11.2.0",
-  "authors": [
-    {"email": "cedric@belin.io", "homepage": "https://belin.io", "name": "Cédric Belin"}
-  ],
-  "autoload": {
-    "psr-4": {"yii\\freemobile\\": "src/"}
-  },
-  "autoload-dev": {
-    "psr-4": {"yii\\freemobile\\": "test/"}
-  },
-  "config": {
-    "fxp-asset": {"enabled": false},
-    "optimize-autoloader": true
-  },
-  "funding": [
-    {"type": "patreon", "url": "https://www.patreon.com/cedx"}
-  ],
-  "keywords": [
-    "client",
-    "free",
-    "logging",
-    "mobile",
-    "sms",
-    "yii2"
-  ],
-  "repositories": [
-    {"type": "composer", "url": "https://asset-packagist.org"}
-  ],
-  "require": {
-    "php": ">=7.4.0",
-    "ext-mbstring": "*",
-    "nyholm/psr7": "^1.2.1",
-    "yiisoft/yii2": "^2.0.35",
-    "yiisoft/yii2-httpclient": "^2.0.12"
-  },
-  "require-dev": {
-    "cedx/coveralls": "^13.0.0",
-    "phpstan/phpstan": "^0.12.25",
-    "phpunit/phpunit": "^9.1.4"
-  },
-  "scripts": {
-    "coverage": "coveralls var/coverage.xml",
-    "test": "phpunit --configuration=etc/phpunit.xml"
-  },
-  "support": {
-    "docs": "https://api.belin.io/yii2-free-mobile",
-    "issues": "https://git.belin.io/cedx/yii2-free-mobile/issues"
-  }
+	"description": "Send SMS messages to your Free Mobile device, for the Yii Framework. A simple and free way to monitor your applications using a Free Mobile account.",
+	"homepage": "https://docs.belin.io/yii2-free-mobile",
+	"license": "MIT",
+	"name": "cedx/yii2-free-mobile",
+	"type": "yii2-extension",
+	"version": "11.2.0",
+	"authors": [
+		{"email": "cedric@belin.io", "homepage": "https://belin.io", "name": "Cédric Belin"}
+	],
+	"autoload": {
+		"psr-4": {"yii\\freemobile\\": "src/"}
+	},
+	"autoload-dev": {
+		"psr-4": {"yii\\freemobile\\": "test/"}
+	},
+	"config": {
+		"fxp-asset": {"enabled": false},
+		"optimize-autoloader": true
+	},
+	"funding": [
+		{"type": "patreon", "url": "https://www.patreon.com/cedx"}
+	],
+	"keywords": [
+		"client",
+		"free",
+		"logging",
+		"mobile",
+		"sms",
+		"yii2"
+	],
+	"repositories": [
+		{"type": "composer", "url": "https://asset-packagist.org"}
+	],
+	"require": {
+		"php": ">=7.4.0",
+		"ext-mbstring": "*",
+		"nyholm/psr7": "^1.2.1",
+		"yiisoft/yii2": "^2.0.35",
+		"yiisoft/yii2-httpclient": "^2.0.12"
+	},
+	"require-dev": {
+		"cedx/coveralls": "^13.0.0",
+		"phpstan/phpstan": "^0.12.25",
+		"phpunit/phpunit": "^9.1.4"
+	},
+	"scripts": {
+		"coverage": "coveralls var/coverage.xml",
+		"test": "phpunit --configuration=etc/phpunit.xml"
+	},
+	"support": {
+		"docs": "https://api.belin.io/yii2-free-mobile",
+		"issues": "https://git.belin.io/cedx/yii2-free-mobile/issues"
+	}
 }

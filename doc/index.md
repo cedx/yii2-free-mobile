@@ -11,8 +11,8 @@ For example, you can configure a control panel or a network-attached storage to 
 ## Quick start
 
 !!! warning
-    SMS notifications require an API key. If you are not already registered,
-    [sign up for a Free Mobile account](https://mobile.free.fr/subscribe).
+	SMS notifications require an API key. If you are not already registered,
+	[sign up for a Free Mobile account](https://mobile.free.fr/subscribe).
 
 ### Get an API key
 You first need to enable the **SMS notifications** in [your subscriber account](https://mobile.free.fr/moncompte).

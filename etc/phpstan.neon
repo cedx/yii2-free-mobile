@@ -1,5 +1,5 @@
 parameters:
-  autoload_files: [../vendor/yiisoft/yii2/Yii.php]
-  level: max
-  paths: [../src, ../test]
-  treatPhpDocTypesAsCertain: false
+	autoload_files: [../vendor/yiisoft/yii2/Yii.php]
+	level: max
+	paths: [../src, ../test]
+	treatPhpDocTypesAsCertain: false
