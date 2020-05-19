@@ -3,7 +3,7 @@
 ## SMS notifications
 **Free Mobile for Yii** provides the `yii\freemobile\Client` class, which allow to send SMS messages to your mobile phone by using the `sendMessage()` method:
 
-```php
+``` php
 <?php
 use yii\freemobile\{Client, ClientException};
 
@@ -38,7 +38,7 @@ The `yii\freemobile\Client` class triggers some [events](https://www.yiiframewor
 ### The `Client::eventRequest` event
 Emitted every time a request is made to the remote service:
 
-```php
+``` php
 <?php
 use yii\freemobile\{Client};
 use yii\httpclient\{RequestEvent};
@@ -54,7 +54,7 @@ function main(): void {
 ### The `Client::eventResponse` event
 Emitted every time a response is received from the remote service:
 
-```php
+``` php
 <?php
 use yii\freemobile\{Client};
 use yii\httpclient\{RequestEvent};
@@ -72,7 +72,7 @@ function main(): void {
 ### Application component
 In your [application configuration](https://www.yiiframework.com/doc/guide/2.0/en/concept-configurations#application-configurations) file, you can register the `yii\freemobile\Client` class as an [application component](https://www.yiiframework.com/doc/guide/2.0/en/structure-application-components):
 
-```php
+``` php
 <?php return [
 	"components" => [
 		"freemobile" => [
@@ -86,7 +86,7 @@ In your [application configuration](https://www.yiiframework.com/doc/guide/2.0/e
 
 Once the `freemobile` component is initialized with your credentials, you can use its `sendMessage()` method, available through the [application instance](https://www.yiiframework.com/doc/guide/2.0/en/structure-applications):
 
-```php
+``` php
 <?php
 $client = \Yii::$app->get("freemobile");
 $client->sendMessage("Hello World!");
@@ -95,7 +95,7 @@ $client->sendMessage("Hello World!");
 ### Logging
 In your [application configuration](https://www.yiiframework.com/doc/guide/2.0/en/concept-configurations#application-configurations) file, you can register the `yii\freemobile\LogTarget` class as a [log target](https://www.yiiframework.com/doc/guide/2.0/en/runtime-logging#log-targets):
 
-```php
+``` php
 <?php return [
 	"bootstrap" => ["log"],
 	"components" => [

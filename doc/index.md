@@ -23,7 +23,7 @@ This will give you an identification key allowing access to the [Free Mobile](ht
 ### Get the library
 Install the latest version of **Free Mobile for Yii** with [Composer](https://getcomposer.org):
 
-```shell
+``` shell
 composer require cedx/yii2-free-mobile
 ```
 
