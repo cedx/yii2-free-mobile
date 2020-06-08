@@ -28,9 +28,9 @@ jobs:
         env:
           FREEMOBILE_PASSWORD: ${{secrets.FREEMOBILE_PASSWORD}}
           FREEMOBILE_USERNAME: ${{secrets.FREEMOBILE_USERNAME}}
-        run: composer run-script test
+        run: composer run test
       - name: Collect code coverage
         env:
           COVERALLS_REPO_TOKEN: ${{secrets.GITHUB_TOKEN}}
         if: success()
-        run: composer run-script coverage
+        run: composer run coverage
