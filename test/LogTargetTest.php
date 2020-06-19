@@ -2,8 +2,8 @@
 namespace yii\freemobile;
 
 use PHPUnit\Framework\{Assert, TestCase};
-use yii\base\{InvalidConfigException};
-use yii\log\{Logger};
+use yii\base\InvalidConfigException;
+use yii\log\Logger;
 use function PHPUnit\Framework\{assertThat, equalTo, identicalTo, isInstanceOf, logicalAnd};
 
 /** @testdox yii\freemobile\LogTarget */

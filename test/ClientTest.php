@@ -2,8 +2,8 @@
 namespace yii\freemobile;
 
 use PHPUnit\Framework\{Assert, TestCase};
-use yii\base\{InvalidConfigException};
-use yii\httpclient\{RequestEvent};
+use yii\base\InvalidConfigException;
+use yii\httpclient\RequestEvent;
 use function PHPUnit\Framework\{assertThat, isInstanceOf, stringStartsWith};
 
 /** @testdox yii\freemobile\Client */

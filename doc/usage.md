@@ -40,8 +40,8 @@ Emitted every time a request is made to the remote service:
 
 ``` php
 <?php
-use yii\freemobile\{Client};
-use yii\httpclient\{RequestEvent};
+use yii\freemobile\Client;
+use yii\httpclient\RequestEvent;
 
 function main(): void {
 	$client = new Client(["username" => "your account identifier", "password" => "your API key"]);
@@ -56,8 +56,8 @@ Emitted every time a response is received from the remote service:
 
 ``` php
 <?php
-use yii\freemobile\{Client};
-use yii\httpclient\{RequestEvent};
+use yii\freemobile\Client;
+use yii\httpclient\RequestEvent;
 
 function main(): void {
 	$client = new Client(["username" => "your account identifier", "password" => "your API key"]);

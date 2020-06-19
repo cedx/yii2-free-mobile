@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 namespace yii\freemobile;
 
-use yii\di\{Instance};
-use yii\helpers\{VarDumper};
-use yii\log\{Target};
+use yii\di\Instance;
+use yii\helpers\VarDumper;
+use yii\log\Target;
 
 /** Sends the log messages by SMS to a Free Mobile account. */
 class LogTarget extends Target {

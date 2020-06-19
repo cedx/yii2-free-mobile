@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 namespace yii\freemobile;
 
-use Nyholm\Psr7\{Uri};
-use Psr\Http\Message\{UriInterface};
+use Nyholm\Psr7\Uri;
+use Psr\Http\Message\UriInterface;
 use yii\base\{Component, InvalidConfigException};
 use yii\httpclient\{Client as HttpClient, CurlTransport, StreamTransport};
-use yii\web\{HttpException};
+use yii\web\HttpException;
 
 /**
  * Sends messages by SMS to a Free Mobile account.
