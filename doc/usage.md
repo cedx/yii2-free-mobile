@@ -16,12 +16,12 @@ function main(): void {
 
 		$client = new Client($config);
 		$client->sendMessage("Hello World!");
-		echo "The message was sent successfully";
+		print "The message was sent successfully";
 	}
 
 	catch (Throwable $e) {
-		echo "An error occurred: ", $e->getMessage(), PHP_EOL;
-		if ($e instanceof ClientException) echo "From: ", $e->getUri(), PHP_EOL;
+		print "An error occurred: {$e->getMessage()}" . PHP_EOL;
+		if ($e instanceof ClientException) print "From: {$e->getUri()}" . PHP_EOL;
 	}
 }
 ```
@@ -45,9 +45,9 @@ use yii\httpclient\RequestEvent;
 
 function main(): void {
 	$client = new Client(["username" => "your account identifier", "password" => "your API key"]);
-	$client->on(Client::eventRequest, function(RequestEvent $event) {
-		echo "Client request: ", $event->request->url;
-	});
+	$client->on(Client::eventRequest, fn(RequestEvent $event) =>
+		print "Client request: {$event->request->url}";
+	);
 }
 ```
 
@@ -61,9 +61,9 @@ use yii\httpclient\RequestEvent;
 
 function main(): void {
 	$client = new Client(["username" => "your account identifier", "password" => "your API key"]);
-	$client->on(Client::eventResponse, function(RequestEvent $event) {
-		echo "Server response: ", $event->response->statusCode;
-	});
+	$client->on(Client::eventResponse, fn(RequestEvent $event) =>
+		print "Server response: {$event->response->statusCode}"
+	);
 }
 ```
 
